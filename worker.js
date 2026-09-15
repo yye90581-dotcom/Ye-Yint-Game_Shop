@@ -5,9 +5,25 @@ export default {
     if (url.pathname === "/api/order" && request.method === "POST") {
       try {
         const data = await request.json();
+
         const required = ["game", "package", "playerId", "serverId", "phone"];
+
         if (required.some((key) => !String(data[key] ?? "").trim())) {
-          return json({ ok: false, error: "အချက်အလက်အားလုံး ဖြည့်ပါ။" }, 400);
+          return json(
+            { ok: false, error: "အချက်အလက်အားလုံး ဖြည့်ပါ။" },
+            400
+          );
+        }
+
+        // Check Cloudflare Secrets
+        if (!env.TELEGRAM_BOT_TOKEN || !env.TELEGRAM_CHAT_ID) {
+          return json(
+            {
+              ok: false,
+              error: "Telegram Secret မတွေ့ပါ။ TELEGRAM_BOT_TOKEN / TELEGRAM_CHAT_ID ကို စစ်ပါ။"
+            },
+            500
+          );
         }
 
         const text = [
@@ -19,23 +35,43 @@ export default {
           `🌐 Server: ${safe(data.serverId)}`,
           `📱 Phone: ${safe(data.phone)}`,
           `⏰ Time: ${new Date().toISOString()}`
-        ].join("\\n");
+        ].join("\n");
 
-        const telegramUrl = `https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`;
+        const telegramUrl =
+          `https://api.telegram.org/bot${env.TELEGRAM_BOT_TOKEN}/sendMessage`;
+
         const tg = await fetch(telegramUrl, {
           method: "POST",
-          headers: { "content-type": "application/json" },
-          body: JSON.stringify({ chat_id: env.TELEGRAM_CHAT_ID, text })
+          headers: {
+            "content-type": "application/json"
+          },
+          body: JSON.stringify({
+            chat_id: env.TELEGRAM_CHAT_ID,
+            text
+          })
         });
+
         const tgResult = await tg.json();
 
         if (!tg.ok || !tgResult.ok) {
-          return json({ ok: false, error: "Telegram သို့ Order ပို့မရပါ။" }, 502);
+          return json(
+            {
+              ok: false,
+              error: `Telegram Error: ${tgResult.description || "Unknown error"}`
+            },
+            502
+          );
         }
 
         return json({ ok: true });
-      } catch {
-        return json({ ok: false, error: "Order data မမှန်ပါ။" }, 400);
+      } catch (error) {
+        return json(
+          {
+            ok: false,
+            error: `Server Error: ${error.message || "Unknown error"}`
+          },
+          500
+        );
       }
     }
 
@@ -44,12 +80,16 @@ export default {
 };
 
 function safe(value) {
-  return String(value ?? "").replace(/[<>]/g, "").slice(0, 500);
+  return String(value ?? "")
+    .replace(/[<>]/g, "")
+    .slice(0, 500);
 }
 
 function json(body, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
-    headers: { "content-type": "application/json; charset=utf-8" }
+    headers: {
+      "content-type": "application/json; charset=utf-8"
+    }
   });
 }
