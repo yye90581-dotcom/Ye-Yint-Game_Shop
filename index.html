@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Game Store</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    body {
+      background: #0b1020;
+      color: white;
+    }
+
+    header {
+      padding: 20px;
+      text-align: center;
+      background: #151c35;
+    }
+
+    header h1 {
+      font-size: 28px;
+    }
+
+    header p {
+      margin-top: 8px;
+      color: #aeb8d4;
+    }
+
+    .container {
+      padding: 25px;
+      max-width: 1000px;
+      margin: auto;
+    }
+
+    .games {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 20px;
+    }
+
+    .game {
+      background: #151c35;
+      padding: 25px;
+      border-radius: 15px;
+      text-align: center;
+    }
+
+    .game h2 {
+      margin-bottom: 10px;
+    }
+
+    .game button {
+      margin-top: 15px;
+      padding: 12px 20px;
+      border: none;
+      border-radius: 8px;
+      background: #4f7cff;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .game button:hover {
+      background: #315fe0;
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <h1>🎮 GAME STORE</h1>
+    <p>MLBB • PUBG Mobile • Game Items</p>
+  </header>
+
+  <div class="container">
+
+    <h2 style="margin-bottom:20px;">Game ရွေးပါ</h2>
+
+    <div class="games">
+
+      <div class="game">
+        <h2>🔥 MLBB</h2>
+        <p>Diamonds & Game Items</p>
+        <button>ဝယ်မယ်</button>
+      </div>
+
+      <div class="game">
+        <h2>🔫 PUBG Mobile</h2>
+        <p>UC & Game Items</p>
+        <button>ဝယ်မယ်</button>
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+</html>
