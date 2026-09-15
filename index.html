@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="my">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <title>Game Store</title>
 
   <style>
@@ -14,93 +15,429 @@
     }
 
     body {
-      background: #0b1020;
+      background: #070d1d;
       color: white;
     }
 
     header {
+      background: #101a35;
       padding: 20px;
       text-align: center;
-      background: #151c35;
     }
 
     header h1 {
-      font-size: 28px;
+      font-size: 30px;
+      color: #22aaff;
     }
 
     header p {
+      color: #aaa;
       margin-top: 8px;
-      color: #aeb8d4;
     }
 
     .container {
-      padding: 25px;
       max-width: 1000px;
       margin: auto;
+      padding: 25px 15px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #101d42, #071024);
+      border-radius: 18px;
+      padding: 35px 20px;
+      text-align: center;
+      margin-bottom: 30px;
+    }
+
+    .hero h2 {
+      font-size: 32px;
+      margin-bottom: 10px;
+    }
+
+    .hero span {
+      color: #20aaff;
+    }
+
+    .hero p {
+      color: #b8c1d9;
+    }
+
+    .section-title {
+      margin-bottom: 18px;
+      font-size: 25px;
     }
 
     .games {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 18px;
     }
 
-    .game {
-      background: #151c35;
+    .card {
+      background: #111a32;
+      border: 1px solid #263b70;
+      border-radius: 15px;
+      padding: 20px;
+    }
+
+    .card h3 {
+      font-size: 23px;
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      color: #aab4cc;
+      margin-bottom: 15px;
+    }
+
+    .packages {
+      display: grid;
+      gap: 12px;
+    }
+
+    .package {
+      background: #172342;
+      padding: 15px;
+      border-radius: 12px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .package strong {
+      font-size: 18px;
+    }
+
+    .price {
+      color: #35c6ff;
+      margin-top: 5px;
+    }
+
+    button {
+      background: #1677ff;
+      border: none;
+      color: white;
+      padding: 11px 18px;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    button:hover {
+      background: #005bd4;
+    }
+
+    .order {
+      margin-top: 35px;
+      background: #111a32;
       padding: 25px;
       border-radius: 15px;
-      text-align: center;
+      border: 1px solid #263b70;
     }
 
-    .game h2 {
-      margin-bottom: 10px;
+    .order h2 {
+      margin-bottom: 20px;
     }
 
-    .game button {
-      margin-top: 15px;
-      padding: 12px 20px;
+    label {
+      display: block;
+      margin-top: 10px;
+    }
+
+    input,
+    select {
+      width: 100%;
+      padding: 13px;
+      margin: 8px 0 15px;
       border: none;
       border-radius: 8px;
-      background: #4f7cff;
+      background: #202c4a;
       color: white;
-      font-size: 16px;
-      cursor: pointer;
+      outline: none;
     }
 
-    .game button:hover {
-      background: #315fe0;
+    .submit {
+      width: 100%;
+      margin-top: 5px;
+      font-size: 16px;
+    }
+
+    footer {
+      margin-top: 40px;
+      padding: 25px;
+      text-align: center;
+      background: #0d152b;
+      color: #8894af;
+    }
+
+    @media (max-width: 500px) {
+      .hero h2 {
+        font-size: 26px;
+      }
+
+      .package {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+      }
+
+      .package button {
+        width: 100%;
+      }
     }
   </style>
 </head>
 
 <body>
 
-  <header>
-    <h1>🎮 GAME STORE</h1>
-    <p>MLBB • PUBG Mobile • Game Items</p>
-  </header>
+<header>
+  <h1>🎮 GAME STORE</h1>
+  <p>Fast • Safe • Trusted</p>
+</header>
 
-  <div class="container">
+<div class="container">
 
-    <h2 style="margin-bottom:20px;">Game ရွေးပါ</h2>
+  <section class="hero">
+    <h2>Game <span>Items Store</span></h2>
+    <p>
+      MLBB Diamonds နှင့် PUBG UC များကို
+      လွယ်ကူစွာ ဝယ်ယူနိုင်ပါသည်။
+    </p>
+  </section>
 
-    <div class="games">
+  <h2 class="section-title">🔥 MLBB Diamonds</h2>
 
-      <div class="game">
-        <h2>🔥 MLBB</h2>
-        <p>Diamonds & Game Items</p>
-        <button>ဝယ်မယ်</button>
+  <div class="games">
+
+    <!-- MLBB -->
+
+    <div class="card">
+
+      <h3>💎 MLBB</h3>
+
+      <p>Diamonds Package</p>
+
+      <div class="packages">
+
+        <div class="package">
+          <div>
+            <strong>86 Diamonds</strong>
+            <div class="price">2,500 Ks</div>
+          </div>
+
+          <button onclick="selectPackage('MLBB - 86 Diamonds')">
+            ဝယ်မယ်
+          </button>
+        </div>
+
+
+        <div class="package">
+          <div>
+            <strong>172 Diamonds</strong>
+            <div class="price">4,800 Ks</div>
+          </div>
+
+          <button onclick="selectPackage('MLBB - 172 Diamonds')">
+            ဝယ်မယ်
+          </button>
+        </div>
+
+
+        <div class="package">
+          <div>
+            <strong>257 Diamonds</strong>
+            <div class="price">7,000 Ks</div>
+          </div>
+
+          <button onclick="selectPackage('MLBB - 257 Diamonds')">
+            ဝယ်မယ်
+          </button>
+        </div>
+
+
+        <div class="package">
+          <div>
+            <strong>Weekly Pass</strong>
+            <div class="price">6,000 Ks</div>
+          </div>
+
+          <button onclick="selectPackage('MLBB - Weekly Pass')">
+            ဝယ်မယ်
+          </button>
+        </div>
+
       </div>
+    </div>
 
-      <div class="game">
-        <h2>🔫 PUBG Mobile</h2>
-        <p>UC & Game Items</p>
-        <button>ဝယ်မယ်</button>
+
+    <!-- PUBG -->
+
+    <div class="card">
+
+      <h3>🔫 PUBG Mobile</h3>
+
+      <p>UC Package</p>
+
+      <div class="packages">
+
+        <div class="package">
+          <div>
+            <strong>60 UC</strong>
+            <div class="price">3,000 Ks</div>
+          </div>
+
+          <button onclick="selectPackage('PUBG - 60 UC')">
+            ဝယ်မယ်
+          </button>
+        </div>
+
+
+        <div class="package">
+          <div>
+            <strong>325 UC</strong>
+            <div class="price">15,000 Ks</div>
+          </div>
+
+          <button onclick="selectPackage('PUBG - 325 UC')">
+            ဝယ်မယ်
+          </button>
+        </div>
+
+
+        <div class="package">
+          <div>
+            <strong>660 UC</strong>
+            <div class="price">29,000 Ks</div>
+          </div>
+
+          <button onclick="selectPackage('PUBG - 660 UC')">
+            ဝယ်မယ်
+          </button>
+        </div>
+
       </div>
-
     </div>
 
   </div>
+
+
+  <!-- ORDER FORM -->
+
+  <div class="order" id="order">
+
+    <h2>🛒 Order တင်ရန်</h2>
+
+    <label>Game</label>
+
+    <select id="game">
+      <option>MLBB</option>
+      <option>PUBG Mobile</option>
+    </select>
+
+
+    <label>Package</label>
+
+    <input
+      type="text"
+      id="package"
+      placeholder="ဝယ်မည့် Package"
+    >
+
+
+    <label>Player ID</label>
+
+    <input
+      type="text"
+      id="player"
+      placeholder="Player ID ထည့်ပါ"
+    >
+
+
+    <label>ဆက်သွယ်ရန် ဖုန်းနံပါတ်</label>
+
+    <input
+      type="text"
+      id="phone"
+      placeholder="09xxxxxxxxx"
+    >
+
+
+    <button class="submit" onclick="sendOrder()">
+      📩 Order တင်မယ်
+    </button>
+
+  </div>
+
+</div>
+
+
+<footer>
+
+  🎮 GAME STORE
+
+  <br>
+
+  MLBB • PUBG Mobile
+
+  <br><br>
+
+  © 2026 Game Store
+
+</footer>
+
+
+<script>
+
+function selectPackage(packageName) {
+
+  document.getElementById("package").value = packageName;
+
+  document.getElementById("order").scrollIntoView({
+    behavior: "smooth"
+  });
+
+}
+
+
+function sendOrder() {
+
+  const game =
+    document.getElementById("game").value;
+
+  const packageName =
+    document.getElementById("package").value;
+
+  const player =
+    document.getElementById("player").value;
+
+  const phone =
+    document.getElementById("phone").value;
+
+
+  if (
+    packageName === "" ||
+    player === "" ||
+    phone === ""
+  ) {
+
+    alert("အချက်အလက်အားလုံး ဖြည့်ပေးပါ။");
+
+    return;
+  }
+
+
+  alert(
+    "Order လက်ခံရရှိပါပြီ!\n\n" +
+    "Game: " + game + "\n" +
+    "Package: " + packageName + "\n" +
+    "Player ID: " + player + "\n" +
+    "Phone: " + phone
+  );
+
+}
+
+</script>
 
 </body>
 </html>
