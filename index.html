@@ -1,370 +1,1196 @@
 <!DOCTYPE html>
 <html lang="my">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <title>Game Store</title>
+<title>Ye Yint Game Shop</title>
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      font-family: Arial, sans-serif;
-    }
+<style>
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
 
-    body {
-      background: #070d1d;
-      color: white;
-    }
+body{
+  font-family:Arial,"Noto Sans Myanmar",sans-serif;
+  background:#050a19;
+  color:white;
+}
 
-    header {
-      background: #101a35;
-      padding: 20px;
-      text-align: center;
-    }
+html{
+  scroll-behavior:smooth;
+}
 
-    header h1 {
-      font-size: 30px;
-      color: #22aaff;
-    }
+a{
+  text-decoration:none;
+  color:inherit;
+}
 
-    header p {
-      color: #aaa;
-      margin-top: 8px;
-    }
+/* NAVBAR */
 
-    .container {
-      max-width: 1000px;
-      margin: auto;
-      padding: 25px 15px;
-    }
+.navbar{
+  position:sticky;
+  top:0;
+  z-index:99;
 
-    .hero {
-      background: linear-gradient(135deg, #101d42, #071024);
-      border-radius: 18px;
-      padding: 35px 20px;
-      text-align: center;
-      margin-bottom: 30px;
-    }
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 
-    .hero h2 {
-      font-size: 32px;
-      margin-bottom: 10px;
-    }
+  padding:16px 7%;
 
-    .hero span {
-      color: #20aaff;
-    }
+  background:rgba(5,10,25,.9);
+  backdrop-filter:blur(15px);
 
-    .hero p {
-      color: #b8c1d9;
-    }
+  border-bottom:1px solid #173b70;
+}
 
-    .section-title {
-      margin-bottom: 18px;
-      font-size: 25px;
-    }
+.logo{
+  font-size:20px;
+  font-weight:bold;
+}
 
-    .games {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 18px;
-    }
+.logo span{
+  color:#19c7ff;
+}
 
-    .card {
-      background: #111a32;
-      border: 1px solid #263b70;
-      border-radius: 15px;
-      padding: 20px;
-    }
+.nav-links{
+  display:flex;
+  gap:25px;
+  align-items:center;
+}
 
-    .card h3 {
-      font-size: 23px;
-      margin-bottom: 8px;
-    }
+.nav-links a{
+  color:#aebbd5;
+  font-size:14px;
+}
 
-    .card p {
-      color: #aab4cc;
-      margin-bottom: 15px;
-    }
+.nav-links a:hover{
+  color:#19c7ff;
+}
 
-    .packages {
-      display: grid;
-      gap: 12px;
-    }
+.nav-btn{
+  padding:10px 17px;
+  border-radius:10px;
 
-    .package {
-      background: #172342;
-      padding: 15px;
-      border-radius: 12px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 10px;
-    }
+  background:linear-gradient(100deg,#1597ff,#633cff);
 
-    .package strong {
-      font-size: 18px;
-    }
+  color:white!important;
+  font-weight:bold;
+}
 
-    .price {
-      color: #35c6ff;
-      margin-top: 5px;
-    }
+/* HERO */
 
-    button {
-      background: #1677ff;
-      border: none;
-      color: white;
-      padding: 11px 18px;
-      border-radius: 8px;
-      cursor: pointer;
-      font-weight: bold;
-    }
+.hero{
+  min-height:380px;
 
-    button:hover {
-      background: #005bd4;
-    }
+  display:flex;
+  align-items:center;
 
-    .order {
-      margin-top: 35px;
-      background: #111a32;
-      padding: 25px;
-      border-radius: 15px;
-      border: 1px solid #263b70;
-    }
+  padding:60px 8%;
 
-    .order h2 {
-      margin-bottom: 20px;
-    }
+  background:
+  radial-gradient(circle at 80% 30%,#123b83,transparent 30%),
+  radial-gradient(circle at 60% 90%,#21105c,transparent 35%),
+  linear-gradient(120deg,#07112b,#050a19);
+}
 
-    label {
-      display: block;
-      margin-top: 10px;
-    }
+.hero-content{
+  max-width:700px;
+}
 
-    input,
-    select {
-      width: 100%;
-      padding: 13px;
-      margin: 8px 0 15px;
-      border: none;
-      border-radius: 8px;
-      background: #202c4a;
-      color: white;
-      outline: none;
-    }
+.small-title{
+  color:#20c7ff;
+  font-size:13px;
+  font-weight:bold;
+  letter-spacing:2px;
+}
 
-    .submit {
-      width: 100%;
-      margin-top: 5px;
-      font-size: 16px;
-    }
+.hero h1{
+  margin-top:10px;
 
-    footer {
-      margin-top: 40px;
-      padding: 25px;
-      text-align: center;
-      background: #0d152b;
-      color: #8894af;
-    }
+  font-size:60px;
+  line-height:1.05;
+}
 
-    @media (max-width: 500px) {
-      .hero h2 {
-        font-size: 26px;
-      }
+.hero h1 span{
+  background:linear-gradient(90deg,#fff,#20c7ff,#7355ff);
+  -webkit-background-clip:text;
+  color:transparent;
+}
 
-      .package {
-        flex-direction: column;
-        align-items: stretch;
-        text-align: center;
-      }
+.hero p{
+  color:#9caecc;
+  margin-top:18px;
+  font-size:15px;
+}
 
-      .package button {
-        width: 100%;
-      }
-    }
-  </style>
+.hero-buttons{
+  margin-top:25px;
+
+  display:flex;
+  gap:12px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  padding:13px 20px;
+
+  border:0;
+  border-radius:11px;
+
+  font-weight:bold;
+  cursor:pointer;
+}
+
+.btn-primary{
+  color:white;
+  background:linear-gradient(100deg,#1597ff,#633cff);
+}
+
+.btn-secondary{
+  color:white;
+  background:#101d3b;
+  border:1px solid #214b83;
+}
+
+/* FEATURES */
+
+.features{
+  max-width:1100px;
+
+  margin:-25px auto 40px;
+
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+
+  padding:0 15px;
+}
+
+.feature{
+  padding:18px;
+
+  background:#09152e;
+
+  border:1px solid #193b6b;
+}
+
+.feature:first-child{
+  border-radius:15px 0 0 15px;
+}
+
+.feature:last-child{
+  border-radius:0 15px 15px 0;
+}
+
+.feature-icon{
+  font-size:25px;
+}
+
+.feature b{
+  display:block;
+  margin-top:5px;
+}
+
+.feature small{
+  color:#7789aa;
+}
+
+/* CONTAINER */
+
+.container{
+  max-width:1100px;
+  margin:auto;
+  padding:0 15px 60px;
+}
+
+.section-title{
+  margin-bottom:18px;
+}
+
+.section-title h2{
+  font-size:26px;
+}
+
+.section-title p{
+  color:#8291ad;
+  font-size:13px;
+  margin-top:4px;
+}
+
+/* GAME CARDS */
+
+.games{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:18px;
+}
+
+.game-card{
+  position:relative;
+
+  min-height:180px;
+
+  padding:27px;
+
+  border-radius:18px;
+
+  overflow:hidden;
+
+  border:1px solid #21508d;
+}
+
+.mlbb{
+  background:
+  radial-gradient(circle at 85% 20%,#2459b9,transparent 35%),
+  linear-gradient(135deg,#0d1d42,#071025);
+}
+
+.pubg{
+  background:
+  radial-gradient(circle at 85% 20%,#a86514,transparent 30%),
+  linear-gradient(135deg,#211b22,#080e1e);
+}
+
+.game-label{
+  display:inline-block;
+
+  padding:5px 10px;
+
+  border-radius:20px;
+
+  background:#168cff;
+
+  font-size:11px;
+  font-weight:bold;
+}
+
+.pubg .game-label{
+  background:#e6a21a;
+  color:#17100a;
+}
+
+.game-card h3{
+  margin-top:14px;
+  font-size:28px;
+}
+
+.game-card p{
+  color:#9aaac7;
+  margin-top:5px;
+}
+
+.arrow{
+  position:absolute;
+  right:25px;
+  bottom:20px;
+
+  font-size:30px;
+  color:#20c7ff;
+}
+
+/* SHOP */
+
+.shop{
+  margin-top:25px;
+
+  padding:20px;
+
+  border-radius:18px;
+
+  background:#08142c;
+
+  border:1px solid #1e4a83;
+}
+
+.shop-header{
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  margin-bottom:18px;
+}
+
+.shop-icon{
+  font-size:35px;
+}
+
+.shop-header h3{
+  font-size:24px;
+}
+
+.shop-header small{
+  color:#8293b3;
+}
+
+/* PACKAGES */
+
+.packages{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+}
+
+.package{
+  position:relative;
+
+  padding:18px 10px;
+
+  text-align:center;
+
+  background:#0d1c3b;
+
+  border:1px solid #204778;
+
+  border-radius:13px;
+
+  transition:.2s;
+}
+
+.package:hover{
+  transform:translateY(-4px);
+  border-color:#1597ff;
+  box-shadow:0 10px 30px #008cff20;
+}
+
+.package .icon{
+  font-size:28px;
+}
+
+.package h4{
+  margin-top:5px;
+  font-size:15px;
+}
+
+.package .price{
+  margin:7px 0 12px;
+
+  color:#20c7ff;
+
+  font-size:16px;
+  font-weight:bold;
+}
+
+.buy{
+  width:100%;
+
+  padding:9px;
+
+  border:0;
+  border-radius:8px;
+
+  color:white;
+  font-weight:bold;
+
+  background:linear-gradient(100deg,#1597ff,#633cff);
+
+  cursor:pointer;
+}
+
+.badge{
+  position:absolute;
+
+  top:7px;
+  right:7px;
+
+  padding:3px 6px;
+
+  border-radius:6px;
+
+  font-size:8px;
+
+  background:#e83d77;
+}
+
+/* ORDER */
+
+.order{
+  margin-top:30px;
+
+  padding:25px;
+
+  border-radius:18px;
+
+  background:#08142c;
+
+  border:1px solid #1e4a83;
+}
+
+.order h2{
+  margin-bottom:5px;
+}
+
+.order p{
+  color:#8191af;
+  font-size:13px;
+  margin-bottom:20px;
+}
+
+.form{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px;
+}
+
+.form-group{
+  display:flex;
+  flex-direction:column;
+}
+
+.form-group.full{
+  grid-column:1 / -1;
+}
+
+label{
+  color:#aebbd3;
+  font-size:12px;
+  margin-bottom:6px;
+}
+
+input,select{
+  padding:12px;
+
+  border-radius:10px;
+
+  border:1px solid #234979;
+
+  outline:none;
+
+  background:#0b1935;
+
+  color:white;
+}
+
+input:focus,select:focus{
+  border-color:#1597ff;
+}
+
+.submit{
+  grid-column:1 / -1;
+
+  padding:14px;
+
+  border:0;
+  border-radius:10px;
+
+  background:linear-gradient(100deg,#1597ff,#633cff);
+
+  color:white;
+
+  font-weight:bold;
+
+  cursor:pointer;
+}
+
+/* PAYMENT */
+
+.payment{
+  margin-top:20px;
+
+  display:grid;
+  grid-template-columns:1fr 1fr;
+
+  gap:12px;
+}
+
+.payment-card{
+  padding:17px;
+
+  border-radius:12px;
+
+  background:#0c1a36;
+
+  border:1px solid #214674;
+}
+
+.payment-card b{
+  font-size:18px;
+}
+
+.payment-card p{
+  margin:5px 0 0;
+  color:#20c7ff;
+}
+
+/* FOOTER */
+
+footer{
+  padding:35px 20px;
+
+  text-align:center;
+
+  background:#030817;
+
+  border-top:1px solid #17365f;
+
+  color:#73829f;
+}
+
+footer strong{
+  color:white;
+}
+
+/* POPUP */
+
+.popup{
+  display:none;
+
+  position:fixed;
+
+  inset:0;
+
+  z-index:999;
+
+  background:#000000b8;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:20px;
+}
+
+.popup.show{
+  display:flex;
+}
+
+.popup-box{
+  width:100%;
+  max-width:450px;
+
+  padding:25px;
+
+  border-radius:18px;
+
+  background:#091632;
+
+  border:1px solid #2688ee;
+
+  box-shadow:0 20px 70px #000;
+}
+
+.popup-top{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+
+  margin-bottom:20px;
+}
+
+.close{
+  background:none;
+  border:0;
+
+  color:#9eb0cd;
+
+  font-size:28px;
+
+  cursor:pointer;
+}
+
+.selected{
+  padding:14px;
+
+  border-radius:10px;
+
+  background:#0d2044;
+
+  margin-bottom:15px;
+}
+
+.selected span{
+  color:#20c7ff;
+  font-weight:bold;
+}
+
+.popup button.confirm{
+  width:100%;
+
+  padding:13px;
+
+  border:0;
+
+  border-radius:10px;
+
+  background:linear-gradient(100deg,#1597ff,#633cff);
+
+  color:white;
+
+  font-weight:bold;
+}
+
+/* MOBILE */
+
+@media(max-width:800px){
+
+  .nav-links{
+    display:none;
+  }
+
+  .hero{
+    min-height:330px;
+    padding:45px 22px;
+  }
+
+  .hero h1{
+    font-size:43px;
+  }
+
+  .features{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .feature{
+    border-radius:0!important;
+  }
+
+  .games{
+    grid-template-columns:1fr;
+  }
+
+  .packages{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .form{
+    grid-template-columns:1fr;
+  }
+
+  .form-group.full,
+  .submit{
+    grid-column:auto;
+  }
+}
+
+@media(max-width:480px){
+
+  .features{
+    grid-template-columns:1fr;
+  }
+
+  .feature{
+    border-radius:0!important;
+  }
+
+  .feature:first-child{
+    border-radius:15px 15px 0 0!important;
+  }
+
+  .feature:last-child{
+    border-radius:0 0 15px 15px!important;
+  }
+
+  .packages{
+    grid-template-columns:1fr 1fr;
+  }
+
+  .hero h1{
+    font-size:38px;
+  }
+
+  .payment{
+    grid-template-columns:1fr;
+  }
+}
+</style>
 </head>
+
 
 <body>
 
-<header>
-  <h1>🎮 GAME STORE</h1>
-  <p>Fast • Safe • Trusted</p>
-</header>
+<!-- NAVBAR -->
 
-<div class="container">
+<nav class="navbar">
 
-  <section class="hero">
-    <h2>Game <span>Items Store</span></h2>
+  <div class="logo">
+    🎮 Ye Yint <span>Game Shop</span>
+  </div>
+
+  <div class="nav-links">
+    <a href="#home">Home</a>
+    <a href="#games">Games</a>
+    <a href="#order">Order</a>
+    <a href="#payment">Payment</a>
+
+    <a class="nav-btn" href="#order">
+      Order Now
+    </a>
+  </div>
+
+</nav>
+
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+  <div class="hero-content">
+
+    <div class="small-title">
+      FAST • SAFE • TRUSTED
+    </div>
+
+    <h1>
+      TOP UP <span>GAME</span>
+    </h1>
+
     <p>
-      MLBB Diamonds နှင့် PUBG UC များကို
-      လွယ်ကူစွာ ဝယ်ယူနိုင်ပါသည်။
+      MLBB Diamonds နှင့် PUBG Mobile UC
+      များကို လွယ်ကူမြန်ဆန်စွာ ဝယ်ယူနိုင်ပါသည်။
     </p>
-  </section>
 
-  <h2 class="section-title">🔥 MLBB Diamonds</h2>
+    <div class="hero-buttons">
+
+      <a class="btn btn-primary" href="#games">
+        🎮 Game ရွေးမယ်
+      </a>
+
+      <a class="btn btn-secondary" href="#order">
+        🛒 Order တင်မယ်
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- FEATURES -->
+
+<div class="features">
+
+  <div class="feature">
+    <div class="feature-icon">⚡</div>
+    <b>Instant Delivery</b>
+    <small>မြန်ဆန်စွာ ပို့ပေးမည်</small>
+  </div>
+
+  <div class="feature">
+    <div class="feature-icon">🛡️</div>
+    <b>100% Safe</b>
+    <small>လုံခြုံစိတ်ချရ</small>
+  </div>
+
+  <div class="feature">
+    <div class="feature-icon">🏷️</div>
+    <b>Best Price</b>
+    <small>ဈေးနှုန်းကောင်း</small>
+  </div>
+
+  <div class="feature">
+    <div class="feature-icon">🎧</div>
+    <b>24/7 Support</b>
+    <small>အချိန်မရွေး ဆက်သွယ်ပါ</small>
+  </div>
+
+</div>
+
+
+<main class="container">
+
+<!-- GAMES -->
+
+<section id="games">
+
+  <div class="section-title">
+    <h2>🎮 Choose Your Game</h2>
+    <p>Game တစ်ခုရွေးပြီး Package ဝယ်ယူပါ</p>
+  </div>
+
 
   <div class="games">
 
-    <!-- MLBB -->
+    <a href="#mlbb" class="game-card mlbb">
 
-    <div class="card">
+      <span class="game-label">
+        MLBB
+      </span>
 
-      <h3>💎 MLBB</h3>
+      <h3>
+        Mobile Legends
+      </h3>
 
-      <p>Diamonds Package</p>
+      <p>
+        💎 Diamonds • Weekly Pass
+      </p>
 
-      <div class="packages">
+      <div class="arrow">→</div>
 
-        <div class="package">
-          <div>
-            <strong>86 Diamonds</strong>
-            <div class="price">2,500 Ks</div>
-          </div>
-
-          <button onclick="selectPackage('MLBB - 86 Diamonds')">
-            ဝယ်မယ်
-          </button>
-        </div>
+    </a>
 
 
-        <div class="package">
-          <div>
-            <strong>172 Diamonds</strong>
-            <div class="price">4,800 Ks</div>
-          </div>
+    <a href="#pubg" class="game-card pubg">
 
-          <button onclick="selectPackage('MLBB - 172 Diamonds')">
-            ဝယ်မယ်
-          </button>
-        </div>
+      <span class="game-label">
+        PUBG MOBILE
+      </span>
+
+      <h3>
+        PUBG Mobile
+      </h3>
+
+      <p>
+        🔫 UC • Game Items
+      </p>
+
+      <div class="arrow">→</div>
+
+    </a>
+
+  </div>
+
+</section>
 
 
-        <div class="package">
-          <div>
-            <strong>257 Diamonds</strong>
-            <div class="price">7,000 Ks</div>
-          </div>
+<!-- MLBB -->
 
-          <button onclick="selectPackage('MLBB - 257 Diamonds')">
-            ဝယ်မယ်
-          </button>
-        </div>
+<section class="shop" id="mlbb">
 
+  <div class="shop-header">
 
-        <div class="package">
-          <div>
-            <strong>Weekly Pass</strong>
-            <div class="price">6,000 Ks</div>
-          </div>
-
-          <button onclick="selectPackage('MLBB - Weekly Pass')">
-            ဝယ်မယ်
-          </button>
-        </div>
-
-      </div>
+    <div class="shop-icon">
+      💎
     </div>
 
-
-    <!-- PUBG -->
-
-    <div class="card">
-
-      <h3>🔫 PUBG Mobile</h3>
-
-      <p>UC Package</p>
-
-      <div class="packages">
-
-        <div class="package">
-          <div>
-            <strong>60 UC</strong>
-            <div class="price">3,000 Ks</div>
-          </div>
-
-          <button onclick="selectPackage('PUBG - 60 UC')">
-            ဝယ်မယ်
-          </button>
-        </div>
-
-
-        <div class="package">
-          <div>
-            <strong>325 UC</strong>
-            <div class="price">15,000 Ks</div>
-          </div>
-
-          <button onclick="selectPackage('PUBG - 325 UC')">
-            ဝယ်မယ်
-          </button>
-        </div>
-
-
-        <div class="package">
-          <div>
-            <strong>660 UC</strong>
-            <div class="price">29,000 Ks</div>
-          </div>
-
-          <button onclick="selectPackage('PUBG - 660 UC')">
-            ဝယ်မယ်
-          </button>
-        </div>
-
-      </div>
+    <div>
+      <h3>MLBB Diamonds</h3>
+      <small>Mobile Legends Top Up</small>
     </div>
 
   </div>
 
 
-  <!-- ORDER FORM -->
+  <div class="packages">
 
-  <div class="order" id="order">
-
-    <h2>🛒 Order တင်ရန်</h2>
-
-    <label>Game</label>
-
-    <select id="game">
-      <option>MLBB</option>
-      <option>PUBG Mobile</option>
-    </select>
+    <div class="package">
+      <div class="icon">💎</div>
+      <h4>86 Diamonds</h4>
+      <div class="price">2,500 Ks</div>
+      <button class="buy" onclick="buy('MLBB','86 Diamonds','2,500 Ks')">
+        ဝယ်မယ်
+      </button>
+    </div>
 
 
-    <label>Package</label>
+    <div class="package">
+      <span class="badge">POPULAR</span>
 
-    <input
-      type="text"
-      id="package"
-      placeholder="ဝယ်မည့် Package"
+      <div class="icon">💎</div>
+      <h4>172 Diamonds</h4>
+      <div class="price">4,800 Ks</div>
+
+      <button class="buy" onclick="buy('MLBB','172 Diamonds','4,800 Ks')">
+        ဝယ်မယ်
+      </button>
+    </div>
+
+
+    <div class="package">
+      <div class="icon">💎</div>
+      <h4>257 Diamonds</h4>
+      <div class="price">7,000 Ks</div>
+
+      <button class="buy" onclick="buy('MLBB','257 Diamonds','7,000 Ks')">
+        ဝယ်မယ်
+      </button>
+    </div>
+
+
+    <div class="package">
+      <span class="badge">HOT</span>
+
+      <div class="icon">🔥</div>
+      <h4>Weekly Pass</h4>
+      <div class="price">6,000 Ks</div>
+
+      <button class="buy" onclick="buy('MLBB','Weekly Pass','6,000 Ks')">
+        ဝယ်မယ်
+      </button>
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- PUBG -->
+
+<section class="shop" id="pubg">
+
+  <div class="shop-header">
+
+    <div class="shop-icon">
+      🔫
+    </div>
+
+    <div>
+      <h3>PUBG Mobile UC</h3>
+      <small>PUBG Mobile UC Top Up</small>
+    </div>
+
+  </div>
+
+
+  <div class="packages">
+
+    <div class="package">
+      <div class="icon">🪙</div>
+      <h4>60 UC</h4>
+      <div class="price">2,500 Ks</div>
+
+      <button class="buy" onclick="buy('PUBG Mobile','60 UC','2,500 Ks')">
+        ဝယ်မယ်
+      </button>
+    </div>
+
+
+    <div class="package">
+      <span class="badge">POPULAR</span>
+
+      <div class="icon">🪙</div>
+      <h4>325 UC</h4>
+      <div class="price">11,000 Ks</div>
+
+      <button class="buy" onclick="buy('PUBG Mobile','325 UC','11,000 Ks')">
+        ဝယ်မယ်
+      </button>
+    </div>
+
+
+    <div class="package">
+
+      <div class="icon">🪙</div>
+      <h4>660 UC</h4>
+      <div class="price">21,000 Ks</div>
+
+      <button class="buy" onclick="buy('PUBG Mobile','660 UC','21,000 Ks')">
+        ဝယ်မယ်
+      </button>
+
+    </div>
+
+
+    <div class="package">
+
+      <div class="icon">🔥</div>
+      <h4>1800 UC</h4>
+      <div class="price">52,000 Ks</div>
+
+      <button class="buy" onclick="buy('PUBG Mobile','1800 UC','52,000 Ks')">
+        ဝယ်မယ်
+      </button>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+<!-- ORDER -->
+
+<section class="order" id="order">
+
+  <h2>🛒 Order တင်မယ်</h2>
+
+  <p>
+    Game ID ထည့်ပြီး Order တင်ပါ။
+  </p>
+
+
+  <form class="form" onsubmit="submitOrder(event)">
+
+    <div class="form-group">
+
+      <label>Game</label>
+
+      <select id="game">
+
+        <option>MLBB</option>
+        <option>PUBG Mobile</option>
+
+      </select>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>Package</label>
+
+      <select id="package">
+
+        <option>86 Diamonds</option>
+        <option>172 Diamonds</option>
+        <option>257 Diamonds</option>
+        <option>Weekly Pass</option>
+
+      </select>
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>Player ID</label>
+
+      <input
+        id="player"
+        type="text"
+        placeholder="ဥပမာ - 123456789"
+        required
+      >
+
+    </div>
+
+
+    <div class="form-group">
+
+      <label>Server ID / Zone</label>
+
+      <input
+        id="server"
+        type="text"
+        placeholder="ဥပမာ - 1234"
+      >
+
+    </div>
+
+
+    <div class="form-group full">
+
+      <label>Phone Number</label>
+
+      <input
+        id="phone"
+        type="tel"
+        placeholder="09xxxxxxxxx"
+        required
+      >
+
+    </div>
+
+
+    <button class="submit" type="submit">
+      🚀 Order တင်မယ်
+    </button>
+
+  </form>
+
+</section>
+
+
+<!-- PAYMENT -->
+
+<section class="order" id="payment">
+
+  <h2>💳 Payment</h2>
+
+  <p>
+    Payment လုပ်ရန် အောက်ပါ Account များကို အသုံးပြုနိုင်ပါသည်။
+  </p>
+
+
+  <div class="payment">
+
+    <div class="payment-card">
+
+      <b>📱 KPay</b>
+
+      <p>
+        09XXXXXXXXX
+      </p>
+
+      <small>
+        Account Name: Ye Yint
+      </small>
+
+    </div>
+
+
+    <div class="payment-card">
+
+      <b>💙 WavePay</b>
+
+      <p>
+        09XXXXXXXXX
+      </p>
+
+      <small>
+        Account Name: Ye Yint
+      </small>
+
+    </div>
+
+  </div>
+
+</section>
+
+</main>
+
+
+<!-- FOOTER -->
+
+<footer id="contact">
+
+  <strong>🎮 YE YINT GAME SHOP</strong>
+
+  <p>
+    MLBB • PUBG Mobile
+  </p>
+
+  <p>
+    © 2026 Ye Yint Game Shop
+  </p>
+
+</footer>
+
+
+<!-- ORDER POPUP -->
+
+<div class="popup" id="popup">
+
+  <div class="popup-box">
+
+    <div class="popup-top">
+
+      <h2>🛒 Order</h2>
+
+      <button class="close" onclick="closePopup()">
+        ×
+      </button>
+
+    </div>
+
+
+    <div class="selected">
+
+      Game:
+      <span id="pGame"></span>
+      <br>
+
+      Package:
+      <span id="pPackage"></span>
+      <br>
+
+      Price:
+      <span id="pPrice"></span>
+
+    </div>
+
+
+    <p style="color:#91a2c0;margin-bottom:15px;">
+      Order Form မှာ Player ID ဖြည့်ပြီး Order တင်ပါ။
+    </p>
+
+
+    <button
+      class="confirm"
+      onclick="goOrder()"
     >
-
-
-    <label>Player ID</label>
-
-    <input
-      type="text"
-      id="player"
-      placeholder="Player ID ထည့်ပါ"
-    >
-
-
-    <label>ဆက်သွယ်ရန် ဖုန်းနံပါတ်</label>
-
-    <input
-      type="text"
-      id="phone"
-      placeholder="09xxxxxxxxx"
-    >
-
-
-    <button class="submit" onclick="sendOrder()">
-      📩 Order တင်မယ်
+      ဆက်ပြီး Order တင်မယ်
     </button>
 
   </div>
@@ -372,66 +1198,113 @@
 </div>
 
 
-<footer>
-
-  🎮 GAME STORE
-
-  <br>
-
-  MLBB • PUBG Mobile
-
-  <br><br>
-
-  © 2026 Game Store
-
-</footer>
-
-
 <script>
 
-function selectPackage(packageName) {
+let selectedGame = "";
+let selectedPackage = "";
+let selectedPrice = "";
 
-  document.getElementById("package").value = packageName;
 
-  document.getElementById("order").scrollIntoView({
-    behavior: "smooth"
-  });
+/* BUY BUTTON */
+
+function buy(game, packageName, price){
+
+  selectedGame = game;
+  selectedPackage = packageName;
+  selectedPrice = price;
+
+  document.getElementById("pGame").innerText = game;
+  document.getElementById("pPackage").innerText = packageName;
+  document.getElementById("pPrice").innerText = price;
+
+  document.getElementById("popup").classList.add("show");
+}
+
+
+/* CLOSE */
+
+function closePopup(){
+
+  document.getElementById("popup").classList.remove("show");
 
 }
 
 
-function sendOrder() {
+/* GO ORDER */
 
-  const game =
+function goOrder(){
+
+  document.getElementById("popup").classList.remove("show");
+
+  document.getElementById("order").scrollIntoView({
+    behavior:"smooth"
+  });
+
+  document.getElementById("game").value = selectedGame;
+
+  let select = document.getElementById("package");
+
+  let exists = false;
+
+  for(let i=0;i<select.options.length;i++){
+
+    if(select.options[i].text === selectedPackage){
+
+      select.selectedIndex = i;
+      exists = true;
+
+    }
+
+  }
+
+  if(!exists){
+
+    let option = document.createElement("option");
+
+    option.text = selectedPackage;
+
+    select.add(option);
+
+    select.value = selectedPackage;
+
+  }
+
+}
+
+
+/* ORDER SUBMIT */
+
+function submitOrder(event){
+
+  event.preventDefault();
+
+  let game =
     document.getElementById("game").value;
 
-  const packageName =
+  let packageName =
     document.getElementById("package").value;
 
-  const player =
+  let player =
     document.getElementById("player").value;
 
-  const phone =
+  let server =
+    document.getElementById("server").value;
+
+  let phone =
     document.getElementById("phone").value;
 
 
-  if (
-    packageName === "" ||
-    player === "" ||
-    phone === ""
-  ) {
-
-    alert("အချက်အလက်အားလုံး ဖြည့်ပေးပါ။");
-
-    return;
-  }
-
-
   alert(
-    "Order လက်ခံရရှိပါပြီ!\n\n" +
-    "Game: " + game + "\n" +
-    "Package: " + packageName + "\n" +
-    "Player ID: " + player + "\n" +
+    "Order တင်ပြီးပါပြီ!\\n\\n" +
+
+    "Game: " + game + "\\n" +
+
+    "Package: " + packageName + "\\n" +
+
+    "Player ID: " + player + "\\n" +
+
+    "Server: " + server + "\\n" +
+
     "Phone: " + phone
   );
 
