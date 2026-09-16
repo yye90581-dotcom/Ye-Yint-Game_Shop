@@ -88,6 +88,12 @@ label{display:block;margin:13px 0 7px;font-weight:800}input,select{width:100%;mi
 .pack-grid .pack > div:first-child{flex:1;min-width:0;}
 .pack-grid .pack .btn{flex:0 0 auto;width:auto;min-width:105px;white-space:nowrap;}
 @media(max-width:600px){.pack-grid .pack{gap:8px}.pack-grid .pack .btn{min-width:92px;padding:10px 12px;}}
+
+/* Quantity +/- control */
+.qty-control{display:flex;align-items:center;width:150px;height:46px;border:1px solid var(--line);border-radius:12px;overflow:hidden;background:var(--panel2);margin-bottom:12px;}
+.qty-btn{width:46px;height:100%;border:0;background:transparent;color:var(--green);font-size:25px;font-weight:800;cursor:pointer;}
+.qty-btn:active{transform:scale(.95);}
+.qty-control input{flex:1;width:58px;height:100%;border:0 !important;border-left:1px solid var(--line) !important;border-right:1px solid var(--line) !important;border-radius:0 !important;background:transparent !important;color:var(--text) !important;text-align:center;font-size:18px;font-weight:700;outline:none;}
 </style>
 </head>
 <body>
@@ -125,7 +131,7 @@ label{display:block;margin:13px 0 7px;font-weight:800}input,select{width:100%;mi
 <div id="tiktokArea"><label>🔗 TikTok Video Link</label><input id="videoLink" type="url" placeholder="TikTok Video Link ထည့်ပါ"></div>
 <div id="youtubeArea"><label>🔗 YouTube Channel / Video Link</label><input id="youtubeLink" type="url" placeholder="YouTube Link ထည့်ပါ"></div>
 
-<label>🔢 Quantity</label><input id="qty" type="number" min="1" max="99" value="1" oninput="updateTotal()">
+<label>🔢 Quantity</label><div class="qty-control"><button type="button" class="qty-btn" onclick="changeQty(-1)">−</button><input id="qty" type="number" min="1" max="99" value="1" readonly><button type="button" class="qty-btn" onclick="changeQty(1)">+</button></div>
 <label>👤 ငွေလွှဲသူအမည်</label><input id="senderName" type="text" placeholder="ငွေလွှဲသူအမည် ထည့်ပါ">
 <label>🧾 Transaction ID — နောက်ဆုံး ၆ လုံး</label><input id="transactionId" type="text" inputmode="text" maxlength="6" minlength="6" pattern="[A-Za-z0-9]{6}" placeholder="နောက်ဆုံး ၆ လုံး ထည့်ပါ">
 <div class="field-help">Transaction ID ရဲ့ နောက်ဆုံး ၆ လုံးကိုသာ ထည့်ပါ။</div>
@@ -201,6 +207,7 @@ function pickPackage(name,price){
   toast("✅ "+name+" ရွေးပြီးပါပြီ");
 }
 function getPrice(){const m=document.getElementById("package").value.match(/([\d,]+)\s*MMK$/);return m?Number(m[1].replace(/,/g,"")):0}
+function changeQty(delta){const input=document.getElementById("qty");let value=parseInt(input.value,10)||1;value=Math.max(1,Math.min(99,value+delta));input.value=value;updateTotal()}
 function updateTotal(){let q=Math.max(1,Math.min(99,Number(document.getElementById("qty").value)||1));document.getElementById("qty").value=q;const p=getPrice();document.getElementById("total").textContent=p?"စုစုပေါင်း: "+money(p*q):"စုစုပေါင်း: Package ရွေးပါ"}
 function validLastSix(v){return /^[A-Za-z0-9]{6}$/.test(v)}
 async function submitOrder(){
