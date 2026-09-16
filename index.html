@@ -82,6 +82,12 @@ label{display:block;margin:13px 0 7px;font-weight:800}input,select{width:100%;mi
   }
 }
 
+
+/* Package cards: horizontal */
+.pack-grid .pack{display:flex;flex-direction:row;align-items:center;justify-content:space-between;gap:12px;text-align:left;}
+.pack-grid .pack > div:first-child{flex:1;min-width:0;}
+.pack-grid .pack .btn{flex:0 0 auto;width:auto;min-width:105px;white-space:nowrap;}
+@media(max-width:600px){.pack-grid .pack{gap:8px}.pack-grid .pack .btn{min-width:92px;padding:10px 12px;}}
 </style>
 </head>
 <body>
