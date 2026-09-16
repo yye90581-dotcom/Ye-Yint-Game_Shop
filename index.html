@@ -125,7 +125,28 @@ function changeGame(){
  else{player.required=true;server.required=true}
  updateTotal();
 }
-function pickPackage(name,price){document.getElementById("package").value=name+" — "+money(price);updateTotal();document.getElementById("order").scrollIntoView({behavior:"smooth"});toast("✅ "+name+" ရွေးပြီးပါပြီ")}
+function pickPackage(name,price){
+  const select=document.getElementById("package");
+  const wanted=name+" — "+money(price);
+  let found=false;
+  for(let i=0;i<select.options.length;i++){
+    if(select.options[i].textContent===wanted){
+      select.selectedIndex=i;
+      found=true;
+      break;
+    }
+  }
+  if(!found){
+    const option=document.createElement("option");
+    option.value=wanted;
+    option.textContent=wanted;
+    select.appendChild(option);
+    select.value=wanted;
+  }
+  updateTotal();
+  document.getElementById("order").scrollIntoView({behavior:"smooth"});
+  toast("✅ "+name+" ရွေးပြီးပါပြီ");
+}
 function getPrice(){const m=document.getElementById("package").value.match(/([\d,]+)\s*MMK$/);return m?Number(m[1].replace(/,/g,"")):0}
 function updateTotal(){let q=Math.max(1,Math.min(99,Number(document.getElementById("qty").value)||1));document.getElementById("qty").value=q;const p=getPrice();document.getElementById("total").textContent=p?"စုစုပေါင်း: "+money(p*q):"စုစုပေါင်း: Package ရွေးပါ"}
 function validLastSix(v){return /^[A-Za-z0-9]{6}$/.test(v)}
