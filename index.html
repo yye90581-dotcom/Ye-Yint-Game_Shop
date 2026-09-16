@@ -7,14 +7,87 @@
 <title>Y2 Game Shop</title>
 
 <style>
-..account-row{
+  *{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:Arial,sans-serif;
+  background:#07110d;
+  color:#ffffff;
+}
+
+.container{
+  width:100%;
+  max-width:700px;
+  margin:auto;
+  padding:20px 15px 40px;
+}
+
+h1{
+  text-align:center;
+  color:#00ff88;
+  margin:5px 0;
+}
+
+.subtitle{
+  text-align:center;
+  color:#9aa9a1;
+  margin-bottom:25px;
+}
+
+.card{
+  background:#0d2118;
+  border:1px solid #1d5a3b;
+  border-radius:16px;
+  padding:18px;
+  margin-bottom:18px;
+  box-shadow:0 5px 20px rgba(0,255,136,.08);
+}
+
+h2{
+  color:#00ff88;
+  margin-top:0;
+}
+
+label{
+  display:block;
+  margin:12px 0 7px;
+  color:#eafff3;
+  font-weight:bold;
+}
+
+input,
+select{
+  width:100%;
+  padding:13px;
+  border-radius:10px;
+  border:1px solid #296b49;
+  background:#10251b;
+  color:#ffffff;
+  font-size:15px;
+  outline:none;
+}
+
+input::placeholder{
+  color:#789084;
+}
+
+input:focus,
+select:focus{
+  border-color:#00ff88;
+  box-shadow:0 0 0 2px rgba(0,255,136,.12);
+}
+
+select option{
+  background:#10251b;
+  color:#ffffff;
+}
+
+.account-row{
   display:grid;
   grid-template-columns:1fr 1fr;
-  gap:12px;
-}
-.account-row{
-  display:flex;
-  flex-direction:column;
   gap:12px;
 }
 
@@ -22,432 +95,95 @@
   width:100%;
 }
 
-.account-row input{
-  width:100%;
-  box-sizing:border-box;
-}
-html{scroll-behavior:smooth}
-
-body{
-margin:0;
-background:radial-gradient(circle at 80% 5%,#102515 0,transparent 28%),var(--bg);
-color:var(--txt);
-font-family:Arial,"Noto Sans Myanmar",sans-serif;
-padding-bottom:90px
-}
-
-.wrap{width:min(1100px,92%);margin:auto}
-
-.nav{
-height:70px;
-display:flex;
-align-items:center;
-justify-content:space-between;
-border-bottom:1px solid #17331c
-}
-
-.logo{
-font-size:21px;
-font-weight:900;
-font-style:italic
-}
-
-.logo span{color:var(--g)}
-
-.nav a{
-color:var(--g);
-border:1px solid var(--line);
-padding:10px 15px;
-border-radius:22px;
-text-decoration:none;
-font-weight:800
-}
-
-.hero{
-margin-top:18px;
-min-height:330px;
-border:1px solid #3b7d3c;
-border-radius:28px;
-overflow:hidden;
-padding:42px;
-position:relative;
-background:linear-gradient(115deg,#091109,#0b2615 60%,#08212a)
-}
-
-.hero:after{
-content:"";
-position:absolute;
-right:-70px;
-top:-90px;
-width:420px;
-height:420px;
-border-radius:50%;
-border:1px solid #3b8b42;
-box-shadow:0 0 90px #1d7d2b55 inset
-}
-
-.hero h1{
-font-size:clamp(43px,7vw,75px);
-line-height:.9;
-margin:12px 0;
-font-style:italic
-}
-
-.hero h1 span{
-color:var(--g);
-text-shadow:0 0 24px #5cff3544
-}
-
-.hero p{
-color:#bcc8be;
-max-width:520px;
-line-height:1.7
-}
-
 .btn{
-display:inline-block;
-padding:13px 18px;
-border-radius:13px;
-text-decoration:none;
-font-weight:900;
-margin:8px 7px 0 0
+  width:100%;
+  border:0;
+  border-radius:12px;
+  padding:14px;
+  margin-top:16px;
+  font-size:16px;
+  font-weight:bold;
+  cursor:pointer;
 }
 
 .primary{
-background:var(--g);
-color:#071006
+  background:#00d66f;
+  color:#001b0e;
 }
 
-.ghost{
-border:1px solid var(--line);
-color:#eaffea;
-background:#ffffff08
+.secondary{
+  background:#174d35;
+  color:#ffffff;
 }
 
-.quick,.games,.packs{
-display:grid;
-gap:12px
+.payment{
+  line-height:1.8;
+  color:#d7e5dd;
 }
 
-.quick{
-grid-template-columns:repeat(4,1fr);
-margin:16px 0
-}
-
-.quick>div,.game,.pack,.order{
-background:linear-gradient(145deg,#0b130d,#070b08);
-border:1px solid var(--line);
-border-radius:19px
-}
-
-.quick>div{padding:17px}
-
-.ico{
-font-size:28px;
-color:var(--g)
-}
-
-small{color:var(--muted)}
-
-section{padding:25px 0}
-
-.head{
-display:flex;
-justify-content:space-between;
-align-items:end;
-margin-bottom:15px
-}
-
-.head h2{
-margin:3px 0;
-font-size:28px
-}
-
-.green{color:var(--g)}
-
-.games{
-grid-template-columns:repeat(4,1fr)
-}
-
-.game{
-height:170px;
-padding:16px;
-position:relative;
-overflow:hidden;
-display:flex;
-align-items:end
-}
-
-.game b{font-size:17px}
-
-.game .art{
-position:absolute;
-right:5px;
-top:8px;
-font-size:75px;
-opacity:.8
-}
-
-.arrow{
-position:absolute;
-right:12px;
-bottom:12px;
-border:1px solid var(--g);
-color:var(--g);
-width:32px;
-height:32px;
-border-radius:50%;
-display:grid;
-place-items:center
-}
-
-.search{
-width:100%;
-padding:14px;
-border-radius:14px;
-border:1px solid var(--line);
-background:#080d09;
-color:white;
-outline:0;
-margin-bottom:12px
-}
-
-.packs{
-grid-template-columns:repeat(4,1fr)
-}
-
-.pack{
-padding:15px;
-color:white;
-text-align:left;
-cursor:pointer
-}
-
-.pack:hover{
-border-color:var(--g);
-transform:translateY(-2px)
-}
-
-.pack .picon{font-size:26px}
-
-.price{
-color:var(--g);
-font-weight:900;
-margin-top:7px
-}
-
-.buy{
-margin-top:12px;
-padding:8px;
-text-align:center;
-border-radius:9px;
-background:#102314;
-border:1px solid #2b6131
-}
-
-.order{
-padding:22px;
-max-width:720px;
-margin:auto
-}
-
-.row{margin-bottom:12px}
-
-.row label{
-display:block;
-color:#b8c4ba;
-font-size:13px;
-font-weight:800;
-margin-bottom:6px
-}
-
-.row input,.row select{
-width:100%;
-padding:13px;
-border-radius:11px;
-border:1px solid #294c30;
-background:#050805;
-color:white;
-outline:0
-}
-
-.row input:focus,.row select:focus{
-border-color:var(--g)
-}
-
-.submit{
-width:100%;
-border:0;
-cursor:pointer;
-font-size:16px
-}
-
-.note{
-color:var(--muted);
-line-height:1.7;
-text-align:center;
-margin-top:12px
-}
-
-.bottom{
-position:fixed;
-bottom:9px;
-left:50%;
-transform:translateX(-50%);
-width:min(650px,94%);
-background:#0b100ddf;
-border:1px solid #315738;
-border-radius:22px;
-display:grid;
-grid-template-columns:repeat(5,1fr);
-padding:6px;
-backdrop-filter:blur(15px);
-z-index:5
-}
-
-.bottom a{
-text-decoration:none;
-color:#87938b;
-text-align:center;
-font-size:10px;
-font-weight:800;
-padding:8px
-}
-
-.bottom span{
-display:block;
-font-size:21px
-}
-
-.bottom a:hover{color:var(--g)}
-
-#msg{
-display:none;
-position:fixed;
-left:50%;
-bottom:82px;
-transform:translateX(-50%);
-background:#102315;
-border:1px solid var(--g);
-padding:12px 16px;
-border-radius:12px;
-z-index:10;
-max-width:90%;
-text-align:center
-}
-
-.account-title h3{
-margin:4px 0 14px
-}
-
-.account-row{
-display:grid;
-grid-template-columns:1fr 1fr;
-gap:12px
-}
-
-.qty{
-display:grid;
-grid-template-columns:46px 1fr 46px;
-gap:8px
-}
-
-.qty button,.qty input{
-height:46px;
-border-radius:11px;
-border:1px solid #294c30;
-background:#050805;
-color:white;
-text-align:center
-}
-
-.qty button{
-cursor:pointer;
-font-size:24px;
-font-weight:900
-}
-
-.qty input{
-width:100%;
-padding:10px
+.notice{
+  background:#102a1d;
+  border-left:4px solid #00ff88;
+  padding:12px;
+  border-radius:8px;
+  color:#dcebe3;
+  font-size:14px;
+  line-height:1.6;
+  margin-top:12px;
 }
 
 .total{
-margin-top:8px;
-color:var(--g);
-font-weight:900
+  text-align:center;
+  color:#00ff88;
+  font-size:19px;
+  font-weight:bold;
+  margin-top:18px;
 }
 
-.confirm{
-display:flex;
-gap:9px;
-align-items:flex-start;
-margin:15px 0;
-color:#c8d4ca;
-font-size:13px;
-line-height:1.6
+.tiktok-link{
+  display:none;
 }
 
-.confirm input{
-accent-color:#6cff35;
-margin-top:3px;
-min-width:17px;
-min-height:17px
+.hidden{
+  display:none!important;
 }
 
-.admin{
-display:block;
-text-align:center;
-margin:15px 0
+a{
+  color:inherit;
 }
 
-@media(max-width:800px){
-.quick,.games,.packs{
-grid-template-columns:repeat(2,1fr)
+@media(max-width:600px){
+
+  .account-row{
+    grid-template-columns:1fr;
+    gap:4px;
+  }
+
+  .account-row input{
+    width:100%;
+  }
+
 }
 
-.hero{padding:30px 22px}
+@media(max-width:400px){
 
-.hero h1{font-size:50px}
+  .container{
+    padding-left:10px;
+    padding-right:10px;
+  }
+
+  input,
+  select{
+    font-size:14px;
+  }
+
 }
 
-@media(max-width:500px){
-.wrap{width:92%}
 
-.nav{height:62px}
 
-.hero{min-height:390px}
 
-.quick{gap:8px}
 
-.quick>div{padding:13px}
 
-.quick small{font-size:10px}
-
-.games,.packs{gap:8px}
-
-.game{height:145px}
-
-.game .art{font-size:58px}
-
-.game b{font-size:13px}
-
-.pack{padding:11px}
-
-.pack b{font-size:12px}
-
-.price{font-size:13px}
-
-.account-row{
-grid-template-columns:1fr 1fr;
-gap:8px
-}
-
-.account-row .row input{
-padding:11px 9px;
-font-size:12px
-}
-}
 </style>
 </head>
 
