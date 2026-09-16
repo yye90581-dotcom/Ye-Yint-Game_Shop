@@ -5,38 +5,563 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#07140e">
 <title>Y2 GAME SHOP</title>
-<style>
-:root{--bg:#06110c;--panel:#0b1d14;--panel2:#10281b;--line:#1d5b3a;--green:#00f58a;--green2:#00c96f;--text:#f3fff8;--muted:#91a79b}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:radial-gradient(circle at 20% 0%,rgba(0,245,138,.08),transparent 30%),var(--bg);color:var(--text);font-family:Arial,"Noto Sans Myanmar",sans-serif}
-a{text-decoration:none;color:inherit}.container{width:min(1100px,100%);margin:auto;padding:0 16px}
-header{position:sticky;top:0;z-index:20;background:rgba(6,17,12,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,245,138,.12)}
-.nav{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:14px}
-.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px;color:var(--green)}
-.brand-logo{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:#0c3824;border:1px solid var(--line)}
-.nav-links{display:flex;gap:8px}.nav-links a{padding:9px 12px;border-radius:10px;color:#cce3d7;font-size:14px}.nav-links a:hover{background:#102a1d;color:var(--green)}
-.hero{padding:54px 0 32px}.hero-box{border:1px solid var(--line);border-radius:24px;padding:34px 22px;text-align:center;background:linear-gradient(145deg,rgba(16,40,27,.96),rgba(7,20,14,.96));box-shadow:0 18px 55px rgba(0,0,0,.25)}
-.badge{display:inline-block;padding:7px 12px;border-radius:999px;background:#0e3322;border:1px solid #1c6540;color:var(--green);font-size:13px;font-weight:800}
-.hero h1{margin:15px 0 8px;font-size:clamp(32px,7vw,58px);line-height:1}.hero h1 span{color:var(--green)}.hero p{margin:0 auto;max-width:650px;color:var(--muted);line-height:1.7}
-.hero-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;padding:13px 17px;font-weight:900;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-1px)}
-.btn.primary{background:linear-gradient(135deg,var(--green),var(--green2));color:#00170c}.btn.secondary{background:#123923;color:#eafff2;border:1px solid #245e3e}
-.section{padding:24px 0}.section-title{display:flex;align-items:end;justify-content:space-between;gap:10px;margin-bottom:14px}.section-title h2{margin:0;font-size:24px}.section-title p{margin:0;color:var(--muted);font-size:13px}
-.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.quick-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px}.quick-icon{font-size:27px}.quick-card b{display:block;margin-top:8px}.quick-card small{color:var(--muted)}
-.games-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.game-card{position:relative;min-height:155px;padding:15px;border-radius:18px;background:linear-gradient(145deg,#102a1d,#09170f);border:1px solid var(--line);cursor:pointer;transition:.2s}.game-card:hover{transform:translateY(-3px);border-color:var(--green2)}
-.game-logo{width:58px;height:58px;display:grid;place-items:center;border-radius:16px;background:#07140e;border:1px solid #235f40;font-size:32px;margin-bottom:12px}.game-card b{font-size:14px}.game-card small{display:block;color:var(--muted);margin-top:5px}.coming{position:absolute;top:10px;right:10px;padding:4px 7px;border-radius:7px;background:#292515;color:#ffd36a;font-size:10px;font-weight:900}
-.pack-toolbar{display:flex;gap:10px;margin-bottom:14px}.pack-toolbar input{flex:1}.pack-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.pack{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:15px}.pack b{display:block;margin-bottom:6px}.price{color:var(--green);font-weight:900;font-size:17px}.pack button{width:100%;margin-top:12px}
-.form-card{background:linear-gradient(145deg,#0d2418,#09170f);border:1px solid var(--line);border-radius:20px;padding:20px}
-label{display:block;margin:13px 0 7px;font-weight:800}input,select{width:100%;min-height:46px;border:1px solid #2a6746;border-radius:11px;padding:11px 13px;background:#07150e;color:#fff;outline:none;font-size:15px}input::placeholder{color:#6f897a}input:focus,select:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(0,245,138,.08)}select option{background:#0b1d14;color:#fff}
-.account-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field-help{margin-top:6px;color:var(--muted);font-size:12px}.total{margin:18px 0 4px;padding:14px;border-radius:12px;text-align:center;background:#092017;border:1px solid #1c5437;color:var(--green);font-size:20px;font-weight:900}
-.notice{padding:13px;border-left:4px solid var(--green);border-radius:9px;background:#0d281b;color:#d7e9df;line-height:1.7}.payment-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.pay{padding:15px;border-radius:14px;background:#0b2116;border:1px solid var(--line)}.pay strong{color:var(--green);display:block;margin-bottom:5px}
-#tiktokArea,#youtubeArea{display:none}footer{padding:35px 0 90px;text-align:center;color:var(--muted);font-size:13px}
-.bottom-nav{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);z-index:30;width:min(480px,calc(100% - 20px));display:flex;justify-content:space-around;padding:9px;background:rgba(10,28,19,.94);backdrop-filter:blur(12px);border:1px solid #245d3d;border-radius:17px;box-shadow:0 12px 35px rgba(0,0,0,.35)}.bottom-nav a{color:#a9c0b3;font-size:12px;text-align:center}.bottom-nav span{display:block;font-size:19px;margin-bottom:2px}
-.toast{position:fixed;left:50%;bottom:78px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:50;background:#102b1d;border:1px solid #2c704a;color:#fff;padding:12px 16px;border-radius:12px;transition:.25s;width:max-content;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
-@media(max-width:850px){.games-grid{grid-template-columns:repeat(3,1fr)}.quick-grid{grid-template-columns:repeat(2,1fr)}.pack-grid{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.container{padding:0 11px}.nav-links{display:none}.hero{padding-top:28px}.hero-box{padding:27px 15px}.games-grid{grid-template-columns:repeat(2,1fr)}.pack-grid{grid-template-columns:1fr}.account-row{grid-template-columns:1fr}.payment-grid{grid-template-columns:1fr}.pack-toolbar{display:block}.pack-toolbar input{margin-bottom:8px}.section-title{display:block}.section-title p{margin-top:5px}}
 
-/* Package buy button: horizontal compact layout */
+<style>
+:root{
+  --bg:#06110c;
+  --panel:#0b1d14;
+  --panel2:#10281b;
+  --line:#1d5b3a;
+  --green:#00f58a;
+  --green2:#00c96f;
+  --text:#f3fff8;
+  --muted:#91a79b
+}
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  background:
+    radial-gradient(
+      circle at 20% 0%,
+      rgba(0,245,138,.08),
+      transparent 30%
+    ),
+    var(--bg);
+  color:var(--text);
+  font-family:Arial,"Noto Sans Myanmar",sans-serif
+}
+
+a{
+  text-decoration:none;
+  color:inherit
+}
+
+.container{
+  width:min(1100px,100%);
+  margin:auto;
+  padding:0 16px
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(6,17,12,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,245,138,.12)
+}
+
+.nav{
+  min-height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px
+}
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:900;
+  font-size:20px;
+  color:var(--green)
+}
+
+.brand-logo{
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:#0c3824;
+  border:1px solid var(--line)
+}
+
+.nav-links{
+  display:flex;
+  gap:8px
+}
+
+.nav-links a{
+  padding:9px 12px;
+  border-radius:10px;
+  color:#cce3d7;
+  font-size:14px
+}
+
+.nav-links a:hover{
+  background:#102a1d;
+  color:var(--green)
+}
+
+.hero{
+  padding:54px 0 32px
+}
+
+.hero-box{
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:34px 22px;
+  text-align:center;
+  background:
+    linear-gradient(
+      145deg,
+      rgba(16,40,27,.96),
+      rgba(7,20,14,.96)
+    );
+  box-shadow:0 18px 55px rgba(0,0,0,.25)
+}
+
+.badge{
+  display:inline-block;
+  padding:7px 12px;
+  border-radius:999px;
+  background:#0e3322;
+  border:1px solid #1c6540;
+  color:var(--green);
+  font-size:13px;
+  font-weight:800
+}
+
+.hero h1{
+  margin:15px 0 8px;
+  font-size:clamp(32px,7vw,58px);
+  line-height:1
+}
+
+.hero h1 span{
+  color:var(--green)
+}
+
+.hero p{
+  margin:0 auto;
+  max-width:650px;
+  color:var(--muted);
+  line-height:1.7
+}
+
+.hero-actions{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:22px
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border:0;
+  border-radius:12px;
+  padding:13px 17px;
+  font-weight:900;
+  cursor:pointer;
+  transition:.2s
+}
+
+.btn:hover{
+  transform:translateY(-1px)
+}
+
+.btn.primary{
+  background:
+    linear-gradient(
+      135deg,
+      var(--green),
+      var(--green2)
+    );
+  color:#00170c
+}
+
+.btn.secondary{
+  background:#123923;
+  color:#eafff2;
+  border:1px solid #245e3e
+}
+
+.section{
+  padding:24px 0
+}
+
+.section-title{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:14px
+}
+
+.section-title h2{
+  margin:0;
+  font-size:24px
+}
+
+.section-title p{
+  margin:0;
+  color:var(--muted);
+  font-size:13px
+}
+
+.quick-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px
+}
+
+.quick-card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px
+}
+
+.quick-icon{
+  font-size:27px
+}
+
+.quick-card b{
+  display:block;
+  margin-top:8px
+}
+
+.quick-card small{
+  color:var(--muted)
+}
+
+.games-grid{
+  display:grid;
+  grid-template-columns:repeat(5,1fr);
+  gap:12px
+}
+
+.game-card{
+  position:relative;
+  min-height:155px;
+  padding:15px;
+  border-radius:18px;
+  background:
+    linear-gradient(
+      145deg,
+      #102a1d,
+      #09170f
+    );
+  border:1px solid var(--line);
+  cursor:pointer;
+  transition:.2s
+}
+
+.game-card:hover{
+  transform:translateY(-3px);
+  border-color:var(--green2)
+}
+
+.game-logo{
+  width:58px;
+  height:58px;
+  display:grid;
+  place-items:center;
+  border-radius:16px;
+  background:#07140e;
+  border:1px solid #235f40;
+  font-size:32px;
+  margin-bottom:12px
+}
+
+.game-card b{
+  font-size:14px
+}
+
+.game-card small{
+  display:block;
+  color:var(--muted);
+  margin-top:5px
+}
+
+.coming{
+  position:absolute;
+  top:10px;
+  right:10px;
+  padding:4px 7px;
+  border-radius:7px;
+  background:#292515;
+  color:#ffd36a;
+  font-size:10px;
+  font-weight:900
+}
+
+.pack-toolbar{
+  display:flex;
+  gap:10px;
+  margin-bottom:14px
+}
+
+.pack-toolbar input{
+  flex:1
+}
+
+.pack-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:12px
+}
+
+.pack{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:15px
+}
+
+.pack b{
+  display:block;
+  margin-bottom:6px
+}
+
+.price{
+  color:var(--green);
+  font-weight:900;
+  font-size:17px
+}
+
+.pack button{
+  width:100%;
+  margin-top:12px
+}
+
+.form-card{
+  background:
+    linear-gradient(
+      145deg,
+      #0d2418,
+      #09170f
+    );
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:20px
+}
+
+label{
+  display:block;
+  margin:13px 0 7px;
+  font-weight:800
+}
+
+input,
+select{
+  width:100%;
+  min-height:46px;
+  border:1px solid #2a6746;
+  border-radius:11px;
+  padding:11px 13px;
+  background:#07150e;
+  color:#fff;
+  outline:none;
+  font-size:15px
+}
+
+input::placeholder{
+  color:#6f897a
+}
+
+input:focus,
+select:focus{
+  border-color:var(--green);
+  box-shadow:0 0 0 3px rgba(0,245,138,.08)
+}
+
+select option{
+  background:#0b1d14;
+  color:#fff
+}
+
+.account-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px
+}
+
+.field-help{
+  margin-top:6px;
+  color:var(--muted);
+  font-size:12px
+}
+
+.total{
+  margin:18px 0 4px;
+  padding:14px;
+  border-radius:12px;
+  text-align:center;
+  background:#092017;
+  border:1px solid #1c5437;
+  color:var(--green);
+  font-size:20px;
+  font-weight:900
+}
+
+.notice{
+  padding:13px;
+  border-left:4px solid var(--green);
+  border-radius:9px;
+  background:#0d281b;
+  color:#d7e9df;
+  line-height:1.7
+}
+
+.payment-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px
+}
+
+.pay{
+  padding:15px;
+  border-radius:14px;
+  background:#0b2116;
+  border:1px solid var(--line)
+}
+
+.pay strong{
+  color:var(--green);
+  display:block;
+  margin-bottom:5px
+}
+
+#tiktokArea,
+#youtubeArea{
+  display:none
+}
+
+footer{
+  padding:35px 0 90px;
+  text-align:center;
+  color:var(--muted);
+  font-size:13px
+}
+
+.bottom-nav{
+  position:fixed;
+  left:50%;
+  bottom:10px;
+  transform:translateX(-50%);
+  z-index:30;
+  width:min(480px,calc(100% - 20px));
+  display:flex;
+  justify-content:space-around;
+  padding:9px;
+  background:rgba(10,28,19,.94);
+  backdrop-filter:blur(12px);
+  border:1px solid #245d3d;
+  border-radius:17px;
+  box-shadow:0 12px 35px rgba(0,0,0,.35)
+}
+
+.bottom-nav a{
+  color:#a9c0b3;
+  font-size:12px;
+  text-align:center
+}
+
+.bottom-nav span{
+  display:block;
+  font-size:19px;
+  margin-bottom:2px
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:78px;
+  transform:translate(-50%,20px);
+  opacity:0;
+  pointer-events:none;
+  z-index:50;
+  background:#102b1d;
+  border:1px solid #2c704a;
+  color:#fff;
+  padding:12px 16px;
+  border-radius:12px;
+  transition:.25s;
+  width:max-content;
+  max-width:90%;
+  text-align:center
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0)
+}
+
+@media(max-width:850px){
+  .games-grid{
+    grid-template-columns:repeat(3,1fr)
+  }
+
+  .quick-grid{
+    grid-template-columns:repeat(2,1fr)
+  }
+
+  .pack-grid{
+    grid-template-columns:repeat(2,1fr)
+  }
+}
+
+@media(max-width:600px){
+  .container{
+    padding:0 11px
+  }
+
+  .nav-links{
+    display:none
+  }
+
+  .hero{
+    padding-top:28px
+  }
+
+  .hero-box{
+    padding:27px 15px
+  }
+
+  .games-grid{
+    grid-template-columns:repeat(2,1fr)
+  }
+
+  .pack-grid{
+    grid-template-columns:1fr
+  }
+
+  .account-row{
+    grid-template-columns:1fr
+  }
+
+  .payment-grid{
+    grid-template-columns:1fr
+  }
+
+  .pack-toolbar{
+    display:block
+  }
+
+  .pack-toolbar input{
+    margin-bottom:8px
+  }
+
+  .section-title{
+    display:block
+  }
+
+  .section-title p{
+    margin-top:5px
+  }
+}
+
+/* Package buy button */
 .package-card .btn,
 .package-card button,
 .package-card a.btn{
@@ -50,13 +575,13 @@ label{display:block;margin:13px 0 7px;font-weight:800}input,select{width:100%;mi
   gap:6px;
 }
 
-
-/* Game Items: horizontal cards */
+/* Game Items */
 .games-grid{
   display:grid !important;
   grid-template-columns:repeat(2,minmax(0,1fr)) !important;
   gap:12px !important;
 }
+
 .game-card{
   display:flex !important;
   flex-direction:row !important;
@@ -65,25 +590,23 @@ label{display:block;margin:13px 0 7px;font-weight:800}input,select{width:100%;mi
   text-align:left !important;
   min-height:78px;
 }
+
 .game-card .game-icon{
   flex:0 0 52px;
 }
+
 .game-card .game-info{
   flex:1;
   min-width:0;
 }
-.game-card .game-info h3,
-.game-card .game-info p{
-  margin-left:0;
-}
+
 @media(max-width:600px){
   .games-grid{
     grid-template-columns:1fr !important;
   }
 }
 
-
-/* Package cards: clean vertical cards */
+/* Package cards */
 .pack-grid .pack{
   display:flex !important;
   flex-direction:column !important;
@@ -93,6 +616,7 @@ label{display:block;margin:13px 0 7px;font-weight:800}input,select{width:100%;mi
   text-align:center !important;
   min-height:145px;
 }
+
 .pack-grid .pack b{
   display:block;
   font-size:15px;
@@ -100,19 +624,21 @@ label{display:block;margin:13px 0 7px;font-weight:800}input,select{width:100%;mi
   min-height:40px;
   margin-bottom:6px;
 }
+
 .pack-grid .pack .price{
   display:block;
   font-size:18px;
   line-height:1.3;
   margin:4px 0 10px;
 }
+
 .pack-grid .pack .btn{
   width:100% !important;
   margin-top:auto !important;
   white-space:nowrap;
 }
 
-/* Game items: logo, name and buy button */
+/* Game items */
 .games-grid .game-card{
   display:flex !important;
   flex-direction:column !important;
@@ -121,92 +647,33 @@ label{display:block;margin:13px 0 7px;font-weight:800}input,select{width:100%;mi
   text-align:center !important;
   min-height:190px;
 }
+
 .games-grid .game-card .game-logo{
   margin-bottom:10px !important;
 }
+
 .games-grid .game-card .game-buy{
   width:100%;
   margin-top:auto;
 }
-@media(max-width:600px){
-  .pack-grid .pack{min-height:140px}
-  .games-grid .game-card{min-height:180px}
-}
 
-/* FINAL: each package card is a wide horizontal rectangle */
-.pack-grid{grid-template-columns:1fr !important;gap:10px !important;}
-.pack-grid .pack{
- display:grid !important;
- grid-template-columns:minmax(0,1fr) auto auto !important;
- align-items:center !important;
- width:100% !important;
- min-height:72px !important;
- box-sizing:border-box !important;
- padding:12px 14px !important;
- border-radius:12px !important;
-}
-.pack-grid .pack .pack-name{
- margin:0 !important; padding:0 !important;
- display:block !important; text-align:left !important;
- min-height:0 !important; font-size:15px !important;
-}
-.pack-grid .pack .price{
- margin:0 !important; min-height:0 !important;
- display:flex !important; align-items:center !important;
- justify-content:center !important;
- white-space:nowrap !important;
-}
-.pack-grid .pack .btn{
- width:auto !important; min-width:96px !important;
- margin:0 !important; white-space:nowrap !important;
-}
 @media(max-width:600px){
- .pack-grid .pack{grid-template-columns:minmax(0,1fr) auto auto !important;gap:7px !important;padding:10px !important;}
- .pack-grid .pack .pack-name{font-size:13px !important;}
- .pack-grid .pack .price{padding:5px 7px !important;}
- .pack-grid .pack .price strong{font-size:14px !important;}
- .pack-grid .pack .btn{min-width:78px !important;padding:9px 7px !important;font-size:12px !important;}
-}
+  .pack-grid .pack{
+    min-height:140px
+  }
 
-/* Package cards: compact square grid */
-.pack-grid{display:grid !important;grid-template-columns:repeat(4,minmax(0,1fr)) !important;gap:12px !important;}
-.pack-grid .pack{display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:space-between !important;text-align:center !important;box-sizing:border-box !important;aspect-ratio:1/1 !important;min-height:0 !important;padding:12px !important;gap:7px !important;}
-.pack-grid .pack .pack-name{display:flex !important;align-items:center !important;justify-content:center !important;min-height:34px !important;margin:0 !important;font-size:14px !important;line-height:1.25 !important;}
-.pack-grid .pack .price{display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:center !important;gap:2px !important;margin:0 !important;padding:5px 7px !important;min-height:38px !important;}
-.pack-grid .pack .price-label{display:block !important;font-size:10px !important;}
-.pack-grid .pack .price strong{font-size:15px !important;line-height:1.15 !important;}
-.pack-grid .pack .btn{width:100% !important;min-width:0 !important;margin-top:0 !important;padding:9px 5px !important;font-size:12px !important;}
-@media(max-width:900px){.pack-grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}}
-@media(max-width:600px){.pack-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:9px !important;}.pack-grid .pack{padding:9px !important;}.pack-grid .pack .pack-name{font-size:13px !important;}.pack-grid .pack .price{padding:4px 6px !important;}.pack-grid .pack .price-label{display:none !important;}.pack-grid .pack .price strong{font-size:14px !important;}.pack-grid .pack .btn{font-size:11px !important;padding:8px 4px !important;}}
-</style>
-
-<style>
-/* Game Center: horizontal cards */
-.games-grid{
-  display:grid !important;
-  grid-template-columns:repeat(2,minmax(0,1fr)) !important;
-  gap:12px !important;
+  .games-grid .game-card{
+    min-height:180px
+  }
+/* Package game image */
+.pack-game-image{
+  width:58px !important;height:58px !important;border-radius:14px !important;
+  overflow:hidden !important;
+  object-fit:cover !important;display:block !important;
+  border:1px solid #285f43 !important;background:#07140e !important;
+  flex:0 0 auto !important;
 }
-.game-card{
-  display:flex !important;
-  flex-direction:row !important;
-  align-items:center !important;
-  gap:12px !important;
-  text-align:left !important;
-  min-height:82px !important;
-  padding:12px !important;
-}
-.game-card .game-logo{
-  flex:0 0 56px !important;
-  width:56px !important;
-  height:56px !important;
-  margin:0 !important;
-}
-.game-card b{display:block !important;line-height:1.3}
-.game-card small{display:block !important;margin-top:4px !important}
-@media(max-width:600px){
-  .games-grid{grid-template-columns:1fr !important;}
-}
+.pack-grid .pack .pack-game-image{margin-bottom:2px !important;}
 
 /* Package cards: compact square grid */
 .pack-grid{display:grid !important;grid-template-columns:repeat(4,minmax(0,1fr)) !important;gap:12px !important;}
@@ -305,6 +772,16 @@ label{display:block;margin:13px 0 7px;font-weight:800}input,select{width:100%;mi
   .pack-grid{grid-template-columns:1fr !important;}
 }
 
+/* Package game image */
+.pack-game-image{
+  width:58px !important;height:58px !important;border-radius:14px !important;
+  overflow:hidden !important;
+  object-fit:cover !important;display:block !important;
+  border:1px solid #285f43 !important;background:#07140e !important;
+  flex:0 0 auto !important;
+}
+.pack-grid .pack .pack-game-image{margin-bottom:2px !important;}
+
 /* Package cards: compact square grid */
 .pack-grid{display:grid !important;grid-template-columns:repeat(4,minmax(0,1fr)) !important;gap:12px !important;}
 .pack-grid .pack{display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:space-between !important;text-align:center !important;box-sizing:border-box !important;aspect-ratio:1/1 !important;min-height:0 !important;padding:12px !important;gap:7px !important;}
@@ -394,6 +871,16 @@ label{display:block;margin:13px 0 7px;font-weight:800}input,select{width:100%;mi
   .pack-grid .pack .btn{font-size:12px !important;padding:9px 5px !important;}
 }
 
+/* Package game image */
+.pack-game-image{
+  width:58px !important;height:58px !important;border-radius:14px !important;
+  overflow:hidden !important;
+  object-fit:cover !important;display:block !important;
+  border:1px solid #285f43 !important;background:#07140e !important;
+  flex:0 0 auto !important;
+}
+.pack-grid .pack .pack-game-image{margin-bottom:2px !important;}
+
 /* Package cards: compact square grid */
 .pack-grid{display:grid !important;grid-template-columns:repeat(4,minmax(0,1fr)) !important;gap:12px !important;}
 .pack-grid .pack{display:flex !important;flex-direction:column !important;align-items:center !important;justify-content:space-between !important;text-align:center !important;box-sizing:border-box !important;aspect-ratio:1/1 !important;min-height:0 !important;padding:12px !important;gap:7px !important;}
@@ -404,6 +891,131 @@ label{display:block;margin:13px 0 7px;font-weight:800}input,select{width:100%;mi
 .pack-grid .pack .btn{width:100% !important;min-width:0 !important;margin-top:0 !important;padding:9px 5px !important;font-size:12px !important;}
 @media(max-width:900px){.pack-grid{grid-template-columns:repeat(3,minmax(0,1fr)) !important;}}
 @media(max-width:600px){.pack-grid{grid-template-columns:repeat(2,minmax(0,1fr)) !important;gap:9px !important;}.pack-grid .pack{padding:9px !important;}.pack-grid .pack .pack-name{font-size:13px !important;}.pack-grid .pack .price{padding:4px 6px !important;}.pack-grid .pack .price-label{display:none !important;}.pack-grid .pack .price strong{font-size:14px !important;}.pack-grid .pack .btn{font-size:11px !important;padding:8px 4px !important;}}
+</style>
+
+<style>
+/* FIX: Package game image must be visible */
+.pack-grid .pack .pack-game-image{
+  width:64px !important;
+  height:64px !important;
+  min-width:64px !important;
+  min-height:64px !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  overflow:hidden !important;
+  flex:0 0 64px !important;
+  margin:0 auto 2px !important;
+  padding:0 !important;
+  border-radius:14px !important;
+}
+.pack-grid .pack .pack-game-image svg{
+  display:block !important;
+  width:100% !important;
+  height:100% !important;
+  max-width:100% !important;
+  max-height:100% !important;
+}
+@media(max-width:600px){
+  .pack-grid .pack .pack-game-image{
+    width:58px !important;
+    height:58px !important;
+    min-width:58px !important;
+    min-height:58px !important;
+    flex-basis:58px !important;
+  }
+}
+</style>
+
+<style>
+/* Quantity control - clean premium style */
+.qty-control{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  width:100% !important;
+  max-width:220px !important;
+  height:52px !important;
+  margin:8px 0 0 !important;
+  padding:5px !important;
+  box-sizing:border-box !important;
+  background:#07140e !important;
+  border:1px solid #24553d !important;
+  border-radius:16px !important;
+  box-shadow:0 6px 18px rgba(0,0,0,.22), inset 0 0 0 1px rgba(0,245,138,.04) !important;
+  overflow:hidden !important;
+}
+.qty-control .qty-btn{
+  width:42px !important;
+  height:42px !important;
+  flex:0 0 42px !important;
+  border:0 !important;
+  border-radius:12px !important;
+  background:#0d281b !important;
+  color:#00f58a !important;
+  font-size:27px !important;
+  font-weight:700 !important;
+  line-height:1 !important;
+  cursor:pointer !important;
+  transition:.18s ease !important;
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+}
+.qty-control .qty-btn:hover{background:#123a26 !important;transform:scale(1.04);}
+.qty-control .qty-btn:active{transform:scale(.94);}
+.qty-control #qty{
+  flex:1 !important;
+  min-width:0 !important;
+  height:42px !important;
+  margin:0 6px !important;
+  padding:0 !important;
+  border:0 !important;
+  outline:0 !important;
+  background:transparent !important;
+  color:#f3fff8 !important;
+  text-align:center !important;
+  font-size:21px !important;
+  font-weight:800 !important;
+  -moz-appearance:textfield !important;
+}
+.qty-control #qty::-webkit-inner-spin-button,.qty-control #qty::-webkit-outer-spin-button{appearance:none !important;margin:0 !important;}
+@media(max-width:600px){
+  .qty-control{max-width:none !important;height:50px !important;border-radius:15px !important;}
+  .qty-control .qty-btn{width:40px !important;height:40px !important;flex-basis:40px !important;}
+  .qty-control #qty{height:40px !important;font-size:20px !important;}
+}
+</style>
+
+<style>
+/* Quantity - NEW VISIBLE DESIGN */
+#order .qty-control{
+ display:flex!important;align-items:center!important;justify-content:space-between!important;
+ width:100%!important;max-width:280px!important;height:62px!important;padding:6px!important;
+ margin:10px 0 0!important;background:linear-gradient(135deg,#06110b,#0d2417)!important;
+ border:1px solid #00f58a!important;border-radius:20px!important;
+ box-shadow:0 0 0 2px rgba(0,245,138,.08),0 10px 28px rgba(0,0,0,.28)!important;
+ overflow:visible!important;box-sizing:border-box!important;
+}
+#order .qty-control .qty-btn{
+ width:50px!important;height:50px!important;flex:0 0 50px!important;
+ border:1px solid #1c6f4b!important;border-radius:16px!important;
+ background:#0b2b1b!important;color:#00f58a!important;font-size:30px!important;
+ font-weight:800!important;line-height:1!important;box-shadow:inset 0 0 12px rgba(0,245,138,.06)!important;
+}
+#order .qty-control .qty-btn:hover{background:#12442a!important;box-shadow:0 0 14px rgba(0,245,138,.25)!important;transform:translateY(-1px)!important}
+#order .qty-control #qty{
+ width:80px!important;flex:0 0 80px!important;height:50px!important;margin:0!important;
+ background:#020805!important;border:1px solid #183e2b!important;border-radius:15px!important;
+ color:#ffffff!important;text-align:center!important;font-size:24px!important;font-weight:900!important;
+ box-shadow:inset 0 0 12px rgba(0,0,0,.35)!important;
+}
+#order .qty-control #qty::-webkit-inner-spin-button,#order .qty-control #qty::-webkit-outer-spin-button{display:none!important}
+@media(max-width:600px){
+ #order .qty-control{max-width:none!important;height:60px!important;border-radius:19px!important}
+ #order .qty-control .qty-btn{width:48px!important;height:48px!important;flex-basis:48px!important}
+ #order .qty-control #qty{width:76px!important;flex-basis:76px!important;height:48px!important;font-size:23px!important}
+}
 </style>
 </head>
 <body>
@@ -437,125 +1049,6 @@ label{display:block;margin:13px 0 7px;font-weight:800}input,select{width:100%;mi
 <label>🎮 Service</label><select id="game" onchange="changeGame()"><option value="MLBB">💎 Mobile Legends</option><option value="PUBG">🪙 PUBG Mobile</option><option value="HOK">👑 Honor of Kings</option><option value="TikTok">🎵 TikTok</option><option value="YouTube">▶️ YouTube</option></select>
 <label>📦 Package</label><select id="package" onchange="updateTotal()"></select>
 
-<div id="accountArea" class="account-row"><div><label>🎮 Game ID</label><input id="playerId" type="text" placeholder="Game ID ထည့်ပါ"></div><div><label>🌐 Server ID</label><input id="serverId" type="text" placeholder="Server ID ထည့်ပါ"></div></div>
-<div id="tiktokArea"><label>🔗 TikTok Video Link</label><input id="videoLink" type="url" placeholder="TikTok Video Link ထည့်ပါ"></div>
-<div id="youtubeArea"><label>🔗 YouTube Channel / Video Link</label><input id="youtubeLink" type="url" placeholder="YouTube Link ထည့်ပါ"></div>
+<div id="accountArea" class="account-row"><div><label>🎮 Game ID</label><input id="playerId" type="text" placeholder="Game ID ထည့်ပါ"></div><div><label>🌐 Se
 
-<label>🔢 Quantity</label><div class="qty-control"><button type="button" class="qty-btn" onclick="changeQty(-1)">−</button><input id="qty" type="number" min="1" max="99" value="1" readonly><button type="button" class="qty-btn" onclick="changeQty(1)">+</button></div>
-<label>👤 ငွေလွှဲသူအမည်</label><input id="senderName" type="text" placeholder="ငွေလွှဲသူအမည် ထည့်ပါ">
-<label>🧾 Transaction ID — နောက်ဆုံး ၆ လုံး</label><input id="transactionId" type="text" inputmode="text" maxlength="6" minlength="6" pattern="[A-Za-z0-9]{6}" placeholder="နောက်ဆုံး ၆ လုံး ထည့်ပါ">
-<div class="field-help">Transaction ID ရဲ့ နောက်ဆုံး ၆ လုံးကိုသာ ထည့်ပါ။</div>
-<div id="total" class="total">စုစုပေါင်း: Package ရွေးပါ</div>
-<button id="submitBtn" class="btn primary" style="width:100%;margin-top:12px" onclick="submitOrder()">✈️ CONFIRM ORDER</button>
-</div></div></section>
-
-<section class="section" id="payment"><div class="container"><div class="section-title"><h2>💳 Payment</h2><p>ငွေလွှဲပြီးမှ Order တင်ပါ</p></div><div class="payment-grid"><div class="pay"><strong>💚 KPay</strong>09662222753</div><div class="pay"><strong>💚 WavePay</strong>09662222753</div></div><div class="notice" style="margin-top:12px">💡 <b>ငွေလွှဲပြီး → Transaction ID နောက်ဆုံး ၆ လုံးထည့် → Order တင်ပါ။</b></div></div></section>
-
-<section class="section"><div class="container"><div class="form-card" style="text-align:center"><h2>📞 Need Help?</h2><p style="color:var(--muted)">Order နဲ့ပတ်သက်ပြီး အကူအညီလိုပါက Admin ကို ဆက်သွယ်နိုင်ပါတယ်။</p><a class="btn primary" href="https://t.me/YeYint690" target="_blank">👤 Admin ကို ဆက်သွယ်ရန်</a></div></div></section>
-</main>
-
-<footer>© 2026 Y2 GAME SHOP • All Rights Reserved</footer>
-<nav class="bottom-nav"><a href="#home"><span>🏠</span>Home</a><a href="#games"><span>🎮</span>Games</a><a href="#packages"><span>📦</span>Packages</a><a href="#order"><span>🛒</span>Order</a><a href="https://t.me/Y2GameShopBot" target="_blank"><span>🤖</span>Telegram</a></nav>
-<div id="toast" class="toast"></div>
-
-<script>
-const API_URL="https://ye-yint-game-shop.yye224288.workers.dev/api/order";
-const DATA={
-MLBB:{name:"💎 Mobile Legends",packages:[["86 Diamonds",5600],["172 Diamonds",11000],["257 Diamonds",16500],["343 Diamonds",21200],["429 Diamonds",27000],["515 Diamonds",31800],["706 Diamonds",42000],["878 Diamonds",53000],["963 Diamonds",58000],["Weekly Pass",6800],["2X 50+50",3500],["2X 150+150",10600],["2X 250+250",17000],["2X 500+500",34000]]},
-PUBG:{name:"🪙 PUBG Mobile",packages:[["60 UC",6300],["328 UC",25000],["660 UC",42000],["1800 UC",101000],["3850 UC",200000],["Elite Lv 1-50",24000],["Elite Lv 1-100",49000]]},
-HOK:{name:"👑 Honor of Kings",packages:[["16 Tokens",1000],["Weekly Card Plus",14000],["Weekly Card",5000],["80 Tokens",4200],["240 Tokens",15000],["400 Tokens",22000],["560 Tokens",28500],["830 Tokens",41000],["1245 Tokens",61000]]},
-TikTok:{name:"🎵 TikTok",packages:[["Follower 100",1600],["Follower 1000",16000],["Follower 5000",75000],["Views 1000",600],["Views 5000",3000],["Views 10000",6000]]},
-YouTube:{name:"▶️ YouTube",packages:[["Subscribe 100",32000],["Subscribe 1000",320000],["Like 100",500],["Like 1000",5000],["Like 10000",50000],["View 100",1200],["View 1000",12000],["View 10000",120000]]}
-};
-let currentGame="MLBB";
-function money(n){return Number(n).toLocaleString("en-US")+" MMK"}
-function renderPackages(){
- const grid=document.getElementById("packGrid"),q=document.getElementById("search").value.trim().toLowerCase();
- const select=document.getElementById("package");
- grid.innerHTML="";
- const all=DATA[currentGame].packages;
- const list=all.filter(x=>x[0].toLowerCase().includes(q)||money(x[1]).toLowerCase().includes(q));
- // Keep the order form package list and prices in sync with the selected game.
- select.innerHTML='<option value="">📦 Package ရွေးပါ</option>';
- all.forEach(x=>{
-   const o=document.createElement("option");
-   o.value=x[0]+" — "+money(x[1]);
-   o.textContent=x[0]+" — "+money(x[1]);
-   select.appendChild(o);
- });
- if(!list.length){grid.innerHTML='<div class="notice" style="grid-column:1/-1">Package မတွေ့ပါ။</div>';return}
- list.forEach(x=>{
-  const card=document.createElement("div");card.className="pack";
-  card.innerHTML=`<b class="pack-name">${x[0]}</b><div class="price"><span class="price-label">ဈေးနှုန်း</span><strong>${money(x[1])}</strong></div><button class="btn primary" type="button" onclick="pickPackage('${x[0].replace(/'/g,"\'")}',${x[1]})">🛒 ဝယ်မည်</button>`;
-  grid.appendChild(card);
- });
 }
-function showGame(game){if(!DATA[game])return;currentGame=game;document.getElementById("game").value=game;document.getElementById("search").value="";changeGame();document.getElementById("packages").scrollIntoView({behavior:"smooth"});toast(DATA[game].name+" Packages")}
-function changeGame(){
- currentGame=document.getElementById("game").value;
- document.getElementById("selectedGameText").textContent=DATA[currentGame].name;
- renderPackages();
- const account=document.getElementById("accountArea"),tt=document.getElementById("tiktokArea"),yt=document.getElementById("youtubeArea");
- const player=document.getElementById("playerId"),server=document.getElementById("serverId"),video=document.getElementById("videoLink"),youtube=document.getElementById("youtubeLink");
- account.style.display="grid";tt.style.display="none";yt.style.display="none";
- player.required=false;server.required=false;video.required=false;youtube.required=false;
- if(currentGame==="TikTok"){account.style.display="none";tt.style.display="block";video.required=true}
- else if(currentGame==="YouTube"){account.style.display="none";yt.style.display="block";youtube.required=true}
- else{player.required=true;server.required=true}
- updateTotal();
-}
-function pickPackage(name,price){
-  const select=document.getElementById("package");
-  const wanted=name+" — "+money(price);
-  let found=false;
-  for(let i=0;i<select.options.length;i++){
-    if(select.options[i].textContent===wanted){
-      select.selectedIndex=i;
-      found=true;
-      break;
-    }
-  }
-  if(!found){
-    const option=document.createElement("option");
-    option.value=wanted;
-    option.textContent=wanted;
-    select.appendChild(option);
-    select.value=wanted;
-  }
-  updateTotal();
-  document.getElementById("order").scrollIntoView({behavior:"smooth"});
-  toast("✅ "+name+" ရွေးပြီးပါပြီ");
-}
-function getPrice(){const m=document.getElementById("package").value.match(/([\d,]+)\s*MMK$/);return m?Number(m[1].replace(/,/g,"")):0}
-function changeQty(delta){const input=document.getElementById("qty");let value=parseInt(input.value,10)||1;value=Math.max(1,Math.min(99,value+delta));input.value=value;updateTotal()}
-function updateTotal(){let q=Math.max(1,Math.min(99,Number(document.getElementById("qty").value)||1));document.getElementById("qty").value=q;const p=getPrice();document.getElementById("total").textContent=p?"စုစုပေါင်း: "+money(p*q):"စုစုပေါင်း: Package ရွေးပါ"}
-function validLastSix(v){return /^[A-Za-z0-9]{6}$/.test(v)}
-async function submitOrder(){
- const btn=document.getElementById("submitBtn"),game=document.getElementById("game").value,pack=document.getElementById("package").value;
- const qty=Math.max(1,Math.min(99,Number(document.getElementById("qty").value)||1));
- const senderName=document.getElementById("senderName").value.trim(),transactionId=document.getElementById("transactionId").value.trim();
- const playerId=document.getElementById("playerId").value.trim(),serverId=document.getElementById("serverId").value.trim();
- const videoLink=document.getElementById("videoLink").value.trim(),youtubeLink=document.getElementById("youtubeLink").value.trim();
- if(!pack){toast("❌ Package ရွေးပါ");return}
- if(!senderName){toast("❌ ငွေလွှဲသူအမည် ထည့်ပါ");return}
- if(!validLastSix(transactionId)){toast("❌ Transaction ID နောက်ဆုံး ၆ လုံး ထည့်ပါ");return}
- if(["MLBB","PUBG","HOK"].includes(game)&&(!playerId||!serverId)){toast("❌ Game ID နှင့် Server ID ထည့်ပါ");return}
- if(game==="TikTok"&&!videoLink){toast("❌ TikTok Video Link ထည့်ပါ");return}
- if(game==="YouTube"&&!youtubeLink){toast("❌ YouTube Link ထည့်ပါ");return}
- btn.disabled=true;btn.textContent="⏳ SENDING...";
- const data={game,package:pack,playerId:game==="TikTok"?videoLink:game==="YouTube"?youtubeLink:playerId,serverId:["MLBB","PUBG","HOK"].includes(game)?serverId:"",phone:senderName,transactionId,quantity:qty};
- try{
-  const r=await fetch(API_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
-  const j=await r.json().catch(()=>({}));
-  if(!r.ok||!j.ok)throw new Error(j.error||"Order ပို့မရပါ");
-  toast("✅ Order တင်ပြီး Telegram သို့ ပို့ပြီးပါပြီ");
-  ["senderName","transactionId","playerId","serverId","videoLink","youtubeLink"].forEach(id=>document.getElementById(id).value="");
-  document.getElementById("qty").value=1;updateTotal();
- }catch(e){toast("❌ "+e.message)}finally{btn.disabled=false;btn.textContent="✈️ CONFIRM ORDER"}
-}
-let toastTimer;
-function toast(msg){const e=document.getElementById("toast");e.textContent=msg;e.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>e.classList.remove("show"),2600)}
-changeGame();
-</script>
-</body>
-</html>
