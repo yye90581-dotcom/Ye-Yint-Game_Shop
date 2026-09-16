@@ -1,959 +1,865 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="my">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#050805">
-<title>Y2 Game Shop</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ye Yint Game Shop</title>
 
 <style>
-  *{
-  box-sizing:border-box;
+*{
+  
+.game-img{
+  width:90px;
+  height:90px;
+  object-fit:contain;
+  border-radius:18px;
+}
+
+.hero-game-img{
+  width:150px;
+  height:150px;
+  object-fit:contain;
+  display:block;
+  margin:auto;
+}
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-  margin:0;
-  font-family:Arial,sans-serif;
-  background:#07110d;
-  color:#ffffff;
+  background:#050b1c;
+  color:white;
+  min-height:100vh;
 }
 
-.container{
-  width:100%;
-  max-width:700px;
+/* HEADER */
+header{
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:rgba(5,11,28,.95);
+  border-bottom:1px solid #173b70;
+  padding:18px 5%;
+  backdrop-filter:blur(10px);
+}
+
+.nav{
+  max-width:1200px;
   margin:auto;
-  padding:20px 15px 40px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:20px;
 }
 
-h1{
-  text-align:center;
-  color:#00ff88;
-  margin:5px 0;
-}
-
-.subtitle{
-  text-align:center;
-  color:#9aa9a1;
-  margin-bottom:25px;
-}
-
-.card{
-  background:#0d2118;
-  border:1px solid #1d5a3b;
-  border-radius:16px;
-  padding:18px;
-  margin-bottom:18px;
-  box-shadow:0 5px 20px rgba(0,255,136,.08);
-}
-
-h2{
-  color:#00ff88;
-  margin-top:0;
-}
-
-label{
-  display:block;
-  margin:12px 0 7px;
-  color:#eafff3;
+.logo{
+  font-size:25px;
   font-weight:bold;
 }
 
-input,
-select{
-  width:100%;
-  padding:13px;
-  border-radius:10px;
-  border:1px solid #296b49;
-  background:#10251b;
-  color:#ffffff;
-  font-size:15px;
-  outline:none;
+.logo span{
+  color:#18b8ff;
 }
 
-input::placeholder{
-  color:#789084;
+.nav a{
+  color:#dceaff;
+  text-decoration:none;
+  margin-left:20px;
+  font-weight:bold;
 }
 
-input:focus,
-select:focus{
-  border-color:#00ff88;
-  box-shadow:0 0 0 2px rgba(0,255,136,.12);
+.nav a:hover{
+  color:#20c5ff;
 }
 
-select option{
-  background:#10251b;
-  color:#ffffff;
+/* HERO */
+.hero{
+  max-width:1200px;
+  margin:auto;
+  padding:80px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:40px;
 }
 
-.account-row{
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:12px;
+.hero-text{
+  flex:1;
 }
 
-.account-row .row{
-  width:100%;
+.badge{
+  display:inline-block;
+  padding:10px 18px;
+  border-radius:30px;
+  background:#10254d;
+  border:1px solid #2367ae;
+  color:#4ccaff;
+  margin-bottom:20px;
+}
+
+.hero h1{
+  font-size:55px;
+  line-height:1.1;
+  margin-bottom:20px;
+}
+
+.hero h1 span{
+  color:#16bfff;
+}
+
+.hero p{
+  color:#9eafd0;
+  font-size:18px;
+  line-height:1.8;
+}
+
+.hero-buttons{
+  margin-top:30px;
+  display:flex;
+  gap:15px;
+  flex-wrap:wrap;
 }
 
 .btn{
-  width:100%;
   border:0;
+  padding:15px 25px;
   border-radius:12px;
-  padding:14px;
-  margin-top:16px;
+  color:white;
+  background:linear-gradient(135deg,#119cff,#593cff);
   font-size:16px;
   font-weight:bold;
   cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
 }
 
-.primary{
-  background:#00d66f;
-  color:#001b0e;
+.btn:hover{
+  transform:translateY(-2px);
 }
 
-.secondary{
-  background:#174d35;
-  color:#ffffff;
+.btn-outline{
+  background:#0d1a35;
+  border:1px solid #24538e;
 }
 
-.payment{
-  line-height:1.8;
-  color:#d7e5dd;
+/* HERO CARD */
+.hero-card{
+  width:360px;
+  padding:35px;
+  border-radius:25px;
+  background:linear-gradient(145deg,#0d1d3c,#101034);
+  border:1px solid #22518c;
+  box-shadow:0 0 40px rgba(20,130,255,.15);
 }
 
-.notice{
-  background:#102a1d;
-  border-left:4px solid #00ff88;
-  padding:12px;
-  border-radius:8px;
-  color:#dcebe3;
-  font-size:14px;
-  line-height:1.6;
-  margin-top:12px;
-}
-
-.total{
+.hero-card .game-icon{
+  font-size:80px;
   text-align:center;
-  color:#00ff88;
-  font-size:19px;
+  margin-bottom:20px;
+}
+
+.hero-card h2{
+  text-align:center;
+  margin-bottom:10px;
+}
+
+.hero-card p{
+  text-align:center;
+  color:#8295ba;
+}
+
+/* FEATURES */
+.section{
+  max-width:1200px;
+  margin:auto;
+  padding:50px 5%;
+}
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.feature{
+  padding:25px 20px;
+  background:#09172f;
+  border:1px solid #21477c;
+  border-radius:18px;
+  min-height:160px;
+}
+
+.feature-icon{
+  font-size:40px;
+  margin-bottom:15px;
+}
+
+.feature h3{
+  font-size:18px;
+  margin-bottom:8px;
+}
+
+.feature p{
+  color:#8396ba;
+  line-height:1.6;
+}
+
+/* TITLES */
+.section-title{
+  margin-bottom:30px;
+}
+
+.section-title h2{
+  font-size:36px;
+  margin-bottom:8px;
+}
+
+.section-title p{
+  color:#8092b5;
+}
+
+/* GAMES */
+.games{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.game{
+  padding:30px;
+  border-radius:22px;
+  background:linear-gradient(135deg,#0b1b38,#10143b);
+  border:1px solid #24518b;
+  display:flex;
+  align-items:center;
+  gap:20px;
+}
+
+.game-icon-big{
+  font-size:65px;
+}
+
+.game h3{
+  font-size:25px;
+  margin-bottom:7px;
+}
+
+.game p{
+  color:#8497ba;
+  margin-bottom:15px;
+}
+
+/* PACKAGES */
+.packages{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:15px;
+}
+
+.package{
+  background:#09172f;
+  border:1px solid #20477d;
+  border-radius:18px;
+  padding:25px 18px;
+  text-align:center;
+  position:relative;
+}
+
+.package:hover{
+  border-color:#19baff;
+  transform:translateY(-3px);
+}
+
+.package h3{
+  font-size:22px;
+  color:#36c7ff;
+  margin-bottom:10px;
+}
+
+.package .price{
+  font-size:20px;
   font-weight:bold;
-  margin-top:18px;
+  margin-bottom:18px;
 }
 
-.tiktok-link{
+.hot{
+  position:absolute;
+  top:10px;
+  right:10px;
+  background:#ff315f;
+  padding:5px 9px;
+  border-radius:20px;
+  font-size:11px;
+}
+
+/* ORDER */
+.order-box{
+  max-width:800px;
+  margin:auto;
+  padding:30px;
+  border-radius:22px;
+  background:#09172f;
+  border:1px solid #214d87;
+}
+
+.form-group{
+  margin-bottom:18px;
+}
+
+.form-group label{
+  display:block;
+  margin-bottom:8px;
+  color:#d8e5ff;
+}
+
+input,select{
+  width:100%;
+  padding:15px;
+  border-radius:10px;
+  border:1px solid #284d80;
+  background:#050e22;
+  color:white;
+  outline:none;
+  font-size:15px;
+}
+
+input:focus,select:focus{
+  border-color:#18baff;
+}
+
+.submit{
+  width:100%;
+  margin-top:5px;
+}
+
+/* PAYMENT */
+.payment{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+}
+
+.pay-card{
+  padding:30px;
+  background:#09172f;
+  border:1px solid #214d87;
+  border-radius:20px;
+}
+
+.pay-card h3{
+  color:#20bdff;
+  margin-bottom:12px;
+  font-size:24px;
+}
+
+.pay-card p{
+  color:#9aafd0;
+  line-height:1.8;
+}
+
+/* FOOTER */
+footer{
+  margin-top:50px;
+  padding:40px 5%;
+  text-align:center;
+  border-top:1px solid #173963;
+  color:#7085aa;
+}
+
+footer strong{
+  color:#1cbaff;
+}
+
+/* POPUP */
+.popup-bg{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.75);
   display:none;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+  padding:20px;
 }
 
-.hidden{
-  display:none!important;
+.popup{
+  width:100%;
+  max-width:450px;
+  background:#0a1832;
+  border:1px solid #2670b5;
+  border-radius:22px;
+  padding:30px;
+  text-align:center;
 }
 
-a{
-  color:inherit;
+.popup h2{
+  margin-bottom:15px;
+}
+
+.popup p{
+  color:#9db1d3;
+  line-height:1.8;
+  margin-bottom:20px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+
+  .nav{
+    flex-direction:column;
+  }
+
+  .nav a{
+    margin:0 7px;
+    font-size:13px;
+  }
+
+  .hero{
+    flex-direction:column;
+    text-align:center;
+    padding-top:50px;
+  }
+
+  .hero h1{
+    font-size:40px;
+  }
+
+  .hero-card{
+    width:100%;
+    max-width:400px;
+  }
+
+  .features{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+  .packages{
+    grid-template-columns:repeat(2,1fr);
+  }
+
 }
 
 @media(max-width:600px){
 
-  .account-row{
+  header{
+    padding:15px 4%;
+  }
+
+  .logo{
+    font-size:21px;
+  }
+
+  .nav{
+    gap:12px;
+  }
+
+  .nav a{
+    font-size:12px;
+    margin:0 3px;
+  }
+
+  .hero{
+    padding:55px 5% 35px;
+  }
+
+  .hero h1{
+    font-size:36px;
+  }
+
+  .hero p{
+    font-size:15px;
+  }
+
+  .hero-buttons{
+    justify-content:center;
+  }
+
+  .section{
+    padding:35px 5%;
+  }
+
+  .section-title h2{
+    font-size:28px;
+  }
+
+  .features{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+
+  .feature{
+    padding:18px 12px;
+    min-height:150px;
+  }
+
+  .feature-icon{
+    font-size:32px;
+  }
+
+  .feature h3{
+    font-size:15px;
+  }
+
+  .feature p{
+    font-size:12px;
+  }
+
+  .games{
     grid-template-columns:1fr;
-    gap:4px;
   }
 
-  .account-row input{
-    width:100%;
+  .game{
+    padding:20px;
   }
 
+  .game-icon-big{
+    font-size:50px;
+  }
+
+  .game h3{
+    font-size:21px;
+  }
+
+  .packages{
+    grid-template-columns:repeat(2,1fr);
+    gap:10px;
+  }
+
+  .package{
+    padding:20px 10px;
+  }
+
+  .package h3{
+    font-size:18px;
+  }
+
+  .package .price{
+    font-size:16px;
+  }
+
+  .payment{
+    grid-template-columns:1fr;
+  }
+
+  .order-box{
+    padding:20px;
+  }
 }
-
-@media(max-width:400px){
-
-  .container{
-    padding-left:10px;
-    padding-right:10px;
-  }
-
-  input,
-  select{
-    font-size:14px;
-  }
-
-}
-
-
-
-
-
-
 </style>
 </head>
 
 <body>
 
 <header>
-<div class="wrap nav">
-<div class="logo"><span>Y2</span> GAME SHOP</div>
-<a href="#order">✈ Order Now</a>
-</div>
+  <div class="nav">
+    <div class="logo">🎮 Ye Yint <span>Game Shop</span></div>
+
+    <div>
+      <a href="#home">Home</a>
+      <a href="#games">Games</a>
+      <a href="#order">Order</a>
+      <a href="#payment">Payment</a>
+    </div>
+  </div>
 </header>
 
-<main class="wrap">
+<section class="hero" id="home">
 
-<section id="home" class="hero">
-<div style="position:relative;z-index:2">
+  <div class="hero-text">
 
-<div class="green">
-<b>⚡ FAST • SAFE • 24/7 SUPPORT</b>
-</div>
+    <div class="badge">⚡ FAST & SAFE TOP UP</div>
 
-<h1>
-PLAY MORE<br>
-<span>PAY LESS</span>
-</h1>
+    <h1>
+      TOP UP<br>
+      <span>YOUR GAME</span>
+    </h1>
 
-<p>
-MLBB Diamonds, PUBG UC, HOK Tokens နဲ့ TikTok / YouTube Service တွေကို
-မြန်မြန်ဆန်ဆန် Order တင်နိုင်ပါတယ်။
-</p>
+    <p>
+      MLBB Diamonds & PUBG UC ကို<br>
+      လွယ်ကူမြန်ဆန်စွာ ဝယ်ယူနိုင်ပါပြီ။
+    </p>
 
-<a class="btn primary" href="#games">🎮 GAME ရွေးမယ် ›</a>
-<a class="btn ghost" href="#order">🛒 ORDER NOW</a>
+    <div class="hero-buttons">
+      <a href="#games" class="btn">🎮 Game ရွေးမယ်</a>
+      <a href="#order" class="btn btn-outline">🛒 Order တင်မယ်</a>
+    </div>
 
-</div>
-</section>
+  </div>
 
-<div class="quick">
+  <div class="hero-card">
+    <div class="game-icon">🎮</div>
+    <h2>Ye Yint Game Shop</h2>
+    <p>Fast • Safe • Best Price</p>
+  </div>
 
-<div>
-<div class="ico">⚡</div>
-<b>FAST DELIVERY</b><br>
-<small>Within minutes</small>
-</div>
-
-<div>
-<div class="ico">🛡️</div>
-<b>SAFE & SECURE</b><br>
-<small>Trusted service</small>
-</div>
-
-<div>
-<div class="ico">📋</div>
-<b>ORDERS</b><br>
-<small>Easy ordering</small>
-</div>
-
-<div>
-<div class="ico">🎧</div>
-<b>SUPPORT</b><br>
-<small>24/7 help</small>
-</div>
-
-</div>
-
-<!-- GAME CENTER -->
-
-<section id="games">
-
-<div class="head">
-<div>
-<div class="green"><b>GAME CENTER</b></div>
-<h2>🔥 POPULAR GAMES</h2>
-<small>Choose your favorite game</small>
-</div>
-
-<a class="green" href="#packs">View All ›</a>
-</div>
-
-<div class="games">
-
-<a class="game"
-href="#packs"
-onclick="showGame('pubg');return false"
-style="text-decoration:none;color:white">
-
-<div class="art">🔫</div>
-
-<div>
-<b>PUBG Mobile</b><br>
-<small>UC Top Up</small>
-</div>
-
-<div class="arrow">›</div>
-
-</a>
-
-<a class="game"
-href="#packs"
-onclick="showGame('mlbb');return false"
-style="text-decoration:none;color:white">
-
-<div class="art">⚔️</div>
-
-<div>
-<b>Mobile Legends</b><br>
-<small>Diamonds</small>
-</div>
-
-<div class="arrow">›</div>
-
-</a>
-
-<a class="game"
-href="#packs"
-onclick="showGame('hok');return false"
-style="text-decoration:none;color:white">
-
-<div class="art">👑</div>
-
-<div>
-<b>Honor of Kings</b><br>
-<small>Tokens</small>
-</div>
-
-<div class="arrow">›</div>
-
-</a>
-
-<a class="game"
-href="#packs"
-onclick="showGame('tiktok');return false"
-style="text-decoration:none;color:white">
-
-<div class="art">🎵</div>
-
-<div>
-<b>TikTok</b><br>
-<small>Followers / Views</small>
-</div>
-
-<div class="arrow">›</div>
-
-</a>
-
-<a class="game"
-href="#packs"
-onclick="showGame('youtube');return false"
-style="text-decoration:none;color:white">
-
-<div class="art">▶️</div>
-
-<div>
-<b>YouTube</b><br>
-<small>Subscribe / Like / View</small>
-</div>
-
-<div class="arrow">›</div>
-
-</a>
-
-<div class="game">
-
-<div class="art">🔥</div>
-
-<div>
-<b>Free Fire</b><br>
-<small>Coming Soon</small>
-</div>
-
-</div>
-
-<div class="game">
-
-<div class="art">✨</div>
-
-<div>
-<b>Genshin Impact</b><br>
-<small>Coming Soon</small>
-</div>
-
-</div>
-
-</div>
-</section>
-
-<!-- PACKAGES -->
-
-<section id="packs">
-
-<div class="head">
-<div>
-<div class="green">
-<b>BEST PRICE • INSTANT DELIVERY</b>
-</div>
-
-<h2>💎 TOP UP PACKAGES</h2>
-</div>
-</div>
-
-<input
-id="search"
-class="search"
-placeholder="🔎 Search games, packages..."
-oninput="filterPacks()">
-
-<div class="packs" id="packGrid">
-
-<!-- MLBB -->
-
-<button class="pack" data-game="mlbb" data-s="mlbb 86 diamonds 5600"
-onclick="pick('Mobile Legends','MLBB - 86 Diamonds - 5,600 MMK')">
-
-<div class="picon">💎</div>
-<b>MLBB • 86 Diamonds</b>
-<div class="price">5,600 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="mlbb" data-s="mlbb 172 diamonds 11000"
-onclick="pick('Mobile Legends','MLBB - 172 Diamonds - 11,000 MMK')">
-
-<div class="picon">💎</div>
-<b>MLBB • 172 Diamonds</b>
-<div class="price">11,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="mlbb" data-s="mlbb 257 diamonds 16500"
-onclick="pick('Mobile Legends','MLBB - 257 Diamonds - 16,500 MMK')">
-
-<div class="picon">💎</div>
-<b>MLBB • 257 Diamonds</b>
-<div class="price">16,500 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="mlbb" data-s="mlbb 343 diamonds 21200"
-onclick="pick('Mobile Legends','MLBB - 343 Diamonds - 21,200 MMK')">
-
-<div class="picon">💎</div>
-<b>MLBB • 343 Diamonds</b>
-<div class="price">21,200 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="mlbb" data-s="mlbb 429 diamonds 27000"
-onclick="pick('Mobile Legends','MLBB - 429 Diamonds - 27,000 MMK')">
-
-<div class="picon">💎</div>
-<b>MLBB • 429 Diamonds</b>
-<div class="price">27,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="mlbb" data-s="mlbb 515 diamonds 31800"
-onclick="pick('Mobile Legends','MLBB - 515 Diamonds - 31,800 MMK')">
-
-<div class="picon">💎</div>
-<b>MLBB • 515 Diamonds</b>
-<div class="price">31,800 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="mlbb" data-s="mlbb 706 diamonds 42000"
-onclick="pick('Mobile Legends','MLBB - 706 Diamonds - 42,000 MMK')">
-
-<div class="picon">💎</div>
-<b>MLBB • 706 Diamonds</b>
-<div class="price">42,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="mlbb" data-s="mlbb 878 diamonds 53000"
-onclick="pick('Mobile Legends','MLBB - 878 Diamonds - 53,000 MMK')">
-
-<div class="picon">💎</div>
-<b>MLBB • 878 Diamonds</b>
-<div class="price">53,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="mlbb" data-s="mlbb 963 diamonds 58000"
-onclick="pick('Mobile Legends','MLBB - 963 Diamonds - 58,000 MMK')">
-
-<div class="picon">💎</div>
-<b>MLBB • 963 Diamonds</b>
-<div class="price">58,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="mlbb" data-s="mlbb weekly pass 6800"
-onclick="pick('Mobile Legends','MLBB - Weekly Pass - 6,800 MMK')">
-
-<div class="picon">🎫</div>
-<b>MLBB • Weekly Pass</b>
-<div class="price">6,800 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="mlbb" data-s="mlbb 2x 50 50 3500"
-onclick="pick('Mobile Legends','MLBB 2X - 50+50 Diamonds - 3,500 MMK')">
-
-<div class="picon">💎</div>
-<b>MLBB 2X • 50 + 50</b>
-<div class="price">3,500 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="mlbb" data-s="mlbb 2x 150 150 10600"
-onclick="pick('Mobile Legends','MLBB 2X - 150+150 Diamonds - 10,600 MMK')">
-
-<div class="picon">💎</div>
-<b>MLBB 2X • 150 + 150</b>
-<div class="price">10,600 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="mlbb" data-s="mlbb 2x 250 250 17000"
-onclick="pick('Mobile Legends','MLBB 2X - 250+250 Diamonds - 17,000 MMK')">
-
-<div class="picon">💎</div>
-<b>MLBB 2X • 250 + 250</b>
-<div class="price">17,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="mlbb" data-s="mlbb 2x 500 500 34000"
-onclick="pick('Mobile Legends','MLBB 2X - 500+500 Diamonds - 34,000 MMK')">
-
-<div class="picon">💎</div>
-<b>MLBB 2X • 500 + 500</b>
-<div class="price">34,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-
-<!-- PUBG -->
-
-<button class="pack" data-game="pubg" data-s="pubg 60 uc 6300"
-onclick="pick('PUBG Mobile','PUBG - 60 UC - 6,300 MMK')">
-
-<div class="picon">🪙</div>
-<b>PUBG • 60 UC</b>
-<div class="price">6,300 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="pubg" data-s="pubg 328 uc 25000"
-onclick="pick('PUBG Mobile','PUBG - 328 UC - 25,000 MMK')">
-
-<div class="picon">🪙</div>
-<b>PUBG • 328 UC</b>
-<div class="price">25,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="pubg" data-s="pubg 660 uc 42000"
-onclick="pick('PUBG Mobile','PUBG - 660 UC - 42,000 MMK')">
-
-<div class="picon">🪙</div>
-<b>PUBG • 660 UC</b>
-<div class="price">42,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="pubg" data-s="pubg 1800 uc 101000"
-onclick="pick('PUBG Mobile','PUBG - 1800 UC - 101,000 MMK')">
-
-<div class="picon">🪙</div>
-<b>PUBG • 1800 UC</b>
-<div class="price">101,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="pubg" data-s="pubg 3850 uc 200000"
-onclick="pick('PUBG Mobile','PUBG - 3850 UC - 200,000 MMK')">
-
-<div class="picon">🪙</div>
-<b>PUBG • 3850 UC</b>
-<div class="price">200,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="pubg" data-s="pubg elite lv 1 50 24000"
-onclick="pick('PUBG Mobile','PUBG - Elite Lv 1-50 - 24,000 MMK')">
-
-<div class="picon">🏆</div>
-<b>PUBG • Elite Lv 1-50</b>
-<div class="price">24,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="pubg" data-s="pubg elite lv 1 100 49000"
-onclick="pick('PUBG Mobile','PUBG - Elite Lv 1-100 - 49,000 MMK')">
-
-<div class="picon">🏆</div>
-<b>PUBG • Elite Lv 1-100</b>
-<div class="price">49,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-
-<!-- HOK -->
-
-<button class="pack" data-game="hok" data-s="hok 16 tokens 1000"
-onclick="pick('Honor of Kings','HOK - 16 Tokens - 1,000 MMK')">
-
-<div class="picon">👑</div>
-<b>HOK • 16 Tokens</b>
-<div class="price">1,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="hok" data-s="hok weekly card plus 14000"
-onclick="pick('Honor of Kings','HOK - Weekly Card Plus - 14,000 MMK')">
-
-<div class="picon">🎫</div>
-<b>HOK • Weekly Card Plus</b>
-<div class="price">14,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="hok" data-s="hok weekly card 5000"
-onclick="pick('Honor of Kings','HOK - Weekly Card - 5,000 MMK')">
-
-<div class="picon">🎫</div>
-<b>HOK • Weekly Card</b>
-<div class="price">5,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="hok" data-s="hok 80 tokens 4200"
-onclick="pick('Honor of Kings','HOK - 80 Tokens - 4,200 MMK')">
-
-<div class="picon">👑</div>
-<b>HOK • 80 Tokens</b>
-<div class="price">4,200 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="hok" data-s="hok 240 tokens 15000"
-onclick="pick('Honor of Kings','HOK - 240 Tokens - 15,000 MMK')">
-
-<div class="picon">👑</div>
-<b>HOK • 240 Tokens</b>
-<div class="price">15,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="hok" data-s="hok 400 tokens 22000"
-onclick="pick('Honor of Kings','HOK - 400 Tokens - 22,000 MMK')">
-
-<div class="picon">👑</div>
-<b>HOK • 400 Tokens</b>
-<div class="price">22,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="hok" data-s="hok 560 tokens 28500"
-onclick="pick('Honor of Kings','HOK - 560 Tokens - 28,500 MMK')">
-
-<div class="picon">👑</div>
-<b>HOK • 560 Tokens</b>
-<div class="price">28,500 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="hok" data-s="hok 830 tokens 41000"
-onclick="pick('Honor of Kings','HOK - 830 Tokens - 41,000 MMK')">
-
-<div class="picon">👑</div>
-<b>HOK • 830 Tokens</b>
-<div class="price">41,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="hok" data-s="hok 1245 tokens 61000"
-onclick="pick('Honor of Kings','HOK - 1245 Tokens - 61,000 MMK')">
-
-<div class="picon">👑</div>
-<b>HOK • 1245 Tokens</b>
-<div class="price">61,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-
-<!-- TIKTOK -->
-
-<button class="pack" data-game="tiktok" data-s="tiktok follower 100 1600"
-onclick="pick('TikTok','TikTok - Follower 100 - 1,600 MMK')">
-
-<div class="picon">🎵</div>
-<b>TikTok • Follower 100</b>
-<div class="price">1,600 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="tiktok" data-s="tiktok follower 1000 16000"
-onclick="pick('TikTok','TikTok - Follower 1,000 - 16,000 MMK')">
-
-<div class="picon">🎵</div>
-<b>TikTok • Follower 1,000</b>
-<div class="price">16,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="tiktok" data-s="tiktok follower 5000 75000"
-onclick="pick('TikTok','TikTok - Follower 5,000 - 75,000 MMK')">
-
-<div class="picon">🎵</div>
-<b>TikTok • Follower 5,000</b>
-<div class="price">75,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="tiktok" data-s="tiktok views 1000 600"
-onclick="pick('TikTok','TikTok - Views 1,000 - 600 MMK')">
-
-<div class="picon">👁️</div>
-<b>TikTok • Views 1,000</b>
-<div class="price">600 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="tiktok" data-s="tiktok views 5000 3000"
-onclick="pick('TikTok','TikTok - Views 5,000 - 3,000 MMK')">
-
-<div class="picon">👁️</div>
-<b>TikTok • Views 5,000</b>
-<div class="price">3,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="tiktok" data-s="tiktok views 10000 6000"
-onclick="pick('TikTok','TikTok - Views 10,000 - 6,000 MMK')">
-
-<div class="picon">👁️</div>
-<b>TikTok • Views 10,000</b>
-<div class="price">6,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-
-<!-- YOUTUBE -->
-
-<button class="pack" data-game="youtube" data-s="youtube subscribe 100 32000"
-onclick="pick('YouTube','YouTube - Subscribe 100 - 32,000 MMK')">
-
-<div class="picon">▶️</div>
-<b>YouTube • Subscribe 100</b>
-<div class="price">32,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="youtube" data-s="youtube subscribe 1000 320000"
-onclick="pick('YouTube','YouTube - Subscribe 1,000 - 320,000 MMK')">
-
-<div class="picon">▶️</div>
-<b>YouTube • Subscribe 1,000</b>
-<div class="price">320,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="youtube" data-s="youtube like 100 500"
-onclick="pick('YouTube','YouTube - Like 100 - 500 MMK')">
-
-<div class="picon">👍</div>
-<b>YouTube • Like 100</b>
-<div class="price">500 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="youtube" data-s="youtube like 1000 5000"
-onclick="pick('YouTube','YouTube - Like 1,000 - 5,000 MMK')">
-
-<div class="picon">👍</div>
-<b>YouTube • Like 1,000</b>
-<div class="price">5,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="youtube" data-s="youtube like 10000 50000"
-onclick="pick('YouTube','YouTube - Like 10,000 - 50,000 MMK')">
-
-<div class="picon">👍</div>
-<b>YouTube • Like 10,000</b>
-<div class="price">50,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="youtube" data-s="youtube view 100 1200"
-onclick="pick('YouTube','YouTube - View 100 - 1,200 MMK')">
-
-<div class="picon">👁️</div>
-<b>YouTube • View 100</b>
-<div class="price">1,200 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="youtube" data-s="youtube view 1000 12000"
-onclick="pick('YouTube','YouTube - View 1,000 - 12,000 MMK')">
-
-<div class="picon">👁️</div>
-<b>YouTube • View 1,000</b>
-<div class="price">12,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-<button class="pack" data-game="youtube" data-s="youtube view 10000 120000"
-onclick="pick('YouTube','YouTube - View 10,000 - 120,000 MMK')">
-
-<div class="picon">👁️</div>
-<b>YouTube • View 10,000</b>
-<div class="price">120,000 MMK</div>
-<div class="buy">ဝယ်မယ် ›</div>
-
-</button>
-
-</div>
 </section>
 
 
-<!-- ORDER -->
+<section class="section">
 
-<section id="order">
+  <div class="features">
 
-<div class="head">
+    <div class="feature">
+      <div class="feature-icon">⚡</div>
+      <h3>Instant Delivery</h3>
+      <p>ငွေပေးချေပြီးတာနဲ့ မြန်မြန်ပို့ပေးမယ်</p>
+    </div>
 
-<div>
+    <div class="feature">
+      <div class="feature-icon">🛡️</div>
+      <h3>100% Safe</h3>
+      <p>လုံခြုံစိတ်ချစွာ ဝယ်ယူနိုင်ပါတယ်</p>
+    </div>
 
-<div class="green">
-<b>FAST • SAFE • TELEGRAM</b>
+    <div class="feature">
+      <div class="feature-icon">🏷️</div>
+      <h3>Best Price</h3>
+      <p>ဈေးနှုန်းသင့်တင့်စွာ ရောင်းချပေးပါတယ်</p>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">🎧</div>
+      <h3>24/7 Support</h3>
+      <p>အချိန်မရွေး ဆက်သွယ်မေးမြန်းနိုင်ပါတယ်</p>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="games">
+
+  <div class="section-title">
+    <h2>🎮 Choose Your Game</h2>
+    <p>Game ရွေးပြီး Package ဝယ်ယူပါ</p>
+  </div>
+
+  <div class="games">
+
+    <div class="game">
+      <div class="game-icon-big">⚔️</div>
+
+      <div>
+        <h3>Mobile Legends</h3>
+        <p>MLBB Diamonds</p>
+        <a href="#mlbb" class="btn">View Packages</a>
+      </div>
+    </div>
+
+    <div class="game">
+      <div class="game-icon-big">🔫</div>
+
+      <div>
+        <h3>PUBG Mobile</h3>
+        <p>PUBG UC</p>
+        <a href="#pubg" class="btn">View Packages</a>
+      </div>
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="mlbb">
+
+  <div class="section-title">
+    <h2>⚔️ MLBB Diamonds</h2>
+    <p>Mobile Legends Packages</p>
+  </div>
+
+  <div class="packages">
+
+    <div class="packages">
+
+  <div class="package">
+    <h3>86 Diamonds</h3>
+    <div class="price">5,600 MMK</div>
+    <button class="btn" onclick="selectPackage('MLBB - 86 Diamonds','5,600 MMK')">
+      ဝယ်မယ်
+    </button>
+  </div>
+
+  <div class="package">
+    <span class="hot">POPULAR</span>
+    <h3>172 Diamonds</h3>
+    <div class="price">11,000 MMK</div>
+    <button class="btn" onclick="selectPackage('MLBB - 172 Diamonds','11,000 MMK')">
+      ဝယ်မယ်
+    </button>
+  </div>
+
+  <div class="package">
+    <h3>257 Diamonds</h3>
+    <div class="price">16,500 MMK</div>
+    <button class="btn" onclick="selectPackage('MLBB - 257 Diamonds','16,500 MMK')">
+      ဝယ်မယ်
+    </button>
+  </div>
+
+  <div class="package">
+    <h3>343 Diamonds</h3>
+    <div class="price">21,200 MMK</div>
+    <button class="btn" onclick="selectPackage('MLBB - 343 Diamonds','21,200 MMK')">
+      ဝယ်မယ်
+    </button>
+  </div>
+
+  <div class="package">
+    <h3>429 Diamonds</h3>
+    <div class="price">27,000 MMK</div>
+    <button class="btn" onclick="selectPackage('MLBB - 429 Diamonds','27,000 MMK')">
+      ဝယ်မယ်
+    </button>
+  </div>
+
+  <div class="package">
+    <h3>515 Diamonds</h3>
+    <div class="price">31,800 MMK</div>
+    <button class="btn" onclick="selectPackage('MLBB - 515 Diamonds','31,800 MMK')">
+      ဝယ်မယ်
+    </button>
+  </div>
+
+  <div class="package">
+    <h3>706 Diamonds</h3>
+    <div class="price">42,000 MMK</div>
+    <button class="btn" onclick="selectPackage('MLBB - 706 Diamonds','42,000 MMK')">
+      ဝယ်မယ်
+    </button>
+  </div>
+
+  <div class="package">
+    <h3>878 Diamonds</h3>
+    <div class="price">53,000 MMK</div>
+    <button class="btn" onclick="selectPackage('MLBB - 878 Diamonds','53,000 MMK')">
+      ဝယ်မယ်
+    </button>
+  </div>
+
+  <div class="package">
+    <h3>963 Diamonds</h3>
+    <div class="price">58,000 MMK</div>
+    <button class="btn" onclick="selectPackage('MLBB - 963 Diamonds','58,000 MMK')">
+      ဝယ်မယ်
+    </button>
+  </div>
+
+  <div class="package">
+    <span class="hot">HOT</span>
+    <h3>Weekly Pass</h3>
+    <div class="price">6,800 MMK</div>
+    <button class="btn" onclick="selectPackage('MLBB - Weekly Pass','6,800 MMK')">
+      ဝယ်မယ်
+    </button>
+  </div>
+
+    </div>
+      
+    </div>
+
+  </div>
+
+</section>
+
+
+<section class="section" id="pubg">
+
+  <div class="section-title">
+    <h2>🔫 PUBG UC</h2>
+    <p>PUBG Mobile UC Packages</p>
+  </div>
+
+  <div class="packages">
+
+    <div class="package">
+      <h3>60 UC</h3>
+      <div class="price">6,300 MMK</div>
+      <button class="btn" onclick="selectPackage('PUBG - 60 UC','6,300 MMK')">
+        ဝယ်မယ်
+      </button>
+    </div>
+
+    <div class="package">
+      <span class="hot">POPULAR</span>
+      <h3>328 UC</h3>
+      <div class="price">25,000 MMK</div>
+      <button class="btn" onclick="selectPackage('PUBG - 328 UC','25,000 MMK')">
+        ဝယ်မယ်
+      </button>
+    </div>
+
+    <div class="package">
+      <h3>660 UC</h3>
+      <div class="price">42,000 MMK</div>
+      <button class="btn" onclick="selectPackage('PUBG - 660 UC','42,000 MMK')">
+        ဝယ်မယ်
+      </button>
+    </div>
+
+    <div class="package">
+      <h3>1800 UC</h3>
+      <div class="price">101,000 MMK</div>
+      <button class="btn" onclick="selectPackage('PUBG - 1800 UC','101,000 MMK')">
+        ဝယ်မယ်
+      </button>
+    </div>
+<div class="package">
+    <h3>3850 UC</h3>
+    <div class="price">200,000 MMK</div>
+    <button class="btn" onclick="selectPackage('PUBG - 3850 UC','200,000 MMK')">
+        ဝယ်မည်
+    </button>
 </div>
 
-<h2>🛒 ORDER NOW</h2>
-
-<small>Form ဖြည့်ပြီး Send Order နှိပ်ပါ</small>
-
+<div class="package">
+    <h3>Elite Lv 1-50</h3>
+    <div class="price">24,000 MMK</div>
+    <button class="btn" onclick="selectPackage('PUBG - Elite Lv 1-50','24,000 MMK')">
+        ဝယ်မည်
+    </button>
 </div>
 
+<div class="package">
+    <h3>Elite Lv 1-100</h3>
+    <div class="price">49,000 MMK</div>
+    <button class="btn" onclick="selectPackage('PUBG - Elite Lv 1-100','49,000 MMK')">
+        ဝယ်မည်
+    </button>
 </div>
+  </div>
 
-<div class="order">
-
-<form onsubmit="submitOrder(event)">
-
-<!-- PAYMENT -->
-
-<div style="
-background:#102315;
-border:1px solid #3b7d3c;
-border-radius:14px;
-padding:15px;
-margin-bottom:15px;
-text-align:center">
-
-<div style="
-color:#6cff35;
-font-weight:900;
-font-size:17px;
-margin-bottom:8px">
-
-💳 ငွေလွှဲရန်
-
-</div>
-
-<div style="margin:6px 0">
-🟢 KPay — <b>09662222753</b>
-</div>
-
-<div style="margin:6px 0">
-🔵 WavePay — <b>09662222753</b>
-</div>
-
-<small>
-ငွေလွှဲပြီးမှ Order တင်ပေးပါ။
-</small>
-
-</div>
+</section>
 
 
-<!-- ADMIN -->
+<section class="section" id="order">
 
-<a
-href="https://t.me/YeYint690"
-target="_blank"
-class="btn primary admin">
+  <div class="section-title">
+    <h2>🛒 Order Form</h2>
+    <p>အချက်အလက်ဖြည့်ပြီး Order တင်ပါ</p>
+  </div>
 
-👤 Admin ကို ဆက်သွယ်ရန်
+  <div class="order-box">
 
-</a>
+    <form onsubmit="submitOrder(event)">
 
+      <div class="form-group">
+        <label>🎮 Game</label>
 
-<!-- GAME -->
-
-<div class="row">
-
-<label>🎮 Game / Service</label>
-
-<select id="game" required>
-
-<option value="">Game / Service ရွေးပါ</option>
-
-<option>Mobile Legends</option>
-<option>PUBG Mobile</option>
-<option>Honor of Kings</option>
-<option>TikTok</option>
-<option>YouTube</option>
-
-</select>
-
-</div>
+        <select id="game" required>
+          <option value="">Game ရွေးပါ</option>
+          <option>Mobile Legends</option>
+          <option>PUBG Mobile</option>
+        </select>
+      </div>
 
 
-<!-- PACKAGE -->
+      <div class="form-group">
+        <label>📦 Package</label>
 
-<div class="row">
-
-<label>📦 Package</label>
-
-<select id="package" required>
-
-<option value="">Package ရွေးပါ</option>
-
-<!-- MLBB -->
-
+        <select id="package" required>
+          <option value="">Package ရွေးပါ</option>
 <option>MLBB - 86 Diamonds - 5,600 MMK</option>
 <option>MLBB - 172 Diamonds - 11,000 MMK</option>
 <option>MLBB - 257 Diamonds - 16,500 MMK</option>
@@ -964,12 +870,6 @@ class="btn primary admin">
 <option>MLBB - 878 Diamonds - 53,000 MMK</option>
 <option>MLBB - 963 Diamonds - 58,000 MMK</option>
 <option>MLBB - Weekly Pass - 6,800 MMK</option>
-<option>MLBB 2X - 50+50 Diamonds - 3,500 MMK</option>
-<option>MLBB 2X - 150+150 Diamonds - 10,600 MMK</option>
-<option>MLBB 2X - 250+250 Diamonds - 17,000 MMK</option>
-<option>MLBB 2X - 500+500 Diamonds - 34,000 MMK</option>
-
-<!-- PUBG -->
 
 <option>PUBG - 60 UC - 6,300 MMK</option>
 <option>PUBG - 328 UC - 25,000 MMK</option>
@@ -979,480 +879,179 @@ class="btn primary admin">
 <option>PUBG - Elite Lv 1-50 - 24,000 MMK</option>
 <option>PUBG - Elite Lv 1-100 - 49,000 MMK</option>
 
-<!-- HOK -->
-
-<option>HOK - 16 Tokens - 1,000 MMK</option>
-<option>HOK - Weekly Card Plus - 14,000 MMK</option>
-<option>HOK - Weekly Card - 5,000 MMK</option>
-<option>HOK - 80 Tokens - 4,200 MMK</option>
-<option>HOK - 240 Tokens - 15,000 MMK</option>
-<option>HOK - 400 Tokens - 22,000 MMK</option>
-<option>HOK - 560 Tokens - 28,500 MMK</option>
-<option>HOK - 830 Tokens - 41,000 MMK</option>
-<option>HOK - 1245 Tokens - 61,000 MMK</option>
-
-<!-- TIKTOK -->
-
-<option>TikTok - Follower 100 - 1,600 MMK</option>
-<option>TikTok - Follower 1,000 - 16,000 MMK</option>
-<option>TikTok - Follower 5,000 - 75,000 MMK</option>
-<option>TikTok - Views 1,000 - 600 MMK</option>
-<option>TikTok - Views 5,000 - 3,000 MMK</option>
-<option>TikTok - Views 10,000 - 6,000 MMK</option>
-
-<!-- YOUTUBE -->
-
-<option>YouTube - Subscribe 100 - 32,000 MMK</option>
-<option>YouTube - Subscribe 1,000 - 320,000 MMK</option>
-<option>YouTube - Like 100 - 500 MMK</option>
-<option>YouTube - Like 1,000 - 5,000 MMK</option>
-<option>YouTube - Like 10,000 - 50,000 MMK</option>
-<option>YouTube - View 100 - 1,200 MMK</option>
-<option>YouTube - View 1,000 - 12,000 MMK</option>
-<option>YouTube - View 10,000 - 120,000 MMK</option>
-
-</select>
-
-</div>
+        </select>
+      </div>
 
 
-<!-- ACCOUNT -->
-
-<div class="account-title">
-
-<div class="green">
-<b>ACCOUNT INFO</b>
-</div>
-
-<h3>👤 Account Info</h3>
-
-</div>
+      <div class="form-group">
+        <label>🆔 Player ID</label>
+        <input
+          type="text"
+          id="playerId"
+          placeholder="Player ID ထည့်ပါ"
+          required>
+      </div>
 
 
-<div class="account-row">
+      <div class="form-group">
+        <label>🌐 Server ID / Zone</label>
+        <input
+          type="text"
+          id="serverId"
+          placeholder="Server ID / Zone ထည့်ပါ"
+          required>
+      </div>
 
-<div class="row">
 
-<label>🎮 Tiktok Vidoe Link</label>
+      <div class="form-group">
+        <label>📱 Phone Number</label>
+        <input
+          type="tel"
+          id="phone"
+          placeholder="09xxxxxxxxx"
+          required>
+      </div>
 
-<input
-id="playerId"
-required
-placeholder="Video Link ထည့်ပါ">
-<div class="account-row">
 
-<div class="account-row">
-  <div class="row">
-    <label>🎮 Game ID</label>
-    <input
-      id="playerId"
-      type="text"
-      placeholder="Game ID ထည့်ပါ"
-      required>
+      <button class="btn submit" type="submit">
+        🚀 Order တင်မယ်
+      </button>
+
+    </form>
+
   </div>
-
-  <div class="row">
-    <label>🌐 Server ID</label>
-    <input
-      id="serverId"
-      type="text"
-      placeholder="Server ID ထည့်ပါ"
-      required>
-  </div>
-
-</div>
-
-</div>
-
-
-<!-- QUANTITY -->
-
-<div class="row">
-
-<label>📦 ပမာဏ / အကြိမ်ရေ</label>
-
-<div class="qty">
-
-<button
-type="button"
-onclick="changeQty(-1)">−</button>
-
-<input
-id="qty"
-type="number"
-min="1"
-max="99"
-value="1"
-required>
-
-<button
-type="button"
-onclick="changeQty(1)">+</button>
-
-</div>
-
-<div id="total" class="total">
-စုစုပေါင်း: Package ရွေးပါ
-</div>
-
-</div>
-
-
-<!-- PHONE -->
-
-<div class="row">
-
-<label>📱 Ph No.</label>
-
-<input
-id="phone"
-type="tel"
-required
-<label>👤 ငွေလွှဲသူအမည်</label>
-<input id="phone" type="text" placeholder="ငွေလွှဲသူအမည် ထည့်ပါ" required>
-<div class="row">
-  <label>🧾 ငွေလွှဲလုပ်ငန်းစဉ်အမှတ် (နောက်ဆုံး ၆ လုံး)</label>
-  <input
-    id="transactionId"
-    type="text"
-    placeholder="နောက်ဆုံး ၆ လုံး ထည့်ပါ"
-    maxlength="6"
-    minlength="6"
-    pattern="[A-Za-z0-9]{6}"
-    required>
-</div>
-</div>
-
-
-<label class="confirm">
-
-<input
-id="confirmInfo"
-type="checkbox"
-required>
-
-<span>
-Game ID / Link နှင့် Server ID အချက်အလက်များ မှန်ကန်ကြောင်း စစ်ဆေးပြီးပါပြီ။
-</span>
-
-</label>
-
-
-<button
-class="btn primary submit"
-type="submit">
-
-✈ CONFIRM ORDER
-
-</button>
-
-</form>
-
-
-<div class="note">
-
-Order တင်ပြီးရင် Admin ဆီ Telegram မှာ Order ရောက်ပါမယ်။
-တစုံတရာပြဿနာရှိပါက Admin ဆီ ဆက်သွယ်ပါ။
-
-</div>
-
-</div>
 
 </section>
 
-</main>
+
+<section class="section" id="payment">
+
+  <div class="section-title">
+    <h2>💳 Payment</h2>
+    <p>အောက်ပါ Payment Account များသို့ ငွေလွှဲနိုင်ပါတယ်</p>
+  </div>
+
+  <div class="payment">
+
+    <div class="pay-card">
+      <h3>💙 KPay</h3>
+      <p>
+        Account Number<br>
+        <strong>09XXXXXXXXX</strong><br><br>
+        Account Name<br>
+        <strong>Ye Yint</strong>
+      </p>
+    </div>
+
+    <div class="pay-card">
+      <h3>💜 WavePay</h3>
+      <p>
+        Account Number<br>
+        <strong>09XXXXXXXXX</strong><br><br>
+        Account Name<br>
+        <strong>Ye Yint</strong>
+      </p>
+    </div>
+
+  </div>
+
+</section>
 
 
-<footer
-class="wrap"
-style="text-align:center;color:#68756c;padding:20px 0">
-
-© 2026 Y2 Game Shop
-
+<footer>
+  <p>
+    © 2026 <strong>Ye Yint Game Shop</strong>
+  </p>
+  <p>MLBB • PUBG • Game Top Up</p>
 </footer>
 
 
-<nav class="bottom">
+<!-- POPUP -->
+<div class="popup-bg" id="popup">
 
-<a href="#home">
-<span>⌂</span>HOME
-</a>
+  <div class="popup">
 
-<a href="#games">
-<span>🎮</span>GAMES
-</a>
+    <h2>🎮 Package ရွေးပြီးပါပြီ</h2>
 
-<a href="#packs">
-<span>🛒</span>SHOP
-</a>
+    <p id="popupText"></p>
 
-<a href="#order">
-<span>📋</span>ORDERS
-</a>
+    <button class="btn" onclick="closePopup()">
+      🛒 Order ဆက်တင်မယ်
+    </button>
 
-<a href="#order">
-<span>👤</span>ACCOUNT
-</a>
+  </div>
 
-</nav>
-
-<div id="msg"></div>
+</div>
 
 
 <script>
 
-function showGame(type){
+function selectPackage(name,price){
 
-document.getElementById('search').value='';
+  document.getElementById("popupText").innerHTML =
+    "<strong>"+name+"</strong><br><br>Price: "+price;
 
-document.querySelectorAll('.pack').forEach(x=>{
+  document.getElementById("popup").style.display="flex";
 
-x.style.display=
-x.dataset.game===type?'block':'none';
+  document.getElementById("package").value =
+    name+" - "+price;
+}
 
-});
 
-document.getElementById('packs')
-.scrollIntoView({behavior:'smooth'});
+function closePopup(){
 
-let names={
+  document.getElementById("popup").style.display="none";
 
-mlbb:'💎 Mobile Legends Diamonds',
-
-pubg:'🪙 PUBG UC',
-
-hok:'👑 Honor of Kings Tokens',
-
-tiktok:'🎵 TikTok Service',
-
-youtube:'▶️ YouTube Service'
-
-};
-
-toast(names[type]||'📦 Package');
+  document.getElementById("order").scrollIntoView({
+    behavior:"smooth"
+  });
 
 }
 
 
-function pick(gameName,packName){
-
-document.getElementById('game').value=gameName;
-
-document.getElementById('package').value=packName;
-
-document.getElementById('qty').value=1;
-
-updateTotal();
-
-document.getElementById('order')
-.scrollIntoView({behavior:'smooth'});
-
-toast('✅ Package ရွေးပြီးပါပြီ');
-
-}
-
-
-function filterPacks(){
-
-let q=
-document.getElementById('search')
-.value
-.toLowerCase();
-
-document.querySelectorAll('.pack')
-.forEach(x=>{
-
-x.style.display=
-x.dataset.s.includes(q)
-?'block'
-:'none';
-
-});
-
-}
-
-
-function getPrice(){
-
-let v=
-document.getElementById('package').value;
-
-let m=
-v.match(/([\d,]+) MMK$/);
-
-return m
-?Number(m[1].replace(/,/g,''))
-:0;
-
-}
-
-
-function updateTotal(){
-
-let qty=
-Math.max(
-1,
-Math.min(
-99,
-Number(document.getElementById('qty').value)||1
-)
-);
-
-document.getElementById('qty').value=qty;
-
-let price=getPrice();
-
-document.getElementById('total').textContent=
-
-price
-?'စုစုပေါင်း: '+(price*qty).toLocaleString()+' MMK'
-:'စုစုပေါင်း: Package ရွေးပါ';
-
-}
-
-
-function changeQty(n){
-
-document.getElementById('qty').value=
-
-Math.max(
-1,
-Math.min(
-99,
-(Number(document.getElementById('qty').value)||1)+n
-)
-);
-
-updateTotal();
-
-}
-
-
-document
-.getElementById('package')
-.addEventListener('change',updateTotal);
-
-document
-.getElementById('qty')
-.addEventListener('input',updateTotal);
-
-
-function toast(t){
-
-let x=
-document.getElementById('msg');
-
-x.textContent=t;
-
-x.style.display='block';
-
-setTimeout(
-()=>{
-x.style.display='none'
-},
-2200
-);
-
-}
-
-
-/* Default MLBB */
-
-showGame('mlbb');
-
-
-/* TELEGRAM ORDER */
-
-async function submitOrder(e){
-
-e.preventDefault();
-
-let b=
-e.target.querySelector('button[type="submit"]');
-
-b.disabled=true;
-
-b.textContent='⏳ SENDING...';
-
-
-try{
-
-let data={
-
-game:
-document.getElementById('game').value,
-
-package:
-document.getElementById('package').value,
-
-playerId:
-document.getElementById('playerId').value.trim(),
-
-serverId:
-document.getElementById('serverId').value.trim(),
-
-phone:
-document.getElementById('phone').value.trim(),
-
-quantity:
-Number(document.getElementById('qty').value)||1
-
-};
-
-
-let r=await fetch(
-
-'https://ye-yint-game-shop.yye224288.workers.dev/api/order',
-
-{
-
-method:'POST',
-
-headers:{
-'Content-Type':'application/json'
-},
-
-body:JSON.stringify(data)
-
-}
-
-);
-
-
-let j=
-await r.json().catch(()=>({}));
-
-
-if(!r.ok || !j.ok){
-
-throw Error(
-j.error||'Order ပို့ရပါသည်'
-);
-
-}
-
-
-toast(
-'✅ Order တင်ပြီး Telegram သို့ ပို့ပြီးပါပြီ'
-);
-
-e.target.reset();
-
-document.getElementById('total').textContent=
-'စုစုပေါင်း: Package ရွေးပါ';
-
-
-}catch(err){
-
-toast('❌ '+err.message);
-
-}finally{
-
-b.disabled=false;
-
-b.textContent='✈ CONFIRM ORDER';
-
-}
+async function submitOrder(event){
+
+  event.preventDefault();
+
+  const game = document.getElementById("game").value;
+  const pack = document.getElementById("package").value;
+  const player = document.getElementById("playerId").value.trim();
+  const server = document.getElementById("serverId").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const button = event.target.querySelector('button[type="submit"]');
+
+  button.disabled = true;
+  button.textContent = "⏳ Order ပို့နေပါတယ်...";
+
+  try {
+    const response = await fetch("/api/order", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ game, package: pack, playerId: player, serverId: server, phone })
+    });
+
+    const result = await response.json().catch(() => ({}));
+
+    if (!response.ok || !result.ok) {
+      throw new Error(result.error || "Order ပို့မရပါ");
+    }
+
+    alert(
+      "✅ Order တင်ပြီးပါပြီ!\n\n" +
+      "Game: " + game + "\n" +
+      "Package: " + pack + "\n" +
+      "Player ID: " + player + "\n" +
+      "Server: " + server + "\n" +
+      "Phone: " + phone +
+      "\n\nAdmin မှ Order ရရှိပါပြီ။"
+    );
+    event.target.reset();
+  } catch (error) {
+    alert("❌ Order ပို့မရသေးပါ။\n\n" + error.message);
+  } finally {
+    button.disabled = false;
+    button.textContent = "🚀 Order တင်မယ်";
+  }
 
 }
 
