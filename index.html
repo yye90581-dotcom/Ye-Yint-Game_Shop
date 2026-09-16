@@ -1290,17 +1290,25 @@ class="btn primary admin">
 
 <label>🎮 Game ID / Link</label>
 
-<input
-id="playerId"
-required
-placeholder="Game ID သို့မဟုတ် Link ထည့်ပါ">
-
+<label id="playerIdLabel">🎮 Game ID</label>
+<input id="playerId" type="text" placeholder="Game ID ထည့်ပါ" required>
 </div>
 
 <div class="row">
 
 <label>🌐 Server ID</label>
+document.getElementById('game').addEventListener('change', function () {
+  const label = document.getElementById('playerIdLabel');
+  const input = document.getElementById('playerId');
 
+  if (this.value === 'TikTok') {
+    label.textContent = '👤 User ID';
+    input.placeholder = 'TikTok User ID ထည့်ပါ';
+  } else {
+    label.textContent = '🎮 Game ID';
+    input.placeholder = 'Game ID ထည့်ပါ';
+  }
+});
 <input
 id="serverId"
 placeholder="Game ဖြစ်ရင် Server ID">
