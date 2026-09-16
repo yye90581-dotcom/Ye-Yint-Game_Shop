@@ -5,230 +5,1918 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="theme-color" content="#07140e">
 <title>Y2 GAME SHOP</title>
+
 <style>
-:root{--bg:#06110c;--panel:#0b1d14;--panel2:#10281b;--line:#1d5b3a;--green:#00f58a;--green2:#00c96f;--text:#f3fff8;--muted:#91a79b}
-*{box-sizing:border-box}html{scroll-behavior:smooth}
-body{margin:0;background:radial-gradient(circle at 20% 0%,rgba(0,245,138,.08),transparent 30%),var(--bg);color:var(--text);font-family:Arial,"Noto Sans Myanmar",sans-serif}
-a{text-decoration:none;color:inherit}.container{width:min(1100px,100%);margin:auto;padding:0 16px}
-header{position:sticky;top:0;z-index:20;background:rgba(6,17,12,.94);backdrop-filter:blur(12px);border-bottom:1px solid rgba(0,245,138,.12)}
-.nav{min-height:64px;display:flex;align-items:center;justify-content:space-between;gap:14px}.brand{display:flex;align-items:center;gap:10px;font-weight:900;font-size:20px;color:var(--green)}.brand-logo{width:40px;height:40px;display:grid;place-items:center;border-radius:12px;background:#0c3824;border:1px solid var(--line)}
-.nav-links{display:flex;gap:8px}.nav-links a{padding:9px 12px;border-radius:10px;color:#cce3d7;font-size:14px}.nav-links a:hover{background:#102a1d;color:var(--green)}
-.hero{padding:54px 0 32px}.hero-box{border:1px solid var(--line);border-radius:24px;padding:34px 22px;text-align:center;background:linear-gradient(145deg,rgba(16,40,27,.96),rgba(7,20,14,.96));box-shadow:0 18px 55px rgba(0,0,0,.25)}
-.badge{display:inline-block;padding:7px 12px;border-radius:999px;background:#0e3322;border:1px solid #1c6540;color:var(--green);font-size:13px;font-weight:800}.hero h1{margin:15px 0 8px;font-size:clamp(32px,7vw,58px);line-height:1}.hero h1 span{color:var(--green)}.hero p{margin:0 auto;max-width:650px;color:var(--muted);line-height:1.7}.hero-actions{display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:22px}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border:0;border-radius:12px;padding:13px 17px;font-weight:900;cursor:pointer;transition:.2s}.btn:hover{transform:translateY(-1px)}.btn.primary{background:linear-gradient(135deg,var(--green),var(--green2));color:#00170c}.btn.secondary{background:#123923;color:#eafff2;border:1px solid #245e3e}.btn:disabled{opacity:.65;cursor:not-allowed;transform:none}
-.section{padding:24px 0}.section-title{display:flex;align-items:end;justify-content:space-between;gap:10px;margin-bottom:14px}.section-title h2{margin:0;font-size:24px}.section-title p{margin:0;color:var(--muted);font-size:13px}
-.quick-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.quick-card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:16px}.quick-icon{font-size:27px}.quick-card b{display:block;margin-top:8px}.quick-card small{color:var(--muted)}
-.games-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.game-card{position:relative;min-height:190px;padding:15px;border-radius:18px;background:linear-gradient(145deg,#102a1d,#09170f);border:1px solid var(--line);cursor:pointer;transition:.2s;display:flex;flex-direction:column;align-items:center;text-align:center}.game-card:hover{transform:translateY(-3px);border-color:var(--green2)}
-.game-logo{width:68px;height:68px;display:grid;place-items:center;border-radius:17px;background:#07140e;border:1px solid #235f40;font-size:36px;margin-bottom:10px}.game-card b{font-size:14px}.game-card small{display:block;color:var(--muted);margin-top:5px}.game-buy{width:100%;margin-top:auto}.coming{position:absolute;top:10px;right:10px;padding:4px 7px;border-radius:7px;background:#292515;color:#ffd36a;font-size:10px;font-weight:900}
-.pack-toolbar{display:flex;gap:10px;margin-bottom:14px}.pack-toolbar input{flex:1}
-/* Package cards: square cards with game image */
-.pack-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px}.pack{background:var(--panel);border:1px solid var(--line);border-radius:15px;padding:12px}
-.pack-grid .pack{display:flex;flex-direction:column;align-items:center;justify-content:space-between;text-align:center;box-sizing:border-box;aspect-ratio:1/1;min-height:0;padding:12px;gap:7px;overflow:hidden}.pack-game-image{width:64px;height:64px;min-width:64px;min-height:64px;display:flex;align-items:center;justify-content:center;overflow:hidden;flex:0 0 64px;margin:0 auto 2px;padding:0;border:1px solid #285f43;border-radius:14px;background:#07140e}.pack-game-image svg{display:block;width:100%;height:100%;max-width:100%;max-height:100%}
-.pack-grid .pack-name{display:flex;align-items:center;justify-content:center;min-height:34px;margin:0;font-size:14px;line-height:1.25}.pack-grid .pack .price{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px;margin:0;padding:5px 7px;min-height:38px;border:1px solid #285f43;border-radius:10px;background:#0b2116;color:var(--green)}.pack-grid .price-label{display:block;color:var(--muted);font-size:10px}.pack-grid .price strong{font-size:15px;line-height:1.15;color:var(--green)}.pack-grid .pack .btn{width:100%;min-width:0;margin:0;padding:9px 5px;font-size:12px}
-.form-card{background:linear-gradient(145deg,#0d2418,#09170f);border:1px solid var(--line);border-radius:20px;padding:20px}label{display:block;margin:13px 0 7px;font-weight:800}input,select{width:100%;min-height:46px;border:1px solid #2a6746;border-radius:11px;padding:11px 13px;background:#07150e;color:#fff;outline:none;font-size:15px}input::placeholder{color:#6f897a}input:focus,select:focus{border-color:var(--green);box-shadow:0 0 0 3px rgba(0,245,138,.08)}select option{background:#0b1d14;color:#fff}.account-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field-help{margin-top:6px;color:var(--muted);font-size:12px}.total{margin:18px 0 4px;padding:14px;border-radius:12px;text-align:center;background:#092017;border:1px solid #1c5437;color:var(--green);font-size:20px;font-weight:900}
-#tiktokArea,#youtubeArea{display:none}.notice{padding:13px;border-left:4px solid var(--green);border-radius:9px;background:#0d281b;color:#d7e9df;line-height:1.7}.payment-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.pay{padding:15px;border-radius:14px;background:#0b2116;border:1px solid var(--line)}.pay strong{color:var(--green);display:block;margin-bottom:5px}footer{padding:35px 0 90px;text-align:center;color:var(--muted);font-size:13px}
-.bottom-nav{position:fixed;left:50%;bottom:10px;transform:translateX(-50%);z-index:30;width:min(480px,calc(100% - 20px));display:flex;justify-content:space-around;padding:9px;background:rgba(10,28,19,.94);backdrop-filter:blur(12px);border:1px solid #245d3d;border-radius:17px;box-shadow:0 12px 35px rgba(0,0,0,.35)}.bottom-nav a{color:#a9c0b3;font-size:12px;text-align:center}.bottom-nav span{display:block;font-size:19px;margin-bottom:2px}
-.toast{position:fixed;left:50%;bottom:78px;transform:translate(-50%,20px);opacity:0;pointer-events:none;z-index:50;background:#102b1d;border:1px solid #2c704a;color:#fff;padding:12px 16px;border-radius:12px;transition:.25s;width:max-content;max-width:90%;text-align:center}.toast.show{opacity:1;transform:translate(-50%,0)}
-/* Quantity control */
-.qty-control{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:280px;height:62px;padding:6px;margin:10px 0 0;background:linear-gradient(135deg,#06110b,#0d2417);border:1px solid var(--green);border-radius:20px;box-shadow:0 0 0 2px rgba(0,245,138,.08),0 10px 28px rgba(0,0,0,.28);overflow:visible}.qty-control .qty-btn{width:50px;height:50px;flex:0 0 50px;border:1px solid #1c6f4b;border-radius:16px;background:#0b2b1b;color:var(--green);font-size:30px;font-weight:800;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.18s}.qty-control .qty-btn:hover{background:#12442a;box-shadow:0 0 14px rgba(0,245,138,.25);transform:translateY(-1px)}.qty-control .qty-btn:active{transform:scale(.94)}.qty-control #qty{width:80px;flex:0 0 80px;height:50px;margin:0;padding:0;background:#020805;border:1px solid #183e2b;border-radius:15px;color:#fff;text-align:center;font-size:24px;font-weight:900;box-shadow:inset 0 0 12px rgba(0,0,0,.35);-moz-appearance:textfield}.qty-control #qty::-webkit-inner-spin-button,.qty-control #qty::-webkit-outer-spin-button{display:none}
-@media(max-width:900px){.games-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-grid{grid-template-columns:repeat(2,1fr)}.pack-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
-@media(max-width:600px){.container{padding:0 11px}.nav-links{display:none}.hero{padding-top:28px}.hero-box{padding:27px 15px}.games-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pack-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.pack-grid .pack{padding:9px;gap:6px}.pack-game-image{width:58px;height:58px;min-width:58px;min-height:58px;flex-basis:58px}.pack-grid .pack-name{font-size:13px;min-height:32px}.pack-grid .price{padding:4px 6px}.pack-grid .price-label{display:none}.pack-grid .price strong{font-size:14px}.pack-grid .pack .btn{font-size:11px;padding:8px 4px}.account-row{grid-template-columns:1fr}.payment-grid{grid-template-columns:1fr}.pack-toolbar{display:block}.pack-toolbar input{margin-bottom:8px}.section-title{display:block}.section-title p{margin-top:5px}.games-grid .game-card{min-height:180px;padding:12px}.games-grid .game-card .game-logo{width:64px;height:64px;font-size:34px}.qty-control{max-width:none;height:60px;border-radius:19px}.qty-control .qty-btn{width:48px;height:48px;flex-basis:48px}.qty-control #qty{width:76px;flex-basis:76px;height:48px;font-size:23px}}
- .pack-grid .pack{
-  padding:8px !important;
-  gap:5px !important;
-  min-height:145px !important;
-  aspect-ratio:1/1 !important;
+:root{
+  --bg:#06110c;
+  --panel:#0b1d14;
+  --panel2:#10281b;
+  --line:#1d5b3a;
+  --green:#00f58a;
+  --green2:#00c96f;
+  --text:#f3fff8;
+  --muted:#91a79b
 }
-.pack-grid .pack-game-image{
-  width:48px !important;
-  height:48px !important;
-  min-width:48px !important;
-  min-height:48px !important;
+
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+
+body{
+  margin:0;
+  background:radial-gradient(circle at 20% 0%,rgba(0,245,138,.08),transparent 30%),var(--bg);
+  color:var(--text);
+  font-family:Arial,"Noto Sans Myanmar",sans-serif
 }
-.pack-grid .pack-name{
-  font-size:12px !important;
-  min-height:28px !important;
+
+a{text-decoration:none;color:inherit}
+
+.container{
+  width:min(1100px,100%);
+  margin:auto;
+  padding:0 16px
 }
-.pack-grid .pack .price{
-  padding:3px 5px !important;
-  min-height:30px !important;
+
+header{
+  position:sticky;
+  top:0;
+  z-index:20;
+  background:rgba(6,17,12,.94);
+  backdrop-filter:blur(12px);
+  border-bottom:1px solid rgba(0,245,138,.12)
 }
-.pack-grid .pack .btn{
-  width:100% !important;
-  padding:7px 3px !important;
-  font-size:11px !important;
+
+.nav{
+  min-height:64px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:14px
 }
- .top-pay{
+
+.brand{
+  display:flex;
+  align-items:center;
+  gap:10px;
+  font-weight:900;
+  font-size:20px;
+  color:var(--green)
+}
+
+.brand-logo{
+  width:40px;
+  height:40px;
+  display:grid;
+  place-items:center;
+  border-radius:12px;
+  background:#0c3824;
+  border:1px solid var(--line)
+}
+
+.nav-links{
+  display:flex;
+  gap:8px
+}
+
+.nav-links a{
+  padding:9px 12px;
+  border-radius:10px;
+  color:#cce3d7;
+  font-size:14px
+}
+
+.nav-links a:hover{
+  background:#102a1d;
+  color:var(--green)
+}
+
+.hero{padding:54px 0 32px}
+
+.hero-box{
+  border:1px solid var(--line);
+  border-radius:24px;
+  padding:34px 22px;
+  text-align:center;
+  background:linear-gradient(145deg,rgba(16,40,27,.96),rgba(7,20,14,.96));
+  box-shadow:0 18px 55px rgba(0,0,0,.25)
+}
+
+.badge{
+  display:inline-block;
+  padding:7px 12px;
+  border-radius:999px;
+  background:#0e3322;
+  border:1px solid #1c6540;
+  color:var(--green);
+  font-size:13px;
+  font-weight:800
+}
+
+.hero h1{
+  margin:15px 0 8px;
+  font-size:clamp(32px,7vw,58px);
+  line-height:1
+}
+
+.hero h1 span{color:var(--green)}
+
+.hero p{
+  margin:0 auto;
+  max-width:650px;
+  color:var(--muted);
+  line-height:1.7
+}
+
+.hero-actions{
+  display:flex;
+  justify-content:center;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:22px
+}
+
+.btn{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap:8px;
+  border:0;
+  border-radius:12px;
+  padding:13px 17px;
+  font-weight:900;
+  cursor:pointer;
+  transition:.2s
+}
+
+.btn:hover{
+  transform:translateY(-1px)
+}
+
+.btn.primary{
+  background:linear-gradient(135deg,var(--green),var(--green2));
+  color:#00170c
+}
+
+.btn.secondary{
+  background:#123923;
+  color:#eafff2;
+  border:1px solid #245e3e
+}
+
+.btn:disabled{
+  opacity:.65;
+  cursor:not-allowed;
+  transform:none
+}
+
+.top-pay{
   padding:8px 11px;
   font-size:12px;
-  white-space:nowrap;
- }
+  white-space:nowrap
+}
+
+.section{padding:24px 0}
+
+.section-title{
+  display:flex;
+  align-items:end;
+  justify-content:space-between;
+  gap:10px;
+  margin-bottom:14px
+}
+
+.section-title h2{
+  margin:0;
+  font-size:24px
+}
+
+.section-title p{
+  margin:0;
+  color:var(--muted);
+  font-size:13px
+}
+
+.quick-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px
+}
+
+.quick-card{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:16px;
+  padding:16px
+}
+
+.quick-icon{font-size:27px}
+
+.quick-card b{
+  display:block;
+  margin-top:8px
+}
+
+.quick-card small{color:var(--muted)}
+
+.games-grid{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px
+}
+
+.game-card{
+  position:relative;
+  min-height:190px;
+  padding:15px;
+  border-radius:18px;
+  background:linear-gradient(145deg,#102a1d,#09170f);
+  border:1px solid var(--line);
+  cursor:pointer;
+  transition:.2s;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  text-align:center
+}
+
+.game-card:hover{
+  transform:translateY(-3px);
+  border-color:var(--green2)
+}
+
+.game-logo{
+  width:68px;
+  height:68px;
+  display:grid;
+  place-items:center;
+  border-radius:17px;
+  background:#07140e;
+  border:1px solid #235f40;
+  font-size:36px;
+  margin-bottom:10px
+}
+
+.game-card b{font-size:14px}
+
+.game-card small{
+  display:block;
+  color:var(--muted);
+  margin-top:5px
+}
+
+.game-buy{
+  width:100%;
+  margin-top:auto
+}
+
+.coming{
+  position:absolute;
+  top:10px;
+  right:10px;
+  padding:4px 7px;
+  border-radius:7px;
+  background:#292515;
+  color:#ffd36a;
+  font-size:10px;
+  font-weight:900
+}
+
+.pack-toolbar{
+  display:flex;
+  gap:10px;
+  margin-bottom:14px
+}
+
+.pack-toolbar input{flex:1}
+
+.pack-grid{
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:12px
+}
+
+.pack{
+  background:var(--panel);
+  border:1px solid var(--line);
+  border-radius:15px;
+  padding:12px
+}
+
+.pack-grid .pack{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:space-between;
+  text-align:center;
+  box-sizing:border-box;
+  aspect-ratio:1/1;
+  min-height:145px;
+  padding:8px;
+  gap:5px;
+  overflow:hidden
+}
+
+.pack-game-image{
+  width:48px;
+  height:48px;
+  min-width:48px;
+  min-height:48px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  flex:0 0 48px;
+  margin:0 auto 2px;
+  padding:0;
+  border:1px solid #285f43;
+  border-radius:14px;
+  background:#07140e
+}
+
+.pack-game-image svg{
+  display:block;
+  width:100%;
+  height:100%;
+  max-width:100%;
+  max-height:100%
+}
+
+.pack-grid .pack-name{
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-height:28px;
+  margin:0;
+  font-size:12px;
+  line-height:1.25
+}
+
+.pack-grid .pack .price{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:2px;
+  margin:0;
+  padding:3px 5px;
+  min-height:30px;
+  border:1px solid #285f43;
+  border-radius:10px;
+  background:#0b2116;
+  color:var(--green)
+}
+
+.pack-grid .price-label{
+  display:block;
+  color:var(--muted);
+  font-size:10px
+}
+
+.pack-grid .price strong{
+  font-size:15px;
+  line-height:1.15;
+  color:var(--green)
+}
+
+.pack-grid .pack .btn{
+  width:100%;
+  min-width:0;
+  margin:0;
+  padding:7px 3px;
+  font-size:11px
+}
+
+.form-card{
+  background:linear-gradient(145deg,#0d2418,#09170f);
+  border:1px solid var(--line);
+  border-radius:20px;
+  padding:20px
+}
+
+label{
+  display:block;
+  margin:13px 0 7px;
+  font-weight:800
+}
+
+input,select{
+  width:100%;
+  min-height:46px;
+  border:1px solid #2a6746;
+  border-radius:11px;
+  padding:11px 13px;
+  background:#07150e;
+  color:#fff;
+  outline:none;
+  font-size:15px
+}
+
+input::placeholder{color:#6f897a}
+
+input:focus,select:focus{
+  border-color:var(--green);
+  box-shadow:0 0 0 3px rgba(0,245,138,.08)
+}
+
+select option{
+  background:#0b1d14;
+  color:#fff
+}
+
+.account-row{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px
+}
+
+.field-help{
+  margin-top:6px;
+  color:var(--muted);
+  font-size:12px
+}
+
+.total{
+  margin:18px 0 4px;
+  padding:14px;
+  border-radius:12px;
+  text-align:center;
+  background:#092017;
+  border:1px solid #1c5437;
+  color:var(--green);
+  font-size:20px;
+  font-weight:900
+}
+
+#tiktokArea,#youtubeArea{display:none}
+
+.notice{
+  padding:13px;
+  border-left:4px solid var(--green);
+  border-radius:9px;
+  background:#0d281b;
+  color:#d7e9df;
+  line-height:1.7
+}
+
+.payment-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:12px
+}
+
+.pay{
+  padding:15px;
+  border-radius:14px;
+  background:#0b2116;
+  border:1px solid var(--line)
+}
+
+.pay strong{
+  color:var(--green);
+  display:block;
+  margin-bottom:5px
+}
+
+footer{
+  padding:35px 0 90px;
+  text-align:center;
+  color:var(--muted);
+  font-size:13px
+}
+
+.bottom-nav{
+  position:fixed;
+  left:50%;
+  bottom:10px;
+  transform:translateX(-50%);
+  z-index:30;
+  width:min(480px,calc(100% - 20px));
+  display:flex;
+  justify-content:space-around;
+  padding:9px;
+  background:rgba(10,28,19,.94);
+  backdrop-filter:blur(12px);
+  border:1px solid #245d3d;
+  border-radius:17px;
+  box-shadow:0 12px 35px rgba(0,0,0,.35)
+}
+
+.bottom-nav a{
+  color:#a9c0b3;
+  font-size:12px;
+  text-align:center
+}
+
+.bottom-nav span{
+  display:block;
+  font-size:19px;
+  margin-bottom:2px
+}
+
+.toast{
+  position:fixed;
+  left:50%;
+  bottom:78px;
+  transform:translate(-50%,20px);
+  opacity:0;
+  pointer-events:none;
+  z-index:50;
+  background:#102b1d;
+  border:1px solid #2c704a;
+  color:#fff;
+  padding:12px 16px;
+  border-radius:12px;
+  transition:.25s;
+  width:max-content;
+  max-width:90%;
+  text-align:center
+}
+
+.toast.show{
+  opacity:1;
+  transform:translate(-50%,0)
+}
+
+/* Quantity */
+.qty-control{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  width:100%;
+  max-width:280px;
+  height:62px;
+  padding:6px;
+  margin:10px 0 0;
+  background:linear-gradient(135deg,#06110b,#0d2417);
+  border:1px solid var(--green);
+  border-radius:20px;
+  box-shadow:0 0 0 2px rgba(0,245,138,.08),0 10px 28px rgba(0,0,0,.28);
+  overflow:visible
+}
+
+.qty-control .qty-btn{
+  width:50px;
+  height:50px;
+  flex:0 0 50px;
+  border:1px solid #1c6f4b;
+  border-radius:16px;
+  background:#0b2b1b;
+  color:var(--green);
+  font-size:30px;
+  font-weight:800;
+  line-height:1;
+  cursor:pointer;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.18s
+}
+
+.qty-control .qty-btn:hover{
+  background:#12442a;
+  box-shadow:0 0 14px rgba(0,245,138,.25);
+  transform:translateY(-1px)
+}
+
+.qty-control .qty-btn:active{
+  transform:scale(.94)
+}
+
+.qty-control #qty{
+  width:80px;
+  flex:0 0 80px;
+  height:50px;
+  margin:0;
+  padding:0;
+  background:#020805;
+  border:1px solid #183e2b;
+  border-radius:15px;
+  color:#fff;
+  text-align:center;
+  font-size:24px;
+  font-weight:900;
+  box-shadow:inset 0 0 12px rgba(0,0,0,.35);
+  -moz-appearance:textfield
+}
+
+.qty-control #qty::-webkit-inner-spin-button,
+.qty-control #qty::-webkit-outer-spin-button{
+  display:none
+}
+
+/* 💳 Payment Popup */
+.payment-popup{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  background:rgba(0,0,0,.78);
+  align-items:center;
+  justify-content:center;
+  padding:20px
+}
+
+.payment-popup.show{
+  display:flex
+}
+
+.payment-box{
+  position:relative;
+  width:100%;
+  max-width:360px;
+  padding:25px;
+  background:#07140e;
+  border:1px solid #285f43;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 15px 50px rgba(0,0,0,.6);
+  animation:paymentIn .2s ease
+}
+
+@keyframes paymentIn{
+  from{
+    opacity:0;
+    transform:scale(.94)
+  }
+  to{
+    opacity:1;
+    transform:scale(1)
+  }
+}
+
+.payment-box h2{
+  margin:0 0 20px;
+  color:#00f58a
+}
+
+.payment-box p{
+  margin:15px 0 5px;
+  color:#91a79b
+}
+
+.payment-box strong{
+  font-size:20px;
+  color:#fff
+}
+
+.payment-close{
+  position:absolute;
+  right:10px;
+  top:5px;
+  border:0;
+  background:none;
+  color:#fff;
+  font-size:30px;
+  cursor:pointer
+}
+
+.payment-close:hover{
+  color:var(--green)
+}
+
+.payment-note{
+  margin-top:20px;
+  padding:12px;
+  border-radius:10px;
+  background:#0b2116;
+  color:#00f58a;
+  font-size:13px;
+  line-height:1.6
+}
+
+@media(max-width:900px){
+  .games-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr))
+  }
+
+  .quick-grid{
+    grid-template-columns:repeat(2,1fr)
+  }
+
+  .pack-grid{
+    grid-template-columns:repeat(3,minmax(0,1fr))
+  }
+}
+
+@media(max-width:600px){
+  .container{
+    padding:0 11px
+  }
+
+  .nav-links{
+    display:none
+  }
+
+  .hero{
+    padding-top:28px
+  }
+
+  .hero-box{
+    padding:27px 15px
+  }
+
+  .games-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr))
+  }
+
+  .pack-grid{
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:9px
+  }
+
+  .pack-grid .pack{
+    padding:8px;
+    gap:5px
+  }
+
+  .account-row{
+    grid-template-columns:1fr
+  }
+
+  .payment-grid{
+    grid-template-columns:1fr
+  }
+
+  .pack-toolbar{
+    display:block
+  }
+
+  .pack-toolbar input{
+    margin-bottom:8px
+  }
+
+  .section-title{
+    display:block
+  }
+
+  .section-title p{
+    margin-top:5px
+  }
+
+  .games-grid .game-card{
+    min-height:180px;
+    padding:12px
+  }
+
+  .games-grid .game-card .game-logo{
+    width:64px;
+    height:64px;
+    font-size:34px
+  }
+
+  .qty-control{
+    max-width:none;
+    height:60px;
+    border-radius:19px
+  }
+
+  .qty-control .qty-btn{
+    width:48px;
+    height:48px;
+    flex-basis:48px
+  }
+
+  .qty-control #qty{
+    width:76px;
+    flex-basis:76px;
+    height:48px;
+    font-size:23px
+  }
+}
 </style>
 </head>
+
 <body>
-<header><div class="container nav"><a class="brand" href="#home"><span class="brand-logo">🎮</span><span>Y2 GAME SHOP</span></a><a href="#payment" class="btn primary top-pay">💰 ငွေဖြည့်ရန် +</a><nav class="nav-links"><a href="#games">Games</a><a href="#packages">Packages</a><a href="#order">Order</a><a href="#payment">Payment</a></nav></div></header>
+
+<header>
+  <div class="container nav">
+
+    <a class="brand" href="#home">
+      <span class="brand-logo">🎮</span>
+      <span>Y2 GAME SHOP</span>
+    </a>
+
+    <!-- 💰 Payment Popup Button -->
+    <a href="javascript:void(0)"
+       class="btn primary top-pay"
+       onclick="openPayment()">
+       💰 ငွေဖြည့်ရန် +
+    </a>
+
+    <nav class="nav-links">
+      <a href="#games">Games</a>
+      <a href="#packages">Packages</a>
+      <a href="#order">Order</a>
+      <a href="#payment">Payment</a>
+    </nav>
+
+  </div>
+</header>
 
 <main id="home">
-<section class="hero"><div class="container"><div class="hero-box"><span class="badge">⚡ FAST • EASY • TRUSTED</span><h1>Y2 <span>GAME SHOP</span></h1><p>Game Top Up နှင့် Social Media Service များကို လွယ်လွယ်ကူကူ Order တင်နိုင်ပါပြီ။</p><div class="hero-actions"><a class="btn primary" href="#order">🛒 Order Now</a><a class="btn secondary" href="https://t.me/Y2GameShopBot" target="_blank">🤖 Telegram Bot</a></div></div></div></section>
 
-<section class="section"><div class="container"><div class="quick-grid">
-<div class="quick-card"><div class="quick-icon">⚡</div><b>Fast Service</b><small>Order မြန်မြန်တင်နိုင်</small></div>
-<div class="quick-card"><div class="quick-icon">💳</div><b>Easy Payment</b><small>KPay / WavePay</small></div>
-<div class="quick-card"><div class="quick-icon">🔒</div><b>Simple Order</b><small>လိုအပ်တာပဲထည့်ပါ</small></div>
-<div class="quick-card"><div class="quick-icon">📱</div><b>Telegram Support</b><small>Admin ဆက်သွယ်နိုင်</small></div>
-</div></div></section>
+<section class="hero">
+  <div class="container">
+    <div class="hero-box">
 
-<section class="section" id="games"><div class="container"><div class="section-title"><h2>🎮 Game Center</h2><p>Game တစ်ခုရွေးပြီး Package ကြည့်ပါ</p></div>
-<div class="games-grid">
-<div class="game-card" onclick="showGame('MLBB')"><div class="game-logo">💎</div><b>Mobile Legends</b><small>Diamonds</small><button type="button" class="btn primary game-buy" onclick="event.stopPropagation();showGame('MLBB')">🛒 ဝယ်မည်</button></div>
-<div class="game-card" onclick="showGame('PUBG')"><div class="game-logo">🪙</div><b>PUBG Mobile</b><small>UC</small><button type="button" class="btn primary game-buy" onclick="event.stopPropagation();showGame('PUBG')">🛒 ဝယ်မည်</button></div>
-<div class="game-card" onclick="showGame('HOK')"><div class="game-logo">👑</div><b>Honor of Kings</b><small>Tokens</small><button type="button" class="btn primary game-buy" onclick="event.stopPropagation();showGame('HOK')">🛒 ဝယ်မည်</button></div>
-<div class="game-card" onclick="showGame('TikTok')"><div class="game-logo">🎵</div><b>TikTok</b><small>Social Service</small><button type="button" class="btn primary game-buy" onclick="event.stopPropagation();showGame('TikTok')">🛒 ဝယ်မည်</button></div>
-<div class="game-card" onclick="showGame('YouTube')"><div class="game-logo">▶️</div><b>YouTube</b><small>Social Service</small><button type="button" class="btn primary game-buy" onclick="event.stopPropagation();showGame('YouTube')">🛒 ဝယ်မည်</button></div>
-<div class="game-card"><span class="coming">COMING SOON</span><div class="game-logo">🔥</div><b>Free Fire</b><small>Coming Soon</small></div>
-<div class="game-card"><span class="coming">COMING SOON</span><div class="game-logo">✨</div><b>Genshin Impact</b><small>Coming Soon</small></div>
-</div></div></section>
+      <span class="badge">⚡ FAST • EASY • TRUSTED</span>
 
-<section class="section" id="packages"><div class="container"><div class="section-title"><h2>📦 Packages</h2><p id="selectedGameText">💎 Mobile Legends</p></div><div class="pack-toolbar"><input id="search" type="search" placeholder="🔎 Package ရှာပါ..." oninput="renderPackages()"></div><div id="packGrid" class="pack-grid"></div></div></section>
+      <h1>Y2 <span>GAME SHOP</span></h1>
 
-<section class="section" id="order"><div class="container"><div class="section-title"><h2>🛒 Place Order</h2><p>ငွေလွှဲပြီးနောက် Order တင်ပါ</p></div>
-<div class="form-card">
-<label>🎮 Service</label><select id="game" onchange="changeGame()"><option value="MLBB">💎 Mobile Legends</option><option value="PUBG">🪙 PUBG Mobile</option><option value="HOK">👑 Honor of Kings</option><option value="TikTok">🎵 TikTok</option><option value="YouTube">▶️ YouTube</option></select>
-<label>📦 Package</label><select id="package" onchange="updateTotal()"></select>
+      <p>
+        Game Top Up နှင့် Social Media Service များကို
+        လွယ်လွယ်ကူကူ Order တင်နိုင်ပါပြီ။
+      </p>
 
-<div id="accountArea" class="account-row"><div><label>🎮 Game ID</label><input id="playerId" type="text" placeholder="Game ID ထည့်ပါ"></div><div><label>🌐 Server ID</label><input id="serverId" type="text" placeholder="Server ID ထည့်ပါ"></div></div>
-<div id="tiktokArea"><label>🔗 TikTok Video Link</label><input id="videoLink" type="url" placeholder="TikTok Video Link ထည့်ပါ"></div>
-<div id="youtubeArea"><label>🔗 YouTube Channel / Video Link</label><input id="youtubeLink" type="url" placeholder="YouTube Link ထည့်ပါ"></div>
+      <div class="hero-actions">
 
-<label>🔢 Quantity</label><div class="qty-control"><button type="button" class="qty-btn" onclick="changeQty(-1)">−</button><input id="qty" type="number" min="1" max="99" value="1" readonly><button type="button" class="qty-btn" onclick="changeQty(1)">+</button></div>
-<label>👤 ငွေလွှဲသူအမည်</label><input id="senderName" type="text" placeholder="ငွေလွှဲသူအမည် ထည့်ပါ">
-<label>🧾 Transaction ID — နောက်ဆုံး ၆ လုံး</label><input id="transactionId" type="text" inputmode="text" maxlength="6" minlength="6" pattern="[A-Za-z0-9]{6}" placeholder="နောက်ဆုံး ၆ လုံး ထည့်ပါ">
-<div class="field-help">Transaction ID ရဲ့ နောက်ဆုံး ၆ လုံးကိုသာ ထည့်ပါ။</div>
-<div id="total" class="total">စုစုပေါင်း: Package ရွေးပါ</div>
-<button id="submitBtn" class="btn primary" style="width:100%;margin-top:12px" onclick="submitOrder()">✈️ CONFIRM ORDER</button>
-</div></div></section>
+        <a class="btn primary" href="#order">
+          🛒 Order Now
+        </a>
 
-<section class="section" id="payment"><div class="container"><div class="section-title"><h2>💳 Payment</h2><p>ငွေလွှဲပြီးမှ Order တင်ပါ</p></div><div class="payment-grid"><div class="pay"><strong>💚 KPay</strong>09662222753</div><div class="pay"><strong>💚 WavePay</strong>09662222753</div></div><div class="notice" style="margin-top:12px">💡 <b>ငွေလွှဲပြီး → Transaction ID နောက်ဆုံး ၆ လုံးထည့် → Order တင်ပါ။</b></div></div></section>
+        <a class="btn secondary"
+           href="https://t.me/Y2GameShopBot"
+           target="_blank">
+          🤖 Telegram Bot
+        </a>
 
-<section class="section"><div class="container"><div class="form-card" style="text-align:center"><h2>📞 Need Help?</h2><p style="color:var(--muted)">Order နဲ့ပတ်သက်ပြီး အကူအညီလိုပါက Admin ကို ဆက်သွယ်နိုင်ပါတယ်။</p><a class="btn primary" href="https://t.me/YeYint690" target="_blank">👤 Admin ကို ဆက်သွယ်ရန်</a></div></div></section>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section">
+  <div class="container">
+
+    <div class="quick-grid">
+
+      <div class="quick-card">
+        <div class="quick-icon">⚡</div>
+        <b>Fast Service</b>
+        <small>Order မြန်မြန်တင်နိုင်</small>
+      </div>
+
+      <div class="quick-card">
+        <div class="quick-icon">💳</div>
+        <b>Easy Payment</b>
+        <small>KPay / WavePay</small>
+      </div>
+
+      <div class="quick-card">
+        <div class="quick-icon">🔒</div>
+        <b>Simple Order</b>
+        <small>လိုအပ်တာပဲထည့်ပါ</small>
+      </div>
+
+      <div class="quick-card">
+        <div class="quick-icon">📱</div>
+        <b>Telegram Support</b>
+        <small>Admin ဆက်သွယ်နိုင်</small>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section" id="games">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>🎮 Game Center</h2>
+      <p>Game တစ်ခုရွေးပြီး Package ကြည့်ပါ</p>
+    </div>
+
+    <div class="games-grid">
+
+      <div class="game-card" onclick="showGame('MLBB')">
+        <div class="game-logo">💎</div>
+        <b>Mobile Legends</b>
+        <small>Diamonds</small>
+        <button type="button"
+                class="btn primary game-buy"
+                onclick="event.stopPropagation();showGame('MLBB')">
+          🛒 ဝယ်မည်
+        </button>
+      </div>
+
+      <div class="game-card" onclick="showGame('PUBG')">
+        <div class="game-logo">🪙</div>
+        <b>PUBG Mobile</b>
+        <small>UC</small>
+        <button type="button"
+                class="btn primary game-buy"
+                onclick="event.stopPropagation();showGame('PUBG')">
+          🛒 ဝယ်မည်
+        </button>
+      </div>
+
+      <div class="game-card" onclick="showGame('HOK')">
+        <div class="game-logo">👑</div>
+        <b>Honor of Kings</b>
+        <small>Tokens</small>
+        <button type="button"
+                class="btn primary game-buy"
+                onclick="event.stopPropagation();showGame('HOK')">
+          🛒 ဝယ်မည်
+        </button>
+      </div>
+
+      <div class="game-card" onclick="showGame('TikTok')">
+        <div class="game-logo">🎵</div>
+        <b>TikTok</b>
+        <small>Social Service</small>
+        <button type="button"
+                class="btn primary game-buy"
+                onclick="event.stopPropagation();showGame('TikTok')">
+          🛒 ဝယ်မည်
+        </button>
+      </div>
+
+      <div class="game-card" onclick="showGame('YouTube')">
+        <div class="game-logo">▶️</div>
+        <b>YouTube</b>
+        <small>Social Service</small>
+        <button type="button"
+                class="btn primary game-buy"
+                onclick="event.stopPropagation();showGame('YouTube')">
+          🛒 ဝယ်မည်
+        </button>
+      </div>
+
+      <div class="game-card">
+        <span class="coming">COMING SOON</span>
+        <div class="game-logo">🔥</div>
+        <b>Free Fire</b>
+        <small>Coming Soon</small>
+      </div>
+
+      <div class="game-card">
+        <span class="coming">COMING SOON</span>
+        <div class="game-logo">✨</div>
+        <b>Genshin Impact</b>
+        <small>Coming Soon</small>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="packages">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>📦 Packages</h2>
+      <p id="selectedGameText">💎 Mobile Legends</p>
+    </div>
+
+    <div class="pack-toolbar">
+      <input id="search"
+             type="search"
+             placeholder="🔎 Package ရှာပါ..."
+             oninput="renderPackages()">
+    </div>
+
+    <div id="packGrid" class="pack-grid"></div>
+
+  </div>
+</section>
+
+
+<section class="section" id="order">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>🛒 Place Order</h2>
+      <p>ငွေလွှဲပြီးနောက် Order တင်ပါ</p>
+    </div>
+
+    <div class="form-card">
+
+      <label>🎮 Service</label>
+
+      <select id="game" onchange="changeGame()">
+        <option value="MLBB">💎 Mobile Legends</option>
+        <option value="PUBG">🪙 PUBG Mobile</option>
+        <option value="HOK">👑 Honor of Kings</option>
+        <option value="TikTok">🎵 TikTok</option>
+        <option value="YouTube">▶️ YouTube</option>
+      </select>
+
+
+      <label>📦 Package</label>
+
+      <select id="package" onchange="updateTotal()"></select>
+
+
+      <div id="accountArea" class="account-row">
+
+        <div>
+          <label>🎮 Game ID</label>
+          <input id="playerId"
+                 type="text"
+                 placeholder="Game ID ထည့်ပါ">
+        </div>
+
+        <div>
+          <label>🌐 Server ID</label>
+          <input id="serverId"
+                 type="text"
+                 placeholder="Server ID ထည့်ပါ">
+        </div>
+
+      </div>
+
+
+      <div id="tiktokArea">
+
+        <label>🔗 TikTok Video Link</label>
+
+        <input id="videoLink"
+               type="url"
+               placeholder="TikTok Video Link ထည့်ပါ">
+
+      </div>
+
+
+      <div id="youtubeArea">
+
+        <label>🔗 YouTube Channel / Video Link</label>
+
+        <input id="youtubeLink"
+               type="url"
+               placeholder="YouTube Link ထည့်ပါ">
+
+      </div>
+
+
+      <label>🔢 Quantity</label>
+
+      <div class="qty-control">
+
+        <button type="button"
+                class="qty-btn"
+                onclick="changeQty(-1)">
+          −
+        </button>
+
+        <input id="qty"
+               type="number"
+               min="1"
+               max="99"
+               value="1"
+               readonly>
+
+        <button type="button"
+                class="qty-btn"
+                onclick="changeQty(1)">
+          +
+        </button>
+
+      </div>
+
+
+      <label>👤 ငွေလွှဲသူအမည်</label>
+
+      <input id="senderName"
+             type="text"
+             placeholder="ငွေလွှဲသူအမည် ထည့်ပါ">
+
+
+      <label>🧾 Transaction ID — နောက်ဆုံး ၆ လုံး</label>
+
+      <input id="transactionId"
+             type="text"
+             inputmode="text"
+             maxlength="6"
+             minlength="6"
+             pattern="[A-Za-z0-9]{6}"
+             placeholder="နောက်ဆုံး ၆ လုံး ထည့်ပါ">
+
+      <div class="field-help">
+        Transaction ID ရဲ့ နောက်ဆုံး ၆ လုံးကိုသာ ထည့်ပါ။
+      </div>
+
+
+      <div id="total" class="total">
+        စုစုပေါင်း: Package ရွေးပါ
+      </div>
+
+
+      <button id="submitBtn"
+              class="btn primary"
+              style="width:100%;margin-top:12px"
+              onclick="submitOrder()">
+        ✈️ CONFIRM ORDER
+      </button>
+
+    </div>
+  </div>
+</section>
+
+
+<section class="section" id="payment">
+  <div class="container">
+
+    <div class="section-title">
+      <h2>💳 Payment</h2>
+      <p>ငွေလွှဲပြီးမှ Order တင်ပါ</p>
+    </div>
+
+    <div class="payment-grid">
+
+      <div class="pay">
+        <strong>💚 KPay</strong>
+        09662222753
+      </div>
+
+      <div class="pay">
+        <strong>💚 WavePay</strong>
+        09662222753
+      </div>
+
+    </div>
+
+    <div class="notice" style="margin-top:12px">
+      💡
+      <b>
+        ငွေလွှဲပြီး → Transaction ID နောက်ဆုံး ၆ လုံးထည့် → Order တင်ပါ။
+      </b>
+    </div>
+
+  </div>
+</section>
+
+
+<section class="section">
+
+  <div class="container">
+
+    <div class="form-card" style="text-align:center">
+
+      <h2>📞 Need Help?</h2>
+
+      <p style="color:var(--muted)">
+        Order နဲ့ပတ်သက်ပြီး အကူအညီလိုပါက
+        Admin ကို ဆက်သွယ်နိုင်ပါတယ်။
+      </p>
+
+      <a class="btn primary"
+         href="https://t.me/YeYint690"
+         target="_blank">
+        👤 Admin ကို ဆက်သွယ်ရန်
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
 </main>
 
-<footer>© 2026 Y2 GAME SHOP • All Rights Reserved</footer>
-<nav class="bottom-nav"><a href="#home"><span>🏠</span>Home</a><a href="#games"><span>🎮</span>Games</a><a href="#packages"><span>📦</span>Packages</a><a href="#order"><span>🛒</span>Order</a><a href="https://t.me/Y2GameShopBot" target="_blank"><span>🤖</span>Telegram</a></nav>
+
+<footer>
+  © 2026 Y2 GAME SHOP • All Rights Reserved
+</footer>
+
+
+<nav class="bottom-nav">
+
+  <a href="#home">
+    <span>🏠</span>
+    Home
+  </a>
+
+  <a href="#games">
+    <span>🎮</span>
+    Games
+  </a>
+
+  <a href="#packages">
+    <span>📦</span>
+    Packages
+  </a>
+
+  <a href="#order">
+    <span>🛒</span>
+    Order
+  </a>
+
+  <a href="https://t.me/Y2GameShopBot"
+     target="_blank">
+    <span>🤖</span>
+    Telegram
+  </a>
+
+</nav>
+
+
 <div id="toast" class="toast"></div>
 
+
+<!-- 💳 PAYMENT POPUP -->
+
+<div id="paymentPopup" class="payment-popup">
+
+  <div class="payment-box">
+
+    <button class="payment-close"
+            onclick="closePayment()">
+      ×
+    </button>
+
+    <h2>💳 Payment</h2>
+
+    <p>💚 KPay</p>
+    <strong>09662222753</strong>
+
+    <p>💚 WavePay</p>
+    <strong>09662222753</strong>
+
+    <div class="payment-note">
+      ငွေလွှဲပြီး → Transaction ID နောက်ဆုံး ၆ လုံးထည့် → Order တင်ပါ။
+    </div>
+
+  </div>
+
+</div>
+
+
 <script>
+
 const API_URL="https://ye-yint-game-shop.yye224288.workers.dev/api/order";
+
 const DATA={
-MLBB:{name:"💎 Mobile Legends",packages:[["86 Diamonds",5600],["172 Diamonds",11000],["257 Diamonds",16500],["343 Diamonds",21200],["429 Diamonds",27000],["515 Diamonds",31800],["706 Diamonds",42000],["878 Diamonds",53000],["963 Diamonds",58000],["Weekly Pass",6800],["2X 50+50",3500],["2X 150+150",10600],["2X 250+250",17000],["2X 500+500",34000]]},
-PUBG:{name:"🪙 PUBG Mobile",packages:[["60 UC",6300],["328 UC",25000],["660 UC",42000],["1800 UC",101000],["3850 UC",200000],["Elite Lv 1-50",24000],["Elite Lv 1-100",49000]]},
-HOK:{name:"👑 Honor of Kings",packages:[["16 Tokens",1000],["Weekly Card Plus",14000],["Weekly Card",5000],["80 Tokens",4200],["240 Tokens",15000],["400 Tokens",22000],["560 Tokens",28500],["830 Tokens",41000],["1245 Tokens",61000]]},
-TikTok:{name:"🎵 TikTok",packages:[["Follower 100",1600],["Follower 1000",16000],["Follower 5000",75000],["Views 1000",600],["Views 5000",3000],["Views 10000",6000]]},
-YouTube:{name:"▶️ YouTube",packages:[["Subscribe 100",32000],["Subscribe 1000",320000],["Like 100",500],["Like 1000",5000],["Like 10000",50000],["View 100",1200],["View 1000",12000],["View 10000",120000]]}
+
+MLBB:{
+  name:"💎 Mobile Legends",
+  packages:[
+    ["86 Diamonds",5600],
+    ["172 Diamonds",11000],
+    ["257 Diamonds",16500],
+    ["343 Diamonds",21200],
+    ["429 Diamonds",27000],
+    ["515 Diamonds",31800],
+    ["706 Diamonds",42000],
+    ["878 Diamonds",53000],
+    ["963 Diamonds",58000],
+    ["Weekly Pass",6800],
+    ["2X 50+50",3500],
+    ["2X 150+150",10600],
+    ["2X 250+250",17000],
+    ["2X 500+500",34000]
+  ]
+},
+
+PUBG:{
+  name:"🪙 PUBG Mobile",
+  packages:[
+    ["60 UC",6300],
+    ["328 UC",25000],
+    ["660 UC",42000],
+    ["1800 UC",101000],
+    ["3850 UC",200000],
+    ["Elite Lv 1-50",24000],
+    ["Elite Lv 1-100",49000]
+  ]
+},
+
+HOK:{
+  name:"👑 Honor of Kings",
+  packages:[
+    ["16 Tokens",1000],
+    ["Weekly Card Plus",14000],
+    ["Weekly Card",5000],
+    ["80 Tokens",4200],
+    ["240 Tokens",15000],
+    ["400 Tokens",22000],
+    ["560 Tokens",28500],
+    ["830 Tokens",41000],
+    ["1245 Tokens",61000]
+  ]
+},
+
+TikTok:{
+  name:"🎵 TikTok",
+  packages:[
+    ["Follower 100",1600],
+    ["Follower 1000",16000],
+    ["Follower 5000",75000],
+    ["Views 1000",600],
+    ["Views 5000",3000],
+    ["Views 10000",6000]
+  ]
+},
+
+YouTube:{
+  name:"▶️ YouTube",
+  packages:[
+    ["Subscribe 100",32000],
+    ["Subscribe 1000",320000],
+    ["Like 100",500],
+    ["Like 1000",5000],
+    ["Like 10000",50000],
+    ["View 100",1200],
+    ["View 1000",12000],
+    ["View 10000",120000]
+  ]
+}
+
 };
+
 let currentGame="MLBB";
-function money(n){return Number(n).toLocaleString("en-US")+" MMK"}
-function gameImage(game){
- const data={
-  MLBB:["💎","MLBB"],PUBG:["🪙","PUBG"],HOK:["👑","HOK"],
-  TikTok:["🎵","TikTok"],YouTube:["▶️","YouTube"],FreeFire:["🔥","Free Fire"],Genshin:["✨","Genshin"]
- };
- const [icon,label]=data[game]||["🎮","GAME"];
- const svg=`<svg xmlns="http://www.w3.org/2000/svg" width="160" height="160" viewBox="0 0 160 160"><defs><linearGradient id="g" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#123d29"/><stop offset="1" stop-color="#07140e"/></linearGradient></defs><rect width="160" height="160" rx="28" fill="url(#g)"/><circle cx="80" cy="62" r="38" fill="#0b2116" stroke="#00f58a" stroke-width="3"/><text x="80" y="78" text-anchor="middle" font-size="42">${icon}</text><text x="80" y="128" text-anchor="middle" fill="#f3fff8" font-family="Arial,sans-serif" font-size="18" font-weight="700">${label}</text></svg>`;
- return "data:image/svg+xml;charset=UTF-8,"+encodeURIComponent(svg);
+
+
+function money(n){
+  return Number(n).toLocaleString("en-US")+" MMK";
 }
+
+
 function gameIconSvg(game){
- const data={MLBB:["💎","MLBB"],PUBG:["🪙","PUBG"],HOK:["👑","HOK"],TikTok:["🎵","TikTok"],YouTube:["▶️","YouTube"],FreeFire:["🔥","Free Fire"],Genshin:["✨","Genshin"]};
- const [icon,label]=data[game]||["🎮","GAME"];
- return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" aria-label="${label} logo"><rect width="160" height="160" rx="28" fill="#07140e"/><circle cx="80" cy="63" r="39" fill="#0b2116" stroke="#00f58a" stroke-width="3"/><text x="80" y="78" text-anchor="middle" font-size="42">${icon}</text><text x="80" y="128" text-anchor="middle" fill="#f3fff8" font-family="Arial,sans-serif" font-size="18" font-weight="700">${label}</text></svg>`;
+
+  const data={
+    MLBB:["💎","MLBB"],
+    PUBG:["🪙","PUBG"],
+    HOK:["👑","HOK"],
+    TikTok:["🎵","TikTok"],
+    YouTube:["▶️","YouTube"],
+    FreeFire:["🔥","Free Fire"],
+    Genshin:["✨","Genshin"]
+  };
+
+  const [icon,label]=data[game]||["🎮","GAME"];
+
+  return `<svg xmlns="http://www.w3.org/2000/svg"
+    viewBox="0 0 160 160"
+    aria-label="${label} logo">
+
+    <rect width="160" height="160" rx="28" fill="#07140e"/>
+
+    <circle cx="80" cy="63" r="39"
+      fill="#0b2116"
+      stroke="#00f58a"
+      stroke-width="3"/>
+
+    <text x="80" y="78"
+      text-anchor="middle"
+      font-size="42">${icon}</text>
+
+    <text x="80" y="128"
+      text-anchor="middle"
+      fill="#f3fff8"
+      font-family="Arial,sans-serif"
+      font-size="18"
+      font-weight="700">${label}</text>
+
+  </svg>`;
+
 }
+
+
 function renderPackages(){
- const grid=document.getElementById("packGrid"),q=document.getElementById("search").value.trim().toLowerCase();
- const select=document.getElementById("package");
- grid.innerHTML="";
- const all=DATA[currentGame].packages;
- const list=all.filter(x=>x[0].toLowerCase().includes(q)||money(x[1]).toLowerCase().includes(q));
- // Keep the order form package list and prices in sync with the selected game.
- select.innerHTML='<option value="">📦 Package ရွေးပါ</option>';
- all.forEach(x=>{
-   const o=document.createElement("option");
-   o.value=x[0]+" — "+money(x[1]);
-   o.textContent=x[0]+" — "+money(x[1]);
-   select.appendChild(o);
- });
- if(!list.length){grid.innerHTML='<div class="notice" style="grid-column:1/-1">Package မတွေ့ပါ။</div>';return}
- list.forEach(x=>{
-  const card=document.createElement("div");card.className="pack";
-  card.innerHTML=`<div class="pack-game-image">${gameIconSvg(currentGame)}</div><b class="pack-name">${x[0]}</b><div class="price"><span class="price-label">ဈေးနှုန်း</span><strong>${money(x[1])}</strong></div><button class="btn primary" type="button" onclick="pickPackage('${x[0].replace(/'/g,"\'")}',${x[1]})">🛒 ဝယ်မည်</button>`;
-  grid.appendChild(card);
- });
-}
-function showGame(game){if(!DATA[game])return;currentGame=game;document.getElementById("game").value=game;document.getElementById("search").value="";changeGame();document.getElementById("packages").scrollIntoView({behavior:"smooth"});toast(DATA[game].name+" Packages")}
-function changeGame(){
- currentGame=document.getElementById("game").value;
- document.getElementById("selectedGameText").textContent=DATA[currentGame].name;
- renderPackages();
- const account=document.getElementById("accountArea"),tt=document.getElementById("tiktokArea"),yt=document.getElementById("youtubeArea");
- const player=document.getElementById("playerId"),server=document.getElementById("serverId"),video=document.getElementById("videoLink"),youtube=document.getElementById("youtubeLink");
- account.style.display="grid";tt.style.display="none";yt.style.display="none";
- player.required=false;server.required=false;video.required=false;youtube.required=false;
- if(currentGame==="TikTok"){account.style.display="none";tt.style.display="block";video.required=true}
- else if(currentGame==="YouTube"){account.style.display="none";yt.style.display="block";youtube.required=true}
- else{player.required=true;server.required=true}
- updateTotal();
-}
-function pickPackage(name,price){
+
+  const grid=document.getElementById("packGrid");
+
+  const q=document
+    .getElementById("search")
+    .value
+    .trim()
+    .toLowerCase();
+
   const select=document.getElementById("package");
+
+  grid.innerHTML="";
+
+  const all=DATA[currentGame].packages;
+
+  const list=all.filter(x=>
+    x[0].toLowerCase().includes(q) ||
+    money(x[1]).toLowerCase().includes(q)
+  );
+
+  select.innerHTML=
+    '<option value="">📦 Package ရွေးပါ</option>';
+
+  all.forEach(x=>{
+
+    const o=document.createElement("option");
+
+    o.value=x[0]+" — "+money(x[1]);
+
+    o.textContent=x[0]+" — "+money(x[1]);
+
+    select.appendChild(o);
+
+  });
+
+  if(!list.length){
+
+    grid.innerHTML=
+      '<div class="notice" style="grid-column:1/-1">Package မတွေ့ပါ။</div>';
+
+    return;
+  }
+
+  list.forEach(x=>{
+
+    const card=document.createElement("div");
+
+    card.className="pack";
+
+    card.innerHTML=`
+
+      <div class="pack-game-image">
+        ${gameIconSvg(currentGame)}
+      </div>
+
+      <b class="pack-name">
+        ${x[0]}
+      </b>
+
+      <div class="price">
+
+        <span class="price-label">
+          ဈေးနှုန်း
+        </span>
+
+        <strong>
+          ${money(x[1])}
+        </strong>
+
+      </div>
+
+      <button
+        class="btn primary"
+        type="button"
+        onclick="pickPackage('${x[0].replace(/'/g,"\\'")}',${x[1]})">
+
+        🛒 ဝယ်မည်
+
+      </button>
+
+    `;
+
+    grid.appendChild(card);
+
+  });
+
+}
+
+
+function showGame(game){
+
+  if(!DATA[game])return;
+
+  currentGame=game;
+
+  document.getElementById("game").value=game;
+
+  document.getElementById("search").value="";
+
+  changeGame();
+
+  document
+    .getElementById("packages")
+    .scrollIntoView({behavior:"smooth"});
+
+  toast(DATA[game].name+" Packages");
+
+}
+
+
+function changeGame(){
+
+  currentGame=document
+    .getElementById("game")
+    .value;
+
+  document
+    .getElementById("selectedGameText")
+    .textContent=DATA[currentGame].name;
+
+  renderPackages();
+
+  const account=document.getElementById("accountArea");
+  const tt=document.getElementById("tiktokArea");
+  const yt=document.getElementById("youtubeArea");
+
+  const player=document.getElementById("playerId");
+  const server=document.getElementById("serverId");
+  const video=document.getElementById("videoLink");
+  const youtube=document.getElementById("youtubeLink");
+
+  account.style.display="grid";
+  tt.style.display="none";
+  yt.style.display="none";
+
+  player.required=false;
+  server.required=false;
+  video.required=false;
+  youtube.required=false;
+
+  if(currentGame==="TikTok"){
+
+    account.style.display="none";
+    tt.style.display="block";
+    video.required=true;
+
+  }
+
+  else if(currentGame==="YouTube"){
+
+    account.style.display="none";
+    yt.style.display="block";
+    youtube.required=true;
+
+  }
+
+  else{
+
+    player.required=true;
+    server.required=true;
+
+  }
+
+  updateTotal();
+
+}
+
+
+function pickPackage(name,price){
+
+  const select=document.getElementById("package");
+
   const wanted=name+" — "+money(price);
+
   let found=false;
+
   for(let i=0;i<select.options.length;i++){
+
     if(select.options[i].textContent===wanted){
+
       select.selectedIndex=i;
+
       found=true;
+
       break;
     }
+
   }
+
   if(!found){
+
     const option=document.createElement("option");
+
     option.value=wanted;
+
     option.textContent=wanted;
+
     select.appendChild(option);
+
     select.value=wanted;
+
   }
+
   updateTotal();
-  document.getElementById("order").scrollIntoView({behavior:"smooth"});
+
+  document
+    .getElementById("order")
+    .scrollIntoView({behavior:"smooth"});
+
   toast("✅ "+name+" ရွေးပြီးပါပြီ");
+
 }
-function getPrice(){const m=document.getElementById("package").value.match(/([\d,]+)\s*MMK$/);return m?Number(m[1].replace(/,/g,"")):0}
-function changeQty(delta){const input=document.getElementById("qty");let value=parseInt(input.value,10)||1;value=Math.max(1,Math.min(99,value+delta));input.value=value;updateTotal()}
-function updateTotal(){let q=Math.max(1,Math.min(99,Number(document.getElementById("qty").value)||1));document.getElementById("qty").value=q;const p=getPrice();document.getElementById("total").textContent=p?"စုစုပေါင်း: "+money(p*q):"စုစုပေါင်း: Package ရွေးပါ"}
-function validLastSix(v){return /^[A-Za-z0-9]{6}$/.test(v)}
+
+
+function getPrice(){
+
+  const m=document
+    .getElementById("package")
+    .value
+    .match(/([\d,]+)\s*MMK$/);
+
+  return m
+    ? Number(m[1].replace(/,/g,""))
+    : 0;
+
+}
+
+
+function changeQty(delta){
+
+  const input=document.getElementById("qty");
+
+  let value=parseInt(input.value,10)||1;
+
+  value=Math.max(
+    1,
+    Math.min(99,value+delta)
+  );
+
+  input.value=value;
+
+  updateTotal();
+
+}
+
+
+function updateTotal(){
+
+  let q=Math.max(
+    1,
+    Math.min(
+      99,
+      Number(document.getElementById("qty").value)||1
+    )
+  );
+
+  document.getElementById("qty").value=q;
+
+  const p=getPrice();
+
+  document.getElementById("total").textContent=
+
+    p
+    ? "စုစုပေါင်း: "+money(p*q)
+    : "စုစုပေါင်း: Package ရွေးပါ";
+
+}
+
+
+function validLastSix(v){
+
+  return /^[A-Za-z0-9]{6}$/.test(v);
+
+}
+
+
 async function submitOrder(){
- const btn=document.getElementById("submitBtn"),game=document.getElementById("game").value,pack=document.getElementById("package").value;
- const qty=Math.max(1,Math.min(99,Number(document.getElementById("qty").value)||1));
- const senderName=document.getElementById("senderName").value.trim(),transactionId=document.getElementById("transactionId").value.trim();
- const playerId=document.getElementById("playerId").value.trim(),serverId=document.getElementById("serverId").value.trim();
- const videoLink=document.getElementById("videoLink").value.trim(),youtubeLink=document.getElementById("youtubeLink").value.trim();
- if(!pack){toast("❌ Package ရွေးပါ");return}
- if(!senderName){toast("❌ ငွေလွှဲသူအမည် ထည့်ပါ");return}
- if(!validLastSix(transactionId)){toast("❌ Transaction ID နောက်ဆုံး ၆ လုံး ထည့်ပါ");return}
- if(["MLBB","PUBG","HOK"].includes(game)&&(!playerId||!serverId)){toast("❌ Game ID နှင့် Server ID ထည့်ပါ");return}
- if(game==="TikTok"&&!videoLink){toast("❌ TikTok Video Link ထည့်ပါ");return}
- if(game==="YouTube"&&!youtubeLink){toast("❌ YouTube Link ထည့်ပါ");return}
- btn.disabled=true;btn.textContent="⏳ SENDING...";
- const data={game,package:pack,playerId:game==="TikTok"?videoLink:game==="YouTube"?youtubeLink:playerId,serverId:["MLBB","PUBG","HOK"].includes(game)?serverId:"",phone:senderName,transactionId,quantity:qty};
- try{
-  const r=await fetch(API_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
-  const j=await r.json().catch(()=>({}));
-  if(!r.ok||!j.ok)throw new Error(j.error||"Order ပို့မရပါ");
-  toast("✅ Order တင်ပြီး Telegram သို့ ပို့ပြီးပါပြီ");
-  ["senderName","transactionId","playerId","serverId","videoLink","youtubeLink"].forEach(id=>document.getElementById(id).value="");
-  document.getElementById("qty").value=1;updateTotal();
- }catch(e){toast("❌ "+e.message)}finally{btn.disabled=false;btn.textContent="✈️ CONFIRM ORDER"}
+
+  const btn=document.getElementById("submitBtn");
+
+  const game=document
+    .getElementById("game")
+    .value;
+
+  const pack=document
+    .getElementById("package")
+    .value;
+
+  const qty=Math.max(
+    1,
+    Math.min(
+      99,
+      Number(document.getElementById("qty").value)||1
+    )
+  );
+
+  const senderName=document
+    .getElementById("senderName")
+    .value
+    .trim();
+
+  const transactionId=document
+    .getElementById("transactionId")
+    .value
+    .trim();
+
+  const playerId=document
+    .getElementById("playerId")
+    .value
+    .trim();
+
+  const serverId=document
+    .getElementById("serverId")
+    .value
+    .trim();
+
+  const videoLink=document
+    .getElementById("videoLink")
+    .value
+    .trim();
+
+  const youtubeLink=document
+    .getElementById("youtubeLink")
+    .value
+    .trim();
+
+
+  if(!pack){
+
+    toast("❌ Package ရွေးပါ");
+
+    return;
+  }
+
+
+  if(!senderName){
+
+    toast("❌ ငွေလွှဲသူအမည် ထည့်ပါ");
+
+    return;
+  }
+
+
+  if(!validLastSix(transactionId)){
+
+    toast("❌ Transaction ID နောက်ဆုံး ၆ လုံး ထည့်ပါ");
+
+    return;
+  }
+
+
+  if(
+    ["MLBB","PUBG","HOK"].includes(game) &&
+    (!playerId || !serverId)
+  ){
+
+    toast("❌ Game ID နှင့် Server ID ထည့်ပါ");
+
+    return;
+  }
+
+
+  if(game==="TikTok" && !videoLink){
+
+    toast("❌ TikTok Video Link ထည့်ပါ");
+
+    return;
+  }
+
+
+  if(game==="YouTube" && !youtubeLink){
+
+    toast("❌ YouTube Link ထည့်ပါ");
+
+    return;
+  }
+
+
+  btn.disabled=true;
+
+  btn.textContent="⏳ SENDING...";
+
+
+  const data={
+
+    game,
+
+    package:pack,
+
+    playerId:
+      game==="TikTok"
+      ? videoLink
+      : game==="YouTube"
+      ? youtubeLink
+      : playerId,
+
+    serverId:
+      ["MLBB","PUBG","HOK"].includes(game)
+      ? serverId
+      : "",
+
+    phone:senderName,
+
+    transactionId,
+
+    quantity:qty
+
+  };
+
+
+  try{
+
+    const r=await fetch(
+      API_URL,
+      {
+        method:"POST",
+        headers:{
+          "Content-Type":"application/json"
+        },
+        body:JSON.stringify(data)
+      }
+    );
+
+
+    const j=await r
+      .json()
+      .catch(()=>({}));
+
+
+    if(!r.ok || !j.ok){
+
+      throw new Error(
+        j.error || "Order ပို့မရပါ"
+      );
+
+    }
+
+
+    toast(
+      "✅ Order တင်ပြီး Telegram သို့ ပို့ပြီးပါပြီ"
+    );
+
+
+    [
+      "senderName",
+      "transactionId",
+      "playerId",
+      "serverId",
+      "videoLink",
+      "youtubeLink"
+    ].forEach(id=>{
+
+      document.getElementById(id).value="";
+
+    });
+
+
+    document.getElementById("qty").value=1;
+
+    updateTotal();
+
+
+  }catch(e){
+
+    toast("❌ "+e.message);
+
+
+  }finally{
+
+    btn.disabled=false;
+
+    btn.textContent="✈️ CONFIRM ORDER";
+
+  }
+
 }
+
+
+/* 💳 Payment Popup */
+
+function openPayment(){
+
+  document
+    .getElementById("paymentPopup")
+    .classList.add("show");
+
+}
+
+
+function closePayment(){
+
+  document
+    .getElementById("paymentPopup")
+    .classList.remove("show");
+
+}
+
+
+/* Popup အပြင်ဘက်ကိုနှိပ်ရင်ပိတ် */
+
+document
+  .getElementById("paymentPopup")
+  .addEventListener("click",function(e){
+
+    if(e.target===this){
+
+      closePayment();
+
+    }
+
+  });
+
+
+/* 🔔 Toast */
+
 let toastTimer;
-function toast(msg){const e=document.getElementById("toast");e.textContent=msg;e.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>e.classList.remove("show"),2600)}
+
+
+function toast(msg){
+
+  const e=document.getElementById("toast");
+
+  e.textContent=msg;
+
+  e.classList.add("show");
+
+  clearTimeout(toastTimer);
+
+  toastTimer=setTimeout(
+    ()=>e.classList.remove("show"),
+    2600
+  );
+
+}
+
+
 changeGame();
+
 </script>
+
 </body>
 </html>
