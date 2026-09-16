@@ -33,6 +33,31 @@ header{position:sticky;top:0;z-index:20;background:rgba(6,17,12,.94);backdrop-fi
 .qty-control{display:flex;align-items:center;justify-content:space-between;width:100%;max-width:280px;height:62px;padding:6px;margin:10px 0 0;background:linear-gradient(135deg,#06110b,#0d2417);border:1px solid var(--green);border-radius:20px;box-shadow:0 0 0 2px rgba(0,245,138,.08),0 10px 28px rgba(0,0,0,.28);overflow:visible}.qty-control .qty-btn{width:50px;height:50px;flex:0 0 50px;border:1px solid #1c6f4b;border-radius:16px;background:#0b2b1b;color:var(--green);font-size:30px;font-weight:800;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:.18s}.qty-control .qty-btn:hover{background:#12442a;box-shadow:0 0 14px rgba(0,245,138,.25);transform:translateY(-1px)}.qty-control .qty-btn:active{transform:scale(.94)}.qty-control #qty{width:80px;flex:0 0 80px;height:50px;margin:0;padding:0;background:#020805;border:1px solid #183e2b;border-radius:15px;color:#fff;text-align:center;font-size:24px;font-weight:900;box-shadow:inset 0 0 12px rgba(0,0,0,.35);-moz-appearance:textfield}.qty-control #qty::-webkit-inner-spin-button,.qty-control #qty::-webkit-outer-spin-button{display:none}
 @media(max-width:900px){.games-grid{grid-template-columns:repeat(3,minmax(0,1fr))}.quick-grid{grid-template-columns:repeat(2,1fr)}.pack-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:600px){.container{padding:0 11px}.nav-links{display:none}.hero{padding-top:28px}.hero-box{padding:27px 15px}.games-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.pack-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:9px}.pack-grid .pack{padding:9px;gap:6px}.pack-game-image{width:58px;height:58px;min-width:58px;min-height:58px;flex-basis:58px}.pack-grid .pack-name{font-size:13px;min-height:32px}.pack-grid .price{padding:4px 6px}.pack-grid .price-label{display:none}.pack-grid .price strong{font-size:14px}.pack-grid .pack .btn{font-size:11px;padding:8px 4px}.account-row{grid-template-columns:1fr}.payment-grid{grid-template-columns:1fr}.pack-toolbar{display:block}.pack-toolbar input{margin-bottom:8px}.section-title{display:block}.section-title p{margin-top:5px}.games-grid .game-card{min-height:180px;padding:12px}.games-grid .game-card .game-logo{width:64px;height:64px;font-size:34px}.qty-control{max-width:none;height:60px;border-radius:19px}.qty-control .qty-btn{width:48px;height:48px;flex-basis:48px}.qty-control #qty{width:76px;flex-basis:76px;height:48px;font-size:23px}}
+ .pack-grid .pack{
+  padding:8px !important;
+  gap:5px !important;
+  min-height:145px !important;
+  aspect-ratio:1/1 !important;
+}
+.pack-grid .pack-game-image{
+  width:48px !important;
+  height:48px !important;
+  min-width:48px !important;
+  min-height:48px !important;
+}
+.pack-grid .pack-name{
+  font-size:12px !important;
+  min-height:28px !important;
+}
+.pack-grid .pack .price{
+  padding:3px 5px !important;
+  min-height:30px !important;
+}
+.pack-grid .pack .btn{
+  width:100% !important;
+  padding:7px 3px !important;
+  font-size:11px !important;
+}
 </style>
 </head>
 <body>
