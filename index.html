@@ -1,77 +1,88 @@
-<div class="row">
-  <label>💳 Payment Method</label>
-  <select id="paymentMethod" required>
-    <option value="">ငွေပေးချေမှုနည်းလမ်း ရွေးပါ</option>
-    <option value="KPay">KPay</option>
-    <option value="WavePay">WavePay</option>
-    <option value="KBZPay">KBZPay</option>
-  </select>
-</div>
+<!doctype html>
 
-<div class="row">
-  <label>🧾 ငွေလွှဲပြေစာ / Payment Slip</label>
-  <input
-    id="paymentSlip"
-    type="file"
-    accept="image/jpeg,image/png,image/webp"
-    required
-  >
-  <small>ငွေလွှဲပြီးသား Screenshot / Photo တင်ပါ</small>
-</div><script>
-async function submitOrder(e){
-  e.preventDefault();
+<html lang="my">  
+<head>  
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">  
+<meta name="theme-color" content="#050805"><title>Y2 Game Shop</title>  
+<style>  
+:root{--bg:#030604;--card:#0b110d;--line:#244f2b;--g:#6cff35;--txt:#f4fff3;--muted:#8e9b92}  
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 80% 5%,#102515 0,transparent 28%),var(--bg);color:var(--txt);font-family:Arial,"Noto Sans Myanmar",sans-serif;padding-bottom:90px}  
+.wrap{width:min(1100px,92%);margin:auto}.nav{height:70px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid #17331c}  
+.logo{font-size:21px;font-weight:900;font-style:italic}.logo span{color:var(--g)}.nav a{color:var(--g);border:1px solid var(--line);padding:10px 15px;border-radius:22px;text-decoration:none;font-weight:800}  
+.hero{margin-top:18px;min-height:330px;border:1px solid #3b7d3c;border-radius:28px;overflow:hidden;padding:42px;position:relative;background:linear-gradient(115deg,#091109,#0b2615 60%,#08212a)}  
+.hero:after{content:"";position:absolute;right:-70px;top:-90px;width:420px;height:420px;border-radius:50%;border:1px solid #3b8b42;box-shadow:0 0 90px #1d7d2b55 inset}  
+.hero h1{font-size:clamp(43px,7vw,75px);line-height:.9;margin:12px 0;font-style:italic}.hero h1 span{color:var(--g);text-shadow:0 0 24px #5cff3544}.hero p{color:#bcc8be;max-width:520px;line-height:1.7}.btn{display:inline-block;padding:13px 18px;border-radius:13px;text-decoration:none;font-weight:900;margin:8px 7px 0 0}.primary{background:var(--g);color:#071006}.ghost{border:1px solid var(--line);color:#eaffea;background:#ffffff08}  
+.quick,.games,.packs{display:grid;gap:12px}.quick{grid-template-columns:repeat(4,1fr);margin:16px 0}.quick>div,.game,.pack,.order{background:linear-gradient(145deg,#0b130d,#070b08);border:1px solid var(--line);border-radius:19px}.quick>div{padding:17px}.ico{font-size:28px;color:var(--g)}small{color:var(--muted)}section{padding:25px 0}.head{display:flex;justify-content:space-between;align-items:end;margin-bottom:15px}.head h2{margin:3px 0;font-size:28px}.green{color:var(--g)}.games{grid-template-columns:repeat(4,1fr)}.game{height:170px;padding:16px;position:relative;overflow:hidden;display:flex;align-items:end}.game b{font-size:17px}.game .art{position:absolute;right:5px;top:8px;font-size:75px;opacity:.8}.arrow{position:absolute;right:12px;bottom:12px;border:1px solid var(--g);color:var(--g);width:32px;height:32px;border-radius:50%;display:grid;place-items:center}  
+.search{width:100%;padding:14px;border-radius:14px;border:1px solid var(--line);background:#080d09;color:white;outline:0;margin-bottom:12px}.packs{grid-template-columns:repeat(4,1fr)}.pack{padding:15px;color:white;text-align:left;cursor:pointer}.pack:hover{border-color:var(--g);transform:translateY(-2px)}.pack .picon{font-size:26px}.price{color:var(--g);font-weight:900;margin-top:7px}.buy{margin-top:12px;padding:8px;text-align:center;border-radius:9px;background:#102314;border:1px solid #2b6131}  
+.order{padding:22px;max-width:720px;margin:auto}.row{margin-bottom:12px}.row label{display:block;color:#b8c4ba;font-size:13px;font-weight:800;margin-bottom:6px}.row input,.row select{width:100%;padding:13px;border-radius:11px;border:1px solid #294c30;background:#050805;color:white;outline:0}.row input:focus,.row select:focus{border-color:var(--g)}.submit{width:100%;border:0;cursor:pointer;font-size:16px}.note{color:var(--muted);line-height:1.7;text-align:center;margin-top:12px}  
+.bottom{position:fixed;bottom:9px;left:50%;transform:translateX(-50%);width:min(650px,94%);background:#0b100ddf;border:1px solid #315738;border-radius:22px;display:grid;grid-template-columns:repeat(5,1fr);padding:6px;backdrop-filter:blur(15px);z-index:5}.bottom a{text-decoration:none;color:#87938b;text-align:center;font-size:10px;font-weight:800;padding:8px}.bottom span{display:block;font-size:21px}.bottom a:hover{color:var(--g)}  
+#msg{display:none;position:fixed;left:50%;bottom:82px;transform:translateX(-50%);background:#102315;border:1px solid var(--g);padding:12px 16px;border-radius:12px;z-index:10;max-width:90%;text-align:center}  
+@media(max-width:800px){.quick,.games,.packs{grid-template-columns:repeat(2,1fr)}.hero{padding:30px 22px}.hero h1{font-size:50px}}  
+@media(max-width:500px){.wrap{width:92%}.nav{height:62px}.hero{min-height:390px}.quick{gap:8px}.quick>div{padding:13px}.quick small{font-size:10px}.games,.packs{gap:8px}.game{height:145px}.game .art{font-size:58px}.game b{font-size:13px}.pack{padding:11px}.pack b{font-size:12px}.price{font-size:13px}}  .account-title h3{margin:4px 0 14px}.account-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.qty{display:grid;grid-template-columns:46px 1fr 46px;gap:8px}.qty button,.qty input{height:46px;border-radius:11px;border:1px solid #294c30;background:#050805;color:white;text-align:center}.qty button{cursor:pointer;font-size:24px;font-weight:900}.qty input{width:100%;padding:10px}.total{margin-top:8px;color:var(--g);font-weight:900}.confirm{display:flex;gap:9px;align-items:flex-start;margin:15px 0;color:#c8d4ca;font-size:13px;line-height:1.6}.confirm input{accent-color:#6cff35;margin-top:3px;min-width:17px;min-height:17px}@media(max-width:500px){.account-row{grid-template-columns:1fr 1fr;gap:8px}.account-row .row input{padding:11px 9px;font-size:12px}}
+</style>
 
-  const form = e.target;
-  const btn = form.querySelector('button[type="submit"]');
-  const slip = document.getElementById('paymentSlip').files[0];
-
-  if(!slip){
-    toast('❌ ငွေလွှဲပြေစာ တင်ပေးပါ');
-    return;
-  }
-
-  if(slip.size > 5 * 1024 * 1024){
-    toast('❌ Slip ပုံ 5MB ထက်မကျော်ရပါ');
-    return;
-  }
-
-  btn.disabled = true;
-  btn.textContent = '⏳ SENDING...';
-
-  const fd = new FormData();
-
-  fd.append('game', document.getElementById('game').value);
-  fd.append('package', document.getElementById('package').value);
-  fd.append('playerId', document.getElementById('playerId').value.trim());
-  fd.append('serverId', document.getElementById('serverId').value.trim());
-  fd.append('phone', document.getElementById('phone').value.trim());
-  fd.append('quantity', document.getElementById('qty').value);
-  fd.append('paymentMethod', document.getElementById('paymentMethod').value);
-  fd.append('paymentSlip', slip);
-
-  try {
-    const r = await fetch('/api/order', {
-      method: 'POST',
-      body: fd
-    });
-
-    const j = await r.json().catch(() => ({}));
-
-    if(!r.ok || !j.ok){
-      throw new Error(j.error || 'Order ပို့မရပါ');
-    }
-
-    toast('✅ Order + Payment Slip Telegram သို့ ပို့ပြီးပါပြီ');
-
-    form.reset();
-    document.getElementById('qty').value = 1;
-    updateTotal();
-
-  } catch(err) {
-    toast('❌ ' + err.message);
-  } finally {
-    btn.disabled = false;
-    btn.textContent = '✈ CONFIRM ORDER';
-  }
-}
-</script>
+</head>  
+<body>  
+<header><div class="wrap nav"><div class="logo"><span>Y2</span> GAME SHOP</div><a href="#order">✈ Order Now</a></div></header>  
+<main class="wrap">  
+<section id="home" class="hero"><div style="position:relative;z-index:2">  
+<div class="green"><b>⚡ FAST • SAFE • 24/7 SUPPORT</b></div>  
+<h1>PLAY MORE<br><span>PAY LESS</span></h1>  
+<p>MLBB Diamonds နဲ့ PUBG UC ကို မြန်မြန်ဆန်ဆန်၊ လုံခြုံစိတ်ချစွာ Order တင်နိုင်ပါတယ်။</p>  
+<a class="btn primary" href="#games">🎮 GAME ရွေးမယ် ›</a><a class="btn ghost" href="#order">🛒 ORDER NOW</a>  
+</div></section>  
+<div class="quick"><div><div class="ico">⚡</div><b>FAST DELIVERY</b><br><small>Within minutes</small></div><div><div class="ico">🛡️</div><b>SAFE & SECURE</b><br><small>Trusted service</small></div><div><div class="ico">📋</div><b>ORDERS</b><br><small>Easy ordering</small></div><div><div class="ico">🎧</div><b>SUPPORT</b><br><small>24/7 help</small></div></div>  <section id="games"><div class="head"><div><div class="green"><b>GAME CENTER</b></div><h2>🔥 POPULAR GAMES</h2><small>Choose your favorite game</small></div><a class="green" href="#packs">View All ›</a></div>  
+<div class="games"><a class="game" href="#packs" onclick="showGame('pubg');return false" style="text-decoration:none;color:white"><div class="art">🔫</div><div><b>PUBG Mobile</b><br><small>UC Top Up</small></div><div class="arrow">›</div></a><a class="game" href="#packs" onclick="showGame('mlbb');return false" style="text-decoration:none;color:white"><div class="art">⚔️</div><div><b>Mobile Legends</b><br><small>Diamonds</small></div><div class="arrow">›</div></a><div class="game"><div class="art">🔥</div><div><b>Free Fire</b><br><small>Coming Soon</small></div></div><div class="game"><div class="art">✨</div><div><b>Genshin Impact</b><br><small>Coming Soon</small></div></div></div></section>  <section id="packs"><div class="head"><div><div class="green"><b>BEST PRICE • INSTANT DELIVERY</b></div><h2>💎 TOP UP PACKAGES</h2></div></div><input id="search" class="search" placeholder="🔎 Search games, packages..." oninput="filterPacks()"><div class="packs" id="packGrid">  
+<button class="pack" data-game="mlbb" data-s="mlbb 86 diamonds 5600" onclick="pick('Mobile Legends','MLBB - 86 Diamonds - 5,600 MMK')"><div class="picon">💎</div><b>MLBB • 86 Diamonds</b><div class="price">5,600 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="mlbb" data-s="mlbb 172 diamonds 11000" onclick="pick('Mobile Legends','MLBB - 172 Diamonds - 11,000 MMK')"><div class="picon">💎</div><b>MLBB • 172 Diamonds</b><div class="price">11,000 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="mlbb" data-s="mlbb 257 diamonds 16500" onclick="pick('Mobile Legends','MLBB - 257 Diamonds - 16,500 MMK')"><div class="picon">💎</div><b>MLBB • 257 Diamonds</b><div class="price">16,500 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="mlbb" data-s="mlbb 343 diamonds 21200" onclick="pick('Mobile Legends','MLBB - 343 Diamonds - 21,200 MMK')"><div class="picon">💎</div><b>MLBB • 343 Diamonds</b><div class="price">21,200 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="mlbb" data-s="mlbb 429 diamonds 27000" onclick="pick('Mobile Legends','MLBB - 429 Diamonds - 27,000 MMK')"><div class="picon">💎</div><b>MLBB • 429 Diamonds</b><div class="price">27,000 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="mlbb" data-s="mlbb 515 diamonds 31800" onclick="pick('Mobile Legends','MLBB - 515 Diamonds - 31,800 MMK')"><div class="picon">💎</div><b>MLBB • 515 Diamonds</b><div class="price">31,800 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="mlbb" data-s="mlbb 706 diamonds 42000" onclick="pick('Mobile Legends','MLBB - 706 Diamonds - 42,000 MMK')"><div class="picon">💎</div><b>MLBB • 706 Diamonds</b><div class="price">42,000 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="mlbb" data-s="mlbb 878 diamonds 53000" onclick="pick('Mobile Legends','MLBB - 878 Diamonds - 53,000 MMK')"><div class="picon">💎</div><b>MLBB • 878 Diamonds</b><div class="price">53,000 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="mlbb" data-s="mlbb 963 diamonds 58000" onclick="pick('Mobile Legends','MLBB - 963 Diamonds - 58,000 MMK')"><div class="picon">💎</div><b>MLBB • 963 Diamonds</b><div class="price">58,000 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="mlbb" data-s="mlbb weekly pass 6800" onclick="pick('Mobile Legends','MLBB - Weekly Pass - 6,800 MMK')"><div class="picon">🎫</div><b>MLBB • Weekly Pass</b><div class="price">6,800 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="mlbb" data-s="mlbb 2x 50 50 3500" onclick="pick('Mobile Legends','MLBB 2X - 50+50 Diamonds - 3,500 MMK')"><div class="picon">💎</div><b>MLBB 2X • 50 + 50</b><div class="price">3,500 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="mlbb" data-s="mlbb 2x 150 150 10600" onclick="pick('Mobile Legends','MLBB 2X - 150+150 Diamonds - 10,600 MMK')"><div class="picon">💎</div><b>MLBB 2X • 150 + 150</b><div class="price">10,600 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="mlbb" data-s="mlbb 2x 250 250 17000" onclick="pick('Mobile Legends','MLBB 2X - 250+250 Diamonds - 17,000 MMK')"><div class="picon">💎</div><b>MLBB 2X • 250 + 250</b><div class="price">17,000 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="mlbb" data-s="mlbb 2x 500 500 34000" onclick="pick('Mobile Legends','MLBB 2X - 500+500 Diamonds - 34,000 MMK')"><div class="picon">💎</div><b>MLBB 2X • 500 + 500</b><div class="price">34,000 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="pubg" data-s="pubg 60 uc 6300" onclick="pick('PUBG Mobile','PUBG - 60 UC - 6,300 MMK')"><div class="picon">🪙</div><b>PUBG • 60 UC</b><div class="price">6,300 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="pubg" data-s="pubg 328 uc 25000" onclick="pick('PUBG Mobile','PUBG - 328 UC - 25,000 MMK')"><div class="picon">🪙</div><b>PUBG • 328 UC</b><div class="price">25,000 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="pubg" data-s="pubg 660 uc 42000" onclick="pick('PUBG Mobile','PUBG - 660 UC - 42,000 MMK')"><div class="picon">🪙</div><b>PUBG • 660 UC</b><div class="price">42,000 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="pubg" data-s="pubg 1800 uc 101000" onclick="pick('PUBG Mobile','PUBG - 1800 UC - 101,000 MMK')"><div class="picon">🪙</div><b>PUBG • 1800 UC</b><div class="price">101,000 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="pubg" data-s="pubg 3850 uc 200000" onclick="pick('PUBG Mobile','PUBG - 3850 UC - 200,000 MMK')"><div class="picon">🪙</div><b>PUBG • 3850 UC</b><div class="price">200,000 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="pubg" data-s="pubg elite lv 1 50 24000" onclick="pick('PUBG Mobile','PUBG - Elite Lv 1-50 - 24,000 MMK')"><div class="picon">🏆</div><b>PUBG • Elite Lv 1-50</b><div class="price">24,000 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+<button class="pack" data-game="pubg" data-s="pubg elite lv 1 100 49000" onclick="pick('PUBG Mobile','PUBG - Elite Lv 1-100 - 49,000 MMK')"><div class="picon">🏆</div><b>PUBG • Elite Lv 1-100</b><div class="price">49,000 MMK</div><div class="buy">ဝယ်မယ် ›</div></button>  
+</div></section>  <section id="order"><div class="head"><div><div class="green"><b>FAST • SAFE • TELEGRAM</b></div><h2>🛒 ORDER NOW</h2><small>Form ဖြည့်ပြီး Send Order နှိပ်ပါ</small></div></div>  
+<div class="order"><form onsubmit="submitOrder(event)">  
+<div class="row"><label>🎮 Game</label><select id="game" required><option value="">Game ရွေးပါ</option><option>Mobile Legends</option><option>PUBG Mobile</option></select></div>  
+<div class="row"><label>📦 Package</label><select id="package" required>  
+<option value="">Package ရွေးပါ</option><option>MLBB - 86 Diamonds - 5,600 MMK</option><option>MLBB - 172 Diamonds - 11,000 MMK</option><option>MLBB - 257 Diamonds - 16,500 MMK</option><option>MLBB - 343 Diamonds - 21,200 MMK</option><option>MLBB - 429 Diamonds - 27,000 MMK</option><option>MLBB - 515 Diamonds - 31,800 MMK</option><option>MLBB - 706 Diamonds - 42,000 MMK</option><option>MLBB - 878 Diamonds - 53,000 MMK</option><option>MLBB - 963 Diamonds - 58,000 MMK</option><option>MLBB - Weekly Pass - 6,800 MMK</option><option>MLBB - 2X - 50+50 Diamonds - 3,500 MMK</option><option>MLBB - 2X - 150+150 Diamonds - 10,600 MMK</option><option>MLBB - 2X - 250+250 Diamonds - 17,000 MMK</option><option>MLBB - 2X - 500+500 Diamonds - 34,000 MMK</option><option>PUBG - 60 UC - 6,300 MMK</option><option>PUBG - 328 UC - 25,000 MMK</option><option>PUBG - 660 UC - 42,000 MMK</option><option>PUBG - 1800 UC - 101,000 MMK</option><option>PUBG - 3850 UC - 200,000 MMK</option><option>PUBG - Elite Lv 1-50 - 24,000 MMK</option><option>PUBG - Elite Lv 1-100 - 49,000 MMK</option>  
+        </select></div>  
+<div class="account-title"><div class="green"><b>ACCOUNT INFO</b></div><h3>👤 Account Info</h3></div>  
+<div class="account-row">  
+<div class="row"><label>🎮 Game ID</label><input id="playerId" required placeholder="Game ID ထည့်ပါ"></div>  
+<div class="row"><label>🌐 Server ID</label><input id="serverId" required placeholder="Server ID ထည့်ပါ"></div>  
+</div>  
+<div class="row"><label>📦 ပမာဏ / အကြိမ်ရေ</label><div class="qty"><button type="button" onclick="changeQty(-1)">−</button><input id="qty" type="number" min="1" max="99" value="1" required><button type="button" onclick="changeQty(1)">+</button></div><div id="total" class="total">စုစုပေါင်း: Package ဈေး × 1</div></div>  
+<div class="row"><label>📱 Ph No.</label><input id="phone" type="tel" required placeholder="09xxxxxxxxx"></div>  
+<label class="confirm"><input id="confirmInfo" type="checkbox" required> <span>Game ID နှင့် Server ID အချက်အလက်များ မှန်ကန်ကြောင်း စစ်ဆေးပြီးပါပြီ။</span></label>  
+<button class="btn primary submit" type="submit">✈ CONFIRM ORDER</button>  
+</form><div class="note">Order တင်ပြီးရင် Telegram Bot ဆီကို အလိုအလျောက် ပို့ပေးပါမယ်။</div></div></section>  
+</main>  
+<footer class="wrap" style="text-align:center;color:#68756c;padding:20px 0">© 2026 Y2 Game Shop</footer>  
+<nav class="bottom"><a href="#home"><span>⌂</span>HOME</a><a href="#games"><span>🎮</span>GAMES</a><a href="#packs"><span>🛒</span>SHOP</a><a href="#order"><span>📋</span>ORDERS</a><a href="#order"><span>👤</span>ACCOUNT</a></nav><div id="msg"></div>  
+<script>  
+function showGame(type){document.getElementById('search').value='';document.querySelectorAll('.pack').forEach(x=>x.style.display=x.dataset.game===type?'block':'none');document.getElementById('packs').scrollIntoView({behavior:'smooth'});toast(type==='mlbb'?'💎 Mobile Legends Diamonds':'🪙 PUBG UC')}  
+function pick(game,pack){document.getElementById('game').value=game;document.getElementById('package').value=pack;document.getElementById('qty').value=1;updateTotal();document.getElementById('order').scrollIntoView({behavior:'smooth'});toast('✅ Package ရွေးပြီးပါပြီ')}  
+function filterPacks(){let q=document.getElementById('search').value.toLowerCase();document.querySelectorAll('.pack').forEach(x=>x.style.display=x.dataset.s.includes(q)?'block':'none')}  
+function getPrice(){let v=document.getElementById('package').value;let m=v.match(/([\d,]+) MMK$/);return m?Number(m[1].replace(/,/g,'')):0}  
+function updateTotal(){let qty=Math.max(1,Math.min(99,Number(document.getElementById('qty').value)||1));document.getElementById('qty').value=qty;let price=getPrice();document.getElementById('total').textContent=price?'စုစုပေါင်း: '+(price*qty).toLocaleString()+' MMK':'စုစုပေါင်း: Package ရွေးပါ';}  
+function changeQty(n){document.getElementById('qty').value=Math.max(1,Math.min(99,(Number(document.getElementById('qty').value)||1)+n));updateTotal()}  
+document.getElementById('package').addEventListener('change',updateTotal);document.getElementById('qty').addEventListener('input',updateTotal);  
+showGame('mlbb')  
+function toast(t){let x=document.getElementById('msg');x.textContent=t;x.style.display='block';setTimeout(()=>x.style.display='none',2200)}  
+async function submitOrder(e){e.preventDefault();let b=e.target.querySelector('button');b.disabled=true;b.textContent='⏳ SENDING...';let data={game:game.value,package:package.value,playerId:playerId.value.trim(),serverId:serverId.value.trim(),phone:phone.value.trim(),quantity:Number(qty.value)||1};try{let r=await fetch('/api/order',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});let j=await r.json().catch(()=>({}));if(!r.ok||!j.ok)throw Error(j.error||'Order ပို့မရပါ');toast('✅ Order တင်ပြီး Telegram သို့ ပို့ပြီးပါပြီ');e.target.reset()}catch(err){toast('❌ '+err.message)}finally{b.disabled=false;b.textContent='✈ SEND ORDER'}}  
+</script>  
+</body></html>
