@@ -83,48 +83,6 @@ function changeQty(n){document.getElementById('qty').value=Math.max(1,Math.min(9
 document.getElementById('package').addEventListener('change',updateTotal);document.getElementById('qty').addEventListener('input',updateTotal);  
 showGame('mlbb')  
 function toast(t){let x=document.getElementById('msg');x.textContent=t;x.style.display='block';setTimeout(()=>x.style.display='none',2200)}  
-async function submitOrder(e){
-  e.preventDefault();
-
-  let b=e.target.querySelector('button');
-  b.disabled=true;
-  b.textContent='⏳ SENDING...';
-
-  try{
-    let data={
-      game:document.getElementById('game').value,
-      package:document.getElementById('package').value,
-      playerId:document.getElementById('playerId').value.trim(),
-      serverId:document.getElementById('serverId').value.trim(),
-      phone:document.getElementById('phone').value.trim(),
-      quantity:Number(document.getElementById('qty').value)||1
-    };
-
-    let r=await fetch(
-      'https://ye-yint-game-shop.yye224288.workers.dev/api/order',
-      {
-        method:'POST',
-        headers:{
-          'Content-Type':'application/json'
-        },
-        body:JSON.stringify(data)
-      }
-    );
-
-    let j=await r.json().catch(()=>({}));
-
-    if(!r.ok || !j.ok){
-      throw Error(j.error || 'Order ပို့မရပါ');
-    }
-
-    toast('✅ Order တင်ပြီး Telegram သို့ ပို့ပြီးပါပြီ');
-    e.target.reset();
-    updateTotal();
-
-  }catch(err){
-    toast('❌ '+err.message);
-  }finally{
-    b.disabled=false;
-    b.textContent='✈ SEND ORDER';
-  }
-}
+async function submitOrder(e){e.preventDefault();let b=e.target.querySelector('button');b.disabled=true;b.textContent='⏳ SENDING...';let data={game:game.value,package:package.value,playerId:playerId.value.trim(),serverId:serverId.value.trim(),phone:phone.value.trim(),quantity:Number(qty.value)||1};try{let r=await fetch('/api/order',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});let j=await r.json().catch(()=>({}));if(!r.ok||!j.ok)throw Error(j.error||'Order ပို့မရပါ');toast('✅ Order တင်ပြီး Telegram သို့ ပို့ပြီးပါပြီ');e.target.reset()}catch(err){toast('❌ '+err.message)}finally{b.disabled=false;b.textContent='✈ SEND ORDER'}}  
+</script>  
+</body></html>
