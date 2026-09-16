@@ -248,6 +248,57 @@ label{display:block;margin:13px 0 7px;font-weight:800}input,select{width:100%;mi
   .pack-grid{grid-template-columns:1fr !important;}
 }
 </style>
+
+<style>
+/* Package cards: keep package name and price clearly visible */
+.pack-grid .pack{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:stretch !important;
+  justify-content:flex-start !important;
+  text-align:center !important;
+  min-height:185px !important;
+  padding:16px !important;
+  overflow:hidden !important;
+}
+.pack-grid .pack .pack-name{
+  display:flex !important;
+  align-items:center !important;
+  justify-content:center !important;
+  min-height:44px !important;
+  margin:0 !important;
+  color:var(--text) !important;
+  font-size:16px !important;
+}
+.pack-grid .pack .price{
+  display:flex !important;
+  flex-direction:column !important;
+  align-items:center !important;
+  justify-content:center !important;
+  gap:3px !important;
+  min-height:58px !important;
+  margin:8px 0 12px !important;
+  padding:7px 10px !important;
+  border:1px solid #285f43 !important;
+  border-radius:10px !important;
+  background:#0b2116 !important;
+  color:var(--green) !important;
+  visibility:visible !important;
+  opacity:1 !important;
+}
+.pack-grid .pack .price-label{
+  display:block !important;
+  font-size:11px !important;
+  color:var(--muted) !important;
+}
+.pack-grid .pack .price strong{
+  display:block !important;
+  color:var(--green) !important;
+  font-size:18px !important;
+  line-height:1.2 !important;
+}
+.pack-grid .pack .btn{width:100% !important;margin-top:auto !important;}
+</style>
 </head>
 <body>
 <header><div class="container nav"><a class="brand" href="#home"><span class="brand-logo">🎮</span><span>Y2 GAME SHOP</span></a><nav class="nav-links"><a href="#games">Games</a><a href="#packages">Packages</a><a href="#order">Order</a><a href="#payment">Payment</a></nav></div></header>
@@ -314,9 +365,91 @@ let currentGame="MLBB";
 function money(n){return Number(n).toLocaleString("en-US")+" MMK"}
 function renderPackages(){
  const grid=document.getElementById("packGrid"),q=document.getElementById("search").value.trim().toLowerCase();
+ const select=document.getElementById("package");
  grid.innerHTML="";
- const list=DATA[currentGame].packages.filter(x=>x[0].toLowerCase().includes(q)||money(x[1]).toLowerCase().includes(q));
+ const all=DATA[currentGame].packages;
+ const list=all.filter(x=>x[0].toLowerCase().includes(q)||money(x[1]).toLowerCase().includes(q));
+ // Keep the order form package list and prices in sync with the selected game.
+ select.innerHTML='<option value="">📦 Package ရွေးပါ</option>';
+ all.forEach(x=>{
+   const o=document.createElement("option");
+   o.value=x[0]+" — "+money(x[1]);
+   o.textContent=x[0]+" — "+money(x[1]);
+   select.appendChild(o);
+ });
  if(!list.length){grid.innerHTML='<div class="notice" style="grid-column:1/-1">Package မတွေ့ပါ။</div>';return}
  list.forEach(x=>{
   const card=document.createElement("div");card.className="pack";
- 
+  card.innerHTML=`<b class="pack-name">${x[0]}</b><div class="price"><span class="price-label">ဈေးနှုန်း</span><strong>${money(x[1])}</strong></div><button class="btn primary" type="button" onclick="pickPackage('${x[0].replace(/'/g,"\'")}',${x[1]})">🛒 ဝယ်မည်</button>`;
+  grid.appendChild(card);
+ });
+}
+function showGame(game){if(!DATA[game])return;currentGame=game;document.getElementById("game").value=game;document.getElementById("search").value="";changeGame();document.getElementById("packages").scrollIntoView({behavior:"smooth"});toast(DATA[game].name+" Packages")}
+function changeGame(){
+ currentGame=document.getElementById("game").value;
+ document.getElementById("selectedGameText").textContent=DATA[currentGame].name;
+ renderPackages();
+ const account=document.getElementById("accountArea"),tt=document.getElementById("tiktokArea"),yt=document.getElementById("youtubeArea");
+ const player=document.getElementById("playerId"),server=document.getElementById("serverId"),video=document.getElementById("videoLink"),youtube=document.getElementById("youtubeLink");
+ account.style.display="grid";tt.style.display="none";yt.style.display="none";
+ player.required=false;server.required=false;video.required=false;youtube.required=false;
+ if(currentGame==="TikTok"){account.style.display="none";tt.style.display="block";video.required=true}
+ else if(currentGame==="YouTube"){account.style.display="none";yt.style.display="block";youtube.required=true}
+ else{player.required=true;server.required=true}
+ updateTotal();
+}
+function pickPackage(name,price){
+  const select=document.getElementById("package");
+  const wanted=name+" — "+money(price);
+  let found=false;
+  for(let i=0;i<select.options.length;i++){
+    if(select.options[i].textContent===wanted){
+      select.selectedIndex=i;
+      found=true;
+      break;
+    }
+  }
+  if(!found){
+    const option=document.createElement("option");
+    option.value=wanted;
+    option.textContent=wanted;
+    select.appendChild(option);
+    select.value=wanted;
+  }
+  updateTotal();
+  document.getElementById("order").scrollIntoView({behavior:"smooth"});
+  toast("✅ "+name+" ရွေးပြီးပါပြီ");
+}
+function getPrice(){const m=document.getElementById("package").value.match(/([\d,]+)\s*MMK$/);return m?Number(m[1].replace(/,/g,"")):0}
+function changeQty(delta){const input=document.getElementById("qty");let value=parseInt(input.value,10)||1;value=Math.max(1,Math.min(99,value+delta));input.value=value;updateTotal()}
+function updateTotal(){let q=Math.max(1,Math.min(99,Number(document.getElementById("qty").value)||1));document.getElementById("qty").value=q;const p=getPrice();document.getElementById("total").textContent=p?"စုစုပေါင်း: "+money(p*q):"စုစုပေါင်း: Package ရွေးပါ"}
+function validLastSix(v){return /^[A-Za-z0-9]{6}$/.test(v)}
+async function submitOrder(){
+ const btn=document.getElementById("submitBtn"),game=document.getElementById("game").value,pack=document.getElementById("package").value;
+ const qty=Math.max(1,Math.min(99,Number(document.getElementById("qty").value)||1));
+ const senderName=document.getElementById("senderName").value.trim(),transactionId=document.getElementById("transactionId").value.trim();
+ const playerId=document.getElementById("playerId").value.trim(),serverId=document.getElementById("serverId").value.trim();
+ const videoLink=document.getElementById("videoLink").value.trim(),youtubeLink=document.getElementById("youtubeLink").value.trim();
+ if(!pack){toast("❌ Package ရွေးပါ");return}
+ if(!senderName){toast("❌ ငွေလွှဲသူအမည် ထည့်ပါ");return}
+ if(!validLastSix(transactionId)){toast("❌ Transaction ID နောက်ဆုံး ၆ လုံး ထည့်ပါ");return}
+ if(["MLBB","PUBG","HOK"].includes(game)&&(!playerId||!serverId)){toast("❌ Game ID နှင့် Server ID ထည့်ပါ");return}
+ if(game==="TikTok"&&!videoLink){toast("❌ TikTok Video Link ထည့်ပါ");return}
+ if(game==="YouTube"&&!youtubeLink){toast("❌ YouTube Link ထည့်ပါ");return}
+ btn.disabled=true;btn.textContent="⏳ SENDING...";
+ const data={game,package:pack,playerId:game==="TikTok"?videoLink:game==="YouTube"?youtubeLink:playerId,serverId:["MLBB","PUBG","HOK"].includes(game)?serverId:"",phone:senderName,transactionId,quantity:qty};
+ try{
+  const r=await fetch(API_URL,{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(data)});
+  const j=await r.json().catch(()=>({}));
+  if(!r.ok||!j.ok)throw new Error(j.error||"Order ပို့မရပါ");
+  toast("✅ Order တင်ပြီး Telegram သို့ ပို့ပြီးပါပြီ");
+  ["senderName","transactionId","playerId","serverId","videoLink","youtubeLink"].forEach(id=>document.getElementById(id).value="");
+  document.getElementById("qty").value=1;updateTotal();
+ }catch(e){toast("❌ "+e.message)}finally{btn.disabled=false;btn.textContent="✈️ CONFIRM ORDER"}
+}
+let toastTimer;
+function toast(msg){const e=document.getElementById("toast");e.textContent=msg;e.classList.add("show");clearTimeout(toastTimer);toastTimer=setTimeout(()=>e.classList.remove("show"),2600)}
+changeGame();
+</script>
+</body>
+</html>
